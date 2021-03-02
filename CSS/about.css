@@ -1,0 +1,70 @@
+#information {
+    background-color: white;
+    padding: 10px 16px;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    background-color: black;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.circle {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 2px solid black;
+}
+
+.blue {
+    background-color: #3572a5;
+    border: 0 solid #3572a5;
+}
+
+.brown {
+    background-color: #b07219;
+    border: 0 solid #b07219;
+}
+
+.yellow {
+    background-color: #f1e05a;
+    border: 0 solid #f1e05a;
+}
+
+.orangered {
+    background-color: orangered;
+    border: 0 solid orangered;
+}
+
+.pink {
+    background-color: #f34b7d;
+    border: 0 solid #f34b7d;
+}
+
+.gray {
+    background-color: #555555;
+    border: 0 solid #555555;
+}
+
+#information h1 {
+    color: black;
+    font-size: 2em;
+    font-weight: bolder;
+    padding: 0 0;
+}
+
+#information hr {
+    background-color: dimgray;
+    margin-left: 0;
+}
+
+.fa-github-alt {
+    font-size: 30px;
+}
+
+#github-button {
+    padding: 0;
+}

@@ -1,0 +1,23 @@
+.jumbotron-background {
+    background-image: url("../images/CodingScreen.jpg");
+    background-size: cover;
+}
+
+.row-content {
+    border-bottom: 1px ridge;
+    min-height: 400px; 
+}
+
+body {
+    padding-top: 55px;
+}
+
+nav {
+    font-size: 18px;
+}
+
+canvas {
+    width: 100%;
+    height: auto;
+}
+
