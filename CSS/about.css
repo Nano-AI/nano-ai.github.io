@@ -68,3 +68,7 @@
 #github-button {
     padding: 0;
 }
+
+.card {
+    border: none !important;
+}
