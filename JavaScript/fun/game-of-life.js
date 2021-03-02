@@ -5,8 +5,8 @@ const checkBox = document.getElementById('turnBoxOutlines');
 var grid_outline = false;
 
 const resolution = 10;
-canvas.width = 800;
-canvas.height = 800;
+canvas.width = 1000;
+canvas.height = 1000;
 
 
 const COLS = canvas.width / resolution;

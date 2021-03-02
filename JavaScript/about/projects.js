@@ -28,7 +28,7 @@ fetch(repos_url).then((response) => response.json())
 //             `);
             const $item = $(`
                 <div class="" style="margin-right: 1rem !important; margin-bottom: 1rem !important;">
-                    <a href="${object.html_url}"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${object.owner.login}&repo=${object.name}"></a>
+                    <a target="_blank" href="${object.html_url}"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${object.owner.login}&repo=${object.name}"></a>
                 </div>
             `);
 
