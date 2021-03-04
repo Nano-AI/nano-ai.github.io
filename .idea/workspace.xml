@@ -9,7 +9,6 @@
       <change beforePath="$PROJECT_DIR$/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/about.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fun/game-of-life.html" beforeDir="false" afterPath="$PROJECT_DIR$/fun/game-of-life.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fun/jokes.html" beforeDir="false" afterPath="$PROJECT_DIR$/fun/jokes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +77,7 @@
       <workItem from="1614719624480" duration="1170000" />
       <workItem from="1614748918451" duration="2112000" />
       <workItem from="1614879330879" duration="635000" />
-      <workItem from="1614883630134" duration="5306000" />
+      <workItem from="1614883630134" duration="5488000" />
     </task>
     <servers />
   </component>
