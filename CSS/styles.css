@@ -1,5 +1,5 @@
 .jumbotron-background {
-    background-image: url("../images/CodingScreen.jpg");
+    background-image: url("./images/CodingScreen.jpg");
     background-size: cover;
 }
 
@@ -20,4 +20,3 @@ canvas {
     width: 100%;
     height: auto;
 }
-
