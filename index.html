@@ -1,93 +1,115 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <!-- Font Awsome CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="./CSS/styles.css">
-    <link rel="stylesheet" href="./CSS/about.css">  
+    <!-- Dark Mode CSS -->
+    <link rel="stylesheet" href="./modules/dark-mode-switch-1.0.0/dark-mode.css">
+
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/about.css">
 
     <title>Nano-AI</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-dark navbar-expand-sm bg-dark fixed-top">
-      <div class="container">
+</head>
+<body>
+<nav class="navbar navbar-dark navbar-expand-sm bg-dark fixed-top">
+    <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
-          <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="Navbar">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active"><a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="./about.html"><i class="fa fa-info" aria-hidden="true"></i> About</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Fun
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <span class="dropdown-item-text"><strong>Games</strong></span>
-                <a class="dropdown-item" href="./fun/game-of-life.html">Game of Life</a>
-                <div class="dropdown-divider"></div>
-                <span class="dropdown-item-text"><strong>Jokes</strong></span>
-                <a class="dropdown-item" href="./fun/dad-jokes.html">Dad Jokes</a>
-                <a class="dropdown-item" href="./fun/jokes.html">Jokes</a>
-              </div>
-            </li>
-          </ul>
-          <span class="navbar-text">
-            <a type="button" id="github-button" class="btn btn-microsoft btn-social" href="https://github.com/Nano-AI" target="_blank">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"><a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i>
+                    Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="./about.html"><i class="fa fa-info"
+                                                                                aria-hidden="true"></i> About</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Fun
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <span class="dropdown-item-text"><strong>Games</strong></span>
+                        <a class="dropdown-item" href="./fun/game-of-life.html">Game of Life</a>
+                        <div class="dropdown-divider"></div>
+                        <span class="dropdown-item-text"><strong>Jokes</strong></span>
+                        <a class="dropdown-item" href="./fun/dad-jokes.html">Dad Jokes</a>
+                        <a class="dropdown-item" href="./fun/jokes.html">Jokes</a>
+                    </div>
+                </li>
+            </ul>
+            <span class="navbar-text">
+            <a type="button" id="github-button" class="btn btn-microsoft btn-social" href="https://github.com/Nano-AI"
+               target="_blank">
                <i id="github-icon" class="fa fa-github-alt" aria-hidden="true"></i>
               </a>
           </span>
         </div>
-      </div>
-    </nav>   
-
-    <header>
-      <div class="jumbotron bg-dark jumbotron-fluid jumbotron-background">
-        <div class="container">
-          <div class="row text-white">
-            <h1 class="col" style="font-size: 60px;">Nano-AI</h1>
-            <p class="col-12">A website about me, along with some of my projects, and some other things.</p>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!--<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
-      Tooltip on bottom
-    </button>-->
-
-    <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="row-content">
-              <h1>Welcome!</h1>
-              <p>Welcome to my website! This is my main website which includes a few things about myself and a few other
-              things located in the <b>Fun</b> tab.</p>
-              <h2>My pinned repos</h2>
-              <div id="projects" class="container row" style="margin-left: 0 !important; padding-left: 0 !important; margin-right: 0 !important; padding-right: 0 !important;"></div>
-            </div>
-          </div>          
-        </div>
     </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <script src="./JavaScript/index.js"></script>
+    <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="darkSwitch"/>
+        <label class="custom-control-label" for="darkSwitch"></label>
+    </div>
+</nav>
 
-    <script type="text/javascript">
-      $(document).ready(function() {
-          $("body").tooltip({ selector: '[data-toggle=tooltip]' });
-      });
-    </script>
-  </body>
+<header>
+    <div class="jumbotron bg-dark jumbotron-fluid jumbotron-background">
+        <div class="container">
+            <div class="row text-white">
+                <h1 class="col" style="font-size: 60px;">Nano-AI</h1>
+                <p class="col-12">A website about me, along with some of my projects, and some other things.</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
+  Tooltip on bottom
+</button>-->
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="row-content">
+                <h1>Welcome!</h1>
+                <p>Welcome to my website! This is my main website which includes a few things about myself and a few
+                    other
+                    things located in the <b>Fun</b> tab.</p>
+                <h2>My pinned repos</h2>
+                <div id="projects" class="container row"
+                     style="margin-left: 0 !important; padding-left: 0 !important; margin-right: 0 !important; padding-right: 0 !important;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
+<script src="./modules/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+<script src="./modules/dark-mode-switch-1.0.0/dark-mode-switch.js"></script>
+<script src="./js/index.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("body").tooltip({selector: '[data-toggle=tooltip]'});
+    });
+</script>
+</body>
 </html>

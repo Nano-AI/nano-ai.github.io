@@ -8,6 +8,7 @@ const resolution = 10;
 canvas.width = 1000;
 canvas.height = 1000;
 
+var darkmode = localStorage.getItem("darkMode") === "dark";
 
 const COLS = canvas.width / resolution;
 const ROWS = canvas.height / resolution;
