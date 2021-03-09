@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99b08427-b4ab-4ba5-a43f-1f611858bb58" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/CSS/images/guides/Screenshot (12).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guides/simple-desktop.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/shared/navbar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fun/dad-jokes.html" beforeDir="false" afterPath="$PROJECT_DIR$/fun/dad-jokes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fun/game-of-life.html" beforeDir="false" afterPath="$PROJECT_DIR$/fun/game-of-life.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fun/jokes.html" beforeDir="false" afterPath="$PROJECT_DIR$/fun/jokes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -45,6 +50,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Coding\Website\nano-ai.github.io\CSS\images\guides" />
       <recent name="D:\Coding\Website\nano-ai.github.io\css" />
       <recent name="D:\Coding\Website\nano-ai.github.io\CSS\include" />
     </key>
@@ -77,7 +83,10 @@
       <workItem from="1614719624480" duration="1170000" />
       <workItem from="1614748918451" duration="2112000" />
       <workItem from="1614879330879" duration="635000" />
-      <workItem from="1614883630134" duration="5488000" />
+      <workItem from="1614883630134" duration="6096000" />
+      <workItem from="1615144719943" duration="21000" />
+      <workItem from="1615253722559" duration="10000" />
+      <workItem from="1615253765474" duration="5395000" />
     </task>
     <servers />
   </component>
