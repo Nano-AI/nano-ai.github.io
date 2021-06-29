@@ -1,220 +1,377 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
     <!-- Font Awsome CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
 
     <!-- Dark Mode CSS -->
-    <link rel="stylesheet" href="../modules/dark-mode-switch-1.0.0/dark-mode.css">
+    <link
+      rel="stylesheet"
+      href="../modules/dark-mode-switch-1.0.0/dark-mode.css"
+    />
 
-    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/styles.css" />
     <title>Nano-AI</title>
-</head>
-<body>
-<nav class="navbar navbar-dark navbar-expand-sm bg-dark fixed-top">
-    <div class="container">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
-            <span class="navbar-toggler-icon"></span>
+  </head>
+  <body>
+    <nav class="navbar navbar-dark navbar-expand-sm bg-dark fixed-top">
+      <div class="container">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#Navbar"
+        >
+          <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="Navbar">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="../index.html"><i class="fa fa-home" aria-hidden="true"></i>
-                    Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="../about.html"><i class="fa fa-info"
-                                                                                 aria-hidden="true"></i> About</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Fun
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <span class="dropdown-item-text"><strong>Games</strong></span>
-                        <a class="dropdown-item" href="../fun/game-of-life.html">Game of Life</a>
-                        <div class="dropdown-divider"></div>
-                        <span class="dropdown-item-text"><strong>Jokes</strong></span>
-                        <a class="dropdown-item" href="../fun/dad-jokes.html">Dad Jokes</a>
-                        <a class="dropdown-item" href="../fun/jokes.html">Jokes</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="guidesDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Guides
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="guidesDropdown">
-                        <a class="dropdown-item active" href="../guides/simple-desktop.html">Minimalist/Simple Desktop</a>
-                    </div>
-                </li>
-            </ul>
-            <span class="navbar-text">
-            <a type="button" id="github-button" class="btn btn-microsoft btn-social" href="https://github.com/Nano-AI"
-               target="_blank">
-               <i id="github-icon" class="fa fa-github-alt" aria-hidden="true"></i>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html"
+                ><i class="fa fa-home" aria-hidden="true"></i> Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../about.html"
+                ><i class="fa fa-info" aria-hidden="true"></i> About</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Fun
               </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <span class="dropdown-item-text"><strong>Games</strong></span>
+                <a class="dropdown-item" href="../fun/game-of-life.html"
+                  >Game of Life</a
+                >
+                <div class="dropdown-divider"></div>
+                <span class="dropdown-item-text"><strong>Jokes</strong></span>
+                <a class="dropdown-item" href="../fun/dad-jokes.html"
+                  >Dad Jokes</a
+                >
+                <a class="dropdown-item" href="../fun/jokes.html">Jokes</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="guidesDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Guides
+              </a>
+              <div class="dropdown-menu" aria-labelledby="guidesDropdown">
+                <a
+                  class="dropdown-item active"
+                  href="../guides/simple-desktop.html"
+                  >Minimalist/Simple Desktop</a
+                >
+              </div>
+            </li>
+          </ul>
+          <span class="navbar-text">
+            <a
+              type="button"
+              id="github-button"
+              class="btn btn-microsoft btn-social"
+              href="https://github.com/Nano-AI"
+              target="_blank"
+            >
+              <i
+                id="github-icon"
+                class="fa fa-github-alt"
+                aria-hidden="true"
+              ></i>
+            </a>
           </span>
         </div>
-    </div>
+      </div>
 
-    <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" id="darkSwitch"/>
-        <label class="custom-control-label text-white" for="darkSwitch">Dark Mode</label>
-    </div>
-</nav>
+      <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="darkSwitch" />
+        <label class="custom-control-label text-white" for="darkSwitch"
+          >Dark Mode</label
+        >
+      </div>
+    </nav>
 
-
-<header>
-    <div class="jumbotron bg-dark jumbotron-fluid jumbotron-background">
+    <header>
+      <div class="jumbotron bg-dark jumbotron-fluid jumbotron-background">
         <div class="container">
-            <div class="row text-white">
-                <h1 class="col" style="font-size: 60px;">Simple Desktop</h1>
-                <p class="col-12">How to get a simplistic desktop for Windows 10.</p>
-            </div>
+          <div class="row text-white">
+            <h1 class="col" style="font-size: 60px">Simple Desktop</h1>
+            <p class="col-12">
+              How to get a simplistic desktop for Windows 10.
+            </p>
+          </div>
         </div>
-    </div>
-</header>
+      </div>
+    </header>
 
-<div class="container">
-    <div class="row">
+    <div class="container">
+      <div class="row">
         <div class="row-content col">
-            <h1>How to get a simple desktop</h1>
-            <p>This guide will tell you how to get a simple desktop.<br>
-            <b>No program installation needed</b></p>
-            <details>
-                <summary>Preview</summary>
-                <img class="img-thumbnail" src="../CSS/images/guides/Screenshot%20(12).png"
-                     alt="Preview image of the desktop after you follow the instructions">
-            </details>
-            <h2>Setting up the taskbar</h2>
-            <h3>Taskbar settings</h3>
-            <p>Right click on your taskbar, and select <b>Taskbar Settings</b>.</p>
-            <img class="img-thumbnail" src="../CSS/images/guides/TaskbarSettings.PNG"
-                 alt="Toggled settings for the taskbar">
-            <details>
-                <summary>Taskbar settings</summary>
-                <ul>
-                    <li><b>Lock the taskbar</b> - Toggled</li>
-                    <li><b>Use small taskbar buttons</b> - Toggled</li>
-                    <li><b>Combine taskbar buttons</b> - Always, hide labels</li>
-                </ul>
-            </details>
-            <p>Your taskbar should start to look a bit better than it before!
-                It should be smaller than when you first started out (unless you already had these settings).</p>
-            <h3>Other taskbar settings</h3>
-            <p>Right click on the task bar and make sure everything is deselect the following items:</p>
-            <img class="img-thumbnail" src="../CSS/images/guides/Deselected.png"
-                 alt="Selected settings for the taskbar">
-            <details>
-                <summary>Selected show settings for taskbar</summary>
-                <ul>
-                    <li>Show Cortana Button</li>
-                    <li>Show Task View Button</li>
-                    <li>Show People on the Taskbar</li>
-                    <li>Show Windows Ink Workspace button</li>
-                    <li>Show touch keyboard button</li>
-                    <li><b>Optional</b>: Go to Search and select <b>Hidden</b>/<b>Show search icon</b> based on your
-                        preference</li>
-                </ul>
-            </details>
-            <p>Your taskbar should start to be looking small and should be starting to look small!</p>
-            <h3>Setting up toolbars <span class="badge badge-secondary">Optional</span></h3>
-            <p>This will get all of the icons on your desktop in a small dropdown on the taskbar.
-                <br>This part is going to be one of the more complex parts, so it's fine to skip it.</p>
-            <details id="toolboxes-images">
-                <summary>Output of getting toolbars</summary>
-                <img class="img-thumbnail" src="../CSS/images/guides/Toolboxes.PNG"
-                     alt="How toolbars look like">
-                <br>
-                <img class="img-thumbnail" src="../CSS/images/guides/ToolboxOutput.png"
-                     alt="How toolbars look like">
-            </details>
-            <h4>Setting up folders</h4>
-            <h5>Sorting shortcuts</h5>
-            <p>
-                Start off by making folders on your desktop, each for different categories.
-                Then drag and drop all the shortcuts for the corresponding category into the desired folders.
-            </p>
-            <h5>Fixing icon issue (<b>optional if you don't have a ton of shortcuts</b>)</h5>
-            <p>Once you've done it for that for all the icons on your Desktop, we're going to start making an empty
-                icon, otherwise you'll see the icons coming up in the toolbar like so:</p>
-            <img class="img-thumbnail" src="../CSS/images/guides/WeirdCodingToolbox.PNG"
-                 alt="Icons showing up on the Windows toolbar">
-            <p>
-                To fix this, we're going to make an "invisible" shortcut.
-            </p>
-            <p>
-                Open the folder in which your shortcuts are located, then right click and hover over
-                <b>New</b> then select <b>Shortcut</b>. <br>Put the location of the folder in which you're
-                    storing all of your shortcuts.<br>
-                Just leave the name of the shortcut as a space. If you make a mistake, you can rename the shortcut by
-                right clicking on it and naming it this the space in this: "&emsp;".<br>
-                We're almost there!
-            </p>
-            <p>
-                For the image of the shortcut, we're going to use a transparent icon. Here's the download
-                link to the <b>.ico</b> (icon file).<br>
-                <a class="btn btn-primary " href="../CSS/images/guides/transparent.ico" download>Download icon file</a>
-            </p>
-            <p>
-                Now store this file somewhere where it isn't going to be deleted.<br>
-                Right click on the icon we made with no name, and select <b>Change icon</b>.
-                Then click <b>Browse</b> and locate and select the icon file you just downloaded.
-            </p>
-            <p>Repeat this for all the folders you have! (Don't download the icon again, just reselect the icon file when
-            setting a custom icon for the no named shortcut)</p>
-            <h4>Adding the toolbars</h4>
-            <p>We're almost done!</p>
-            <p>Right click on your task bar and hover over <b>Toolbar</b> and click <b>New toolbar</b>.<br>
-                Now locate your folder (do it one by one for all the folders you have) where you kept your shortcuts.
-                <br>
-                And now you can see your toolbar! Just make sure that your taskbar is unlocked by right clicking on the
-                taskbar and unselecting <b>Lock the Taskbar</b> (we'll unlock it later).<br>
-                Now this is the final part for this section!
-                <br>
-                Open up your toolbar and drag your empty shortcut all the way up!<br>
-                Readjust the 2 bars in such a way that there isn't any space between the separate toolbars.
-            </p>
-            <p>Do this for all the folders/categories you have!</p>
-            <p>Now you're done! Your toolbar should look like the preview image at the start of this section!</p>
+          <h1>How to get a simple desktop</h1>
+          <p>
+            This guide will tell you how to get a simple desktop.<br />
+            <b>No program installation needed</b>
+          </p>
+          <details>
+            <summary>Preview</summary>
+            <img
+              class="img-thumbnail"
+              src="../CSS/images/guides/Screenshot%20(12).png"
+              alt="Preview image of the desktop after you follow the instructions"
+            />
+          </details>
+          <h2>Setting up the taskbar</h2>
+          <h3>Taskbar settings</h3>
+          <p>
+            Right click on your taskbar, and select <b>Taskbar Settings</b>.
+          </p>
+          <img
+            class="img-thumbnail"
+            src="../CSS/images/guides/TaskbarSettings.PNG"
+            alt="Toggled settings for the taskbar"
+          />
+          <details>
+            <summary>Taskbar settings</summary>
+            <ul>
+              <li><b>Lock the taskbar</b> - Toggled</li>
+              <li><b>Use small taskbar buttons</b> - Toggled</li>
+              <li><b>Combine taskbar buttons</b> - Always, hide labels</li>
+            </ul>
+          </details>
+          <p>
+            Your taskbar should start to look a bit better than it before! It
+            should be smaller than when you first started out (unless you
+            already had these settings).
+          </p>
+          <h3>Other taskbar settings</h3>
+          <p>
+            Right click on the task bar and make sure everything is deselect the
+            following items:
+          </p>
+          <img
+            class="img-thumbnail"
+            src="../CSS/images/guides/Deselected.png"
+            alt="Selected settings for the taskbar"
+          />
+          <details>
+            <summary>Selected show settings for taskbar</summary>
+            <ul>
+              <li>Show Cortana Button</li>
+              <li>Show Task View Button</li>
+              <li>Show People on the Taskbar</li>
+              <li>Show Windows Ink Workspace button</li>
+              <li>Show touch keyboard button</li>
+              <li>
+                <b>Optional</b>: Go to Search and select <b>Hidden</b>/<b
+                  >Show search icon</b
+                >
+                based on your preference
+              </li>
+            </ul>
+          </details>
+          <p>
+            Your taskbar should start to be looking small and should be starting
+            to look small!
+          </p>
+          <h3>
+            Setting up toolbars
+            <span class="badge badge-secondary">Optional</span>
+          </h3>
+          <p>
+            This will get all of the icons on your desktop in a small dropdown
+            on the taskbar. <br />This part is going to be one of the more
+            complex parts, so it's fine to skip it.
+          </p>
+          <details id="toolboxes-images">
+            <summary>Output of getting toolbars</summary>
+            <img
+              class="img-thumbnail"
+              src="../CSS/images/guides/Toolboxes.PNG"
+              alt="How toolbars look like"
+            />
+            <br />
+            <img
+              class="img-thumbnail"
+              src="../CSS/images/guides/ToolboxOutput.png"
+              alt="How toolbars look like"
+            />
+          </details>
+          <h4>Setting up folders</h4>
+          <h5>Sorting shortcuts</h5>
+          <p>
+            Start off by making folders on your desktop, each for different
+            categories. Then drag and drop all the shortcuts for the
+            corresponding category into the desired folders.
+          </p>
+          <h5 id="windows-toolbar">
+            Fixing icon issue (<b
+              >optional if you don't have a ton of shortcuts</b
+            >)
+          </h5>
+          <p>
+            Once you've done it for that for all the icons on your Desktop,
+            we're going to start making an empty icon, otherwise you'll see the
+            icons coming up in the toolbar like so:
+          </p>
+          <img
+            class="img-thumbnail"
+            src="../CSS/images/guides/WeirdCodingToolbox.PNG"
+            alt="Icons showing up on the Windows toolbar"
+          />
+          <p>To fix this, we're going to make an "invisible" shortcut.</p>
+          <p>
+            Open the folder in which your shortcuts are located, then right
+            click and hover over
+            <b>New</b> then select <b>Shortcut</b>. <br />Put the location of
+            the folder in which you're storing all of your shortcuts.<br />
+            Just leave the name of the shortcut as a space. If you make a
+            mistake, you can rename the shortcut by right clicking on it and
+            naming it this the space in this: "&emsp;".<br />
+            We're almost there!
+          </p>
+          <p>
+            For the image of the shortcut, we're going to use a transparent
+            icon. Here's the download link to the <b>.ico</b> (icon file).<br />
+            <a
+              class="btn btn-primary"
+              href="../CSS/images/guides/transparent.ico"
+              download
+              >Download icon file</a
+            >
+          </p>
+          <p>
+            Now store this file somewhere where it isn't going to be deleted.<br />
+            Right click on the icon we made with no name, and select
+            <b>Change icon</b>. Then click <b>Browse</b> and locate and select
+            the icon file you just downloaded.
+          </p>
+          <p>
+            Repeat this for all the folders you have! (Don't download the icon
+            again, just reselect the icon file when setting a custom icon for
+            the no named shortcut)
+          </p>
+          <h4>Adding the toolbars</h4>
+          <p>We're almost done!</p>
+          <p>
+            Right click on your task bar and hover over <b>Toolbar</b> and click
+            <b>New toolbar</b>.<br />
+            Now locate your folder (do it one by one for all the folders you
+            have) where you kept your shortcuts.
+            <br />
+            And now you can see your toolbar! Just make sure that your taskbar
+            is unlocked by right clicking on the taskbar and unselecting
+            <b>Lock the Taskbar</b> (we'll unlock it later).<br />
+            Now this is the final part for this section!
+            <br />
+            Open up your toolbar and drag your empty shortcut all the way up!<br />
+            Readjust the 2 bars in such a way that there isn't any space between
+            the separate toolbars.
+          </p>
+          <p>Do this for all the folders/categories you have!</p>
+          <p>
+            Now you're done! Your toolbar should look like the preview image at
+            the start of this section!
+          </p>
+          <p>
+            If the "invisible" is in the folder but it still looks like
+            <a href="/CSS/images/guides/WeirdCodingToolbox.PNG" target="_blank"
+              >this</a
+            >, then open up the toolbar by clicking on the arrows, right click,
+            then select "Sort by Name".
+            <img
+              class="img-thumbnail"
+              src="../CSS/images/guides/SortToolbar.png"
+              alt="Sort by name option"
+            />
+          </p>
 
-            <h3>Setting up the background</h3>
-            <p>This part is simple. Right click on the Desktop and hover over <b>View</b> and select
-            <b>Show desktop icons</b> (if you wish not to hide the icons, you can change the size of the icons instead)</p>
-            <p>Feel free to change the wall paper to what ever you wish.</p>
-            <h4>Animated Wallpaper <span class="badge badge-secondary">Optional</span>
-                <span class="badge badge-danger">Installation Required</span>
-            </h4>
-            <p>You can get animated wall papers using a program called
-                <a href="https://store.steampowered.com/app/431960/Wallpaper_Engine/">Wallpaper Engine</a> ($3.99)
-                not including taxes) or if you don't want to spend money, you can get an alternative called
-                <a href="https://rocksdanister.github.io/lively/">Lively</a> which is free and open source
-                (<a href="https://rocksdanister.github.io/lively/">open source code here on GitHub</a>).
-                <br>
-                Any wall paper will work, but if you're using Wallpaper Engine and want the same wall paper I'm using,
-                <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2234989491">
-                    here's the Steam Community Workshop link</a>.
-            </p>
-            <h2>And you're done!</h2>
-            <br>
+          <h3>Setting up the background</h3>
+          <p>
+            This part is simple. Right click on the Desktop and hover over
+            <b>View</b> and select <b>Show desktop icons</b> (if you wish not to
+            hide the icons, you can change the size of the icons instead)
+          </p>
+          <p>Feel free to change the wall paper to what ever you wish.</p>
+          <h4>
+            Animated Wallpaper
+            <span class="badge badge-secondary">Optional</span>
+            <span class="badge badge-danger">Installation Required</span>
+          </h4>
+          <p>
+            You can get animated wall papers using a program called
+            <a
+              href="https://store.steampowered.com/app/431960/Wallpaper_Engine/"
+              >Wallpaper Engine</a
+            >
+            ($3.99 not including taxes) or if you don't want to spend money, you
+            can get an alternative called
+            <a href="https://rocksdanister.github.io/lively/">Lively</a> which
+            is free and open source (<a
+              href="https://rocksdanister.github.io/lively/"
+              >open source code here on GitHub</a
+            >).
+            <br />
+            Any wall paper will work, but if you're using Wallpaper Engine and
+            want the same wall paper I'm using,
+            <a
+              href="https://steamcommunity.com/sharedfiles/filedetails/?id=2234989491"
+            >
+              here's the Steam Community Workshop link</a
+            >.
+          </p>
+          <h2>And you're done!</h2>
+          <br />
         </div>
+      </div>
     </div>
-</div>
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="../modules/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"></script>
-<script src="../modules/dark-mode-switch-1.0.0/dark-mode-switch.js"></script>
-</body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../modules/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../modules/dark-mode-switch-1.0.0/dark-mode-switch.js"></script>
+  </body>
 </html>
