@@ -1,113 +1,144 @@
-import Image from 'next/image'
+"use client";
+import { Parallax, ParallaxLayer } from '@react-spring/parallax';
+import { Comfortaa } from 'next/font/google';
+import Image from 'next/image';
+
+import Chess from "./assets/chess.png";
+import LitterLy from "./assets/litterlylogo.png";
+import Spotube from "./assets/spotube.png";
+
+import APCalcBG from "./assets/img-calc-ab-bc-3-4.webp";
+import APEuroBG from "./assets/img-euro-history-13.webp";
+import APCSABG from "./assets/img-csa-8.webp";
+
+import APBorder from "./assets/illustration-score-5.svg";
+
+const font = Comfortaa({
+  weight: '400',
+  subsets: ['latin']
+});
+
+const scores = [
+  { exam: 'AP Calculus AB', score: 5 },
+  { exam: 'AP Biology', score: 4 },
+  { exam: 'AP English Literature', score: 3 },
+];
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <div className={font.className}>
+      <div className={"vh-100 vw-100"}>
+        <Parallax pages={5} className="h-100 bg-background">
+          <ParallaxLayer offset={0} speed={1}>
+            <div className='w-screen h-screen flex font-bold items-center justify-center'>
+              <div className='w-2/6 py-8 rounded backdrop-blur-lg backdrop-grayscale'>
+                <div className="text-primary text-lg my-2">hi, my name is</div>
+                <div className='text-6xl text-violet-600 text-white display-1 my-2'>
+                  <b>aditya bankoti.</b>
+                </div>
+              </div>
+            </div>
+          </ParallaxLayer>
+
+
+          <ParallaxLayer offset={1} speed={0.9}>
+            <div className='w-screen h-screen flex font-bold items-center justify-center'>
+              <div className='w-2/6 py-8 rounded backdrop-blur-lg backdrop-grayscale'>
+                <div className="text-primary text-lg my-2 text-center">here&apos;s some of my</div>
+                <div className='text-6xl text-violet-600 text-white display-1 my-2 text-center'>
+                  <b>projects</b>
+                </div>
+              </div>
+            </div>
+          </ParallaxLayer>
+          <ParallaxLayer offset={1} speed={1}>
+            <div className='w-screen h-screen flex font-bold items-center justify-center'>
+              <div className='w-2/6 py-8 rounded backdrop-blur-sm backdrop-grayscale'>
+                <div className="text-primary text-lg my-2 text-center">here&apos;s some of my</div>
+                <div className='text-6xl text-violet-600 text-white display-1 my-2 text-center'>
+                  <b>projects</b>
+                </div>
+              </div>
+            </div>
+          </ParallaxLayer>
+
+          <ParallaxLayer offset={1.1} speed={1.25}>
+            <div className="w-100 h-100 m-10 d-flex justify-center items-center">
+              <Image className="my-5 m-auto d-block object-cover w-9/12" alt="litterly image" src={LitterLy} />
+              {/* <span className="text-white text-lg text-center">a social networking platform to create a cleaner world. made for the 2023 hackpnw event.</span> */}
+            </div>
+          </ParallaxLayer>
+          <ParallaxLayer offset={1.55} speed={1.25}>
+            <div className="w-100 h-100 m-10 d-flex justify-center items-center float-right" >
+              <Image className="my-5 h-1/6 object-cover w-auto" alt="litterly image" src={Chess} />
+              {/* <span className="text-white text-lg text-center">a social networking platform to create a cleaner world. made for the 2023 hackpnw event.</span> */}
+            </div>
+          </ParallaxLayer>
+          <ParallaxLayer offset={1.8} speed={1.25}>
+            <div className="w-100 h-100 m-10 d-flex justify-center items-center float-end">
+              <Image className="my-5 w-auto h-1/6 object-cover" alt="litterly image" src={Spotube} />
+              {/* <span className="text-white text-lg text-center">a social networking platform to create a cleaner world. made for the 2023 hackpnw event.</span> */}
+            </div>
+          </ParallaxLayer>
+
+          <ParallaxLayer offset={2} speed={0.9}>
+            <div className='w-screen h-screen flex font-bold items-center justify-center'>
+              <div className='w-2/6 py-8 rounded backdrop-blur-lg backdrop-grayscale'>
+                <div className="text-primary text-lg my-2 text-center">here&apos;s my</div>
+                <div className='text-6xl text-violet-600 text-white display-1 my-2 text-center'>
+                  <b>academics</b>
+                </div>
+              </div>
+            </div>
+          </ParallaxLayer>
+          <ParallaxLayer offset={2} speed={1}>
+            <div className='w-screen h-screen flex font-bold items-center justify-center'>
+              <div className='w-2/6 py-8 rounded backdrop-blur-sm backdrop-grayscale'>
+                <div className="text-primary text-lg my-2 text-center">here&apos;s my</div>
+                <div className='text-6xl text-violet-600 text-white display-1 my-2 text-center'>
+                  <b>academics</b>
+                </div>
+              </div>
+            </div>
+          </ParallaxLayer>
+
+
+          <ParallaxLayer offset={2.2} speed={1.25}>
+
+          </ParallaxLayer>
+          <ParallaxLayer offset={2.3} speed={1.25} className="flex flex-row align-items-center w-100 content-center justify-center items-center">
+            <div className="shadow rounded-lg w-80 bg-pureWhite ap-holder mx-10">
+              <div className="overlay p-5 text-pureWhite ap-bg ap-img rounded-t-lg" style={{ backgroundImage: `url(${APCalcBG.src})` }}>
+                AP Calculus AB
+              </div>
+              <div className="ap-holder p-5">
+                <div className="ap-border ap-text" style={{ backgroundImage: `url(${APBorder.src})` }}>
+                  5
+                </div>
+              </div>
+            </div>
+            <div className="shadow rounded-lg w-80 bg-pureWhite ap-holder mx-10">
+              <div className="overlay p-5 text-pureWhite ap-bg ap-img rounded-t-lg" style={{ backgroundImage: `url(${APCSABG.src})` }}>
+                AP Computer Science A
+              </div>
+              <div className="ap-holder p-5">
+                <div className="ap-border ap-text" style={{ backgroundImage: `url(${APBorder.src})` }}>
+                  5
+                </div>
+              </div>
+            </div><div className="shadow rounded-lg w-80 bg-pureWhite ap-holder mx-10">
+              <div className="overlay p-5 text-pureWhite ap-bg ap-img rounded-t-lg" style={{ backgroundImage: `url(${APEuroBG.src})` }}>
+                AP European History
+              </div>
+              <div className="ap-holder p-5">
+                <div className="ap-border ap-text" style={{ backgroundImage: `url(${APBorder.src})` }}>
+                  4
+                </div>
+              </div>
+            </div>
+          </ParallaxLayer>
+        </Parallax>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   )
 }

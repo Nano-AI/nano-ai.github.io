@@ -1,0 +1,78 @@
+.ap-img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  position: relative;
+  content: "";
+  z-index: 1;
+
+  font-family: sans-serif !important;
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+
+.ap-img::before {
+  content: "";
+  background-color: rgba(0, 98, 152, .8);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: relative;
+  content: "";
+}
+
+.overlay::before {
+  @apply rounded-t-lg;
+  content: "";
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: rgba(0, 153, 204, .8);
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-image: none;
+  background-size: auto;
+  background-origin: padding-box;
+  z-index: -1;
+  background-clip: border-box;
+}
+
+.ap-border {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  box-sizing: border-box;
+}
+
+.ap-text {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 700;
+  font-family: sans-serif !important;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+.ap-holder {
+  align-self: center !important;
+  font-size: 1rem;
+
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
