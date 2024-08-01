@@ -28,6 +28,12 @@
   content: "";
 }
 
+.animation {
+  display: block;
+	position: relative;
+	z-index: 10;
+}
+
 .overlay::before {
   @apply rounded-t-lg;
   content: "";
