@@ -1,0 +1,59 @@
+/* ...existing code... */
+:root {
+  --bg-main: #101613;
+  --bg-panel: #181f1a;
+  --green-primary: #00ff70;
+  --green-secondary: #00913a;
+  --green-accent: #005c23;
+  --white: #e5ffe5;
+}
+body {
+  background: var(--bg-main);
+  color: var(--green-primary);
+  font-family: 'Fira Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+}
+.retro-border {
+  border: 2px solid var(--green-primary);
+  box-shadow: none;
+}
+.retro-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--green-primary) var(--bg-main);
+}
+.retro-scroll::-webkit-scrollbar {
+  width: 8px;
+  background: var(--bg-main);
+}
+.retro-scroll::-webkit-scrollbar-thumb {
+  background: var(--green-primary);
+}
+a {
+  color: var(--green-primary);
+  text-decoration: underline;
+  transition: color 0.2s, background 0.2s;
+}
+a:hover {
+  color: var(--bg-main);
+  background: var(--green-primary);
+}
+.terminal-bar {
+  background: var(--bg-panel);
+  color: var(--green-secondary);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-bottom: 2px solid var(--green-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 0.1em;
+}
+.prompt {
+  color: var(--green-primary);
+  font-weight: bold;
+  margin-right: 0.5em;
+}
+/* Tree nav styles for web component */
+tree-nav {
+  display: block;
+}
+/* ...existing code... */
