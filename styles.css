@@ -83,4 +83,36 @@ tree-nav {
   background-clip: padding-box;
   box-shadow: 0 0 0 2px #101613;
 }
+@media (max-width: 768px) {
+  main.retro-border-outer {
+    flex-direction: column !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    min-height: 0 !important;
+  }
+  tree-nav {
+    width: 100% !important;
+    height: auto !important;
+    min-height: unset !important;
+    max-height: unset !important;
+    border-bottom: 2px solid #00c932;
+    border-right: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0;
+  }
+  section.retro-border-inner-none {
+    max-height: 100dvh !important;
+    min-height: 0 !important;
+    height: 100% !important;
+  }
+  .retro-scroll {
+    overflow-y: auto;
+    max-height: calc(100dvh - 48px) !important;
+  }
+}
 /* ...existing code... */
