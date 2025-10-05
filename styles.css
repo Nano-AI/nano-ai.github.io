@@ -13,9 +13,31 @@ body {
   font-family: 'Fira Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
 }
 .retro-border {
-  border: 2px solid var(--green-primary);
-  box-shadow: none;
+  border: 1.5px solid #00ff41;
+  border-radius: 0;
+  box-shadow: 0 0 0 1px #003b1a;
 }
+.retro-border-outer {
+  border: 3px solid #00c932;
+  border-radius: 0;
+  box-shadow: 0 0 12px 2px #00c932, 0 0 32px 4px #003b1a;
+  background: #101510;
+  /* Remove animation for steady glow */
+}
+
+.retro-border-inner-none {
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.retro-border-inner {
+  border: 2px solid #00ff41;
+  border-radius: 0;
+  box-shadow: 0 0 0 1px #003b1a;
+  background: #101510;
+}
+
 .retro-scroll {
   scrollbar-width: thin;
   scrollbar-color: var(--green-primary) var(--bg-main);
@@ -55,5 +77,10 @@ a:hover {
 /* Tree nav styles for web component */
 tree-nav {
   display: block;
+  border-right: 3px solid #00913a;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+  background-clip: padding-box;
+  box-shadow: 0 0 0 2px #101613;
 }
 /* ...existing code... */

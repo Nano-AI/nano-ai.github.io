@@ -9,11 +9,11 @@
   </head>
   <body class="min-h-screen flex items-center justify-center bg-black">
     <canvas id="matrix-canvas" style="position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; pointer-events:none;"></canvas>
-    <main class="w-full max-w-7xl mx-auto flex min-h-[500px] max-h-[90vh] gap-0 p-0" style="z-index:1; position:relative;">
+    <main class="w-full max-w-7xl mx-auto flex min-h-[500px] max-h-[90vh] gap-0 p-0 retro-border-outer" style="z-index:1; position:relative; height:700px; max-height:90vh;">
       <!-- Terminal Tree Nav using Web Components -->
-      <tree-nav style="height:700px;"></tree-nav>
+      <tree-nav class="retro-border-inner-none" style="height:100%;"></tree-nav>
       <!-- Main Content Area -->
-      <section class="flex-1 overflow-y-auto retro-scroll bg-black flex flex-col p-0 min-h-[500px] max-h-[90vh]" style="height:700px;max-height:700px;">
+      <section class="flex-1 overflow-y-auto retro-scroll bg-black flex flex-col p-0 min-h-[500px] max-h-full retro-border-inner-none" style="height:100%;">
         <div class="terminal-bar w-full" style="background:#181f1a; color:#00913a; border-bottom:2px solid #00913a;">
           <span class="ml-2" id="section-title">about.txt</span>
         </div>
@@ -30,7 +30,8 @@
         </div>
         <!-- Projects Section -->
         <div id="section-projects" class="p-6 main-section hidden">
-          <div class="flex gap-2 mb-6 mt-4">
+          <div id="project-category-placeholder" class="text-green-300 text-base mb-4">Select a category...</div>
+          <div class="flex gap-2 mb-6 mt-2">
             <button class="category-btn text-green-300 border border-green-700 px-4 py-2 rounded bg-black hover:bg-green-900 focus:bg-green-800" onclick="showCategory('fullstack')">Full-Stack / Web</button>
             <button class="category-btn text-yellow-300 border border-yellow-700 px-4 py-2 rounded bg-black hover:bg-yellow-900 focus:bg-yellow-800" onclick="showCategory('ai')">AI / ML</button>
             <button class="category-btn text-cyan-300 border border-cyan-700 px-4 py-2 rounded bg-black hover:bg-cyan-900 focus:bg-cyan-800" onclick="showCategory('graphics')">Graphics</button>
@@ -42,26 +43,26 @@
             <div class="flex flex-col gap-6 mb-8">
               <div class="retro-border p-4 bg-black">
                 <span class="prompt">$</span> <span class="font-bold text-lg text-green-400">CleanEats</span>
-                <p class="ml-6 text-green-200">A full-stack app for scanning food barcodes to access nutritional and health info. (Filler description)</p>
+                <p class="ml-6 text-green-200">A full-stack app for scanning food barcodes to access nutritional and health info.</p>
                 <a class="ml-6 text-green-300 hover:text-black hover:bg-green-300" href="https://github.com/Nano-AI/CleanEats" target="_blank" rel="noopener noreferrer">GitHub</a>
                 <a class="ml-4 text-green-300 hover:text-black hover:bg-green-300" href="https://www.youtube.com/watch?v=FSq0EKt5-Bs" target="_blank" rel="noopener noreferrer">YouTube</a>
               </div>
               <div class="retro-border p-4 bg-black">
                 <span class="prompt">$</span> <span class="font-bold text-lg text-green-400">Litter.ly</span>
-                <p class="ml-6 text-green-200">A social networking platform to create a cleaner world. (Filler description)</p>
+                <p class="ml-6 text-green-200">A social networking platform to create a cleaner world.</p>
                 <a class="ml-6 text-green-300 hover:text-black hover:bg-green-300" href="https://github.com/Nano-AI/litter.ly" target="_blank" rel="noopener noreferrer">GitHub</a>
                 <a class="ml-4 text-green-300 hover:text-black hover:bg-green-300" href="https://www.youtube.com/watch?v=dlUDO7SRVz8" target="_blank" rel="noopener noreferrer">YouTube</a>
               </div>
               <div class="retro-border p-4 bg-black">
                 <span class="prompt">$</span> <span class="font-bold text-lg text-green-400">Smarty Pants</span>
-                <p class="ml-6 text-green-200">Hackathon project using LLM's RAG-based searching to find opportunities for students. (Filler description)</p>
-                <a class="ml-6 text-green-300 hover:text-black hover:bg-green-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <p class="ml-6 text-green-200">Hackathon project using LLM's RAG-based searching to find opportunities for students.</p>
+                <!-- No GitHub, only YouTube -->
                 <a class="ml-4 text-green-300 hover:text-black hover:bg-green-300" href="https://www.youtube.com/watch?v=PzeFaZ95Kig" target="_blank" rel="noopener noreferrer">YouTube</a>
               </div>
               <div class="retro-border p-4 bg-black">
                 <span class="prompt">$</span> <span class="font-bold text-lg text-green-400">SAT-Shark</span>
-                <p class="ml-6 text-green-200">Multiplayer educational game for SAT prep with competitive gameplay. (Filler description)</p>
-                <a class="ml-6 text-green-300 hover:text-black hover:bg-green-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <p class="ml-6 text-green-200">Multiplayer educational game for SAT prep with competitive gameplay.</p>
+                <!-- No GitHub, only YouTube -->
                 <a class="ml-4 text-green-300 hover:text-black hover:bg-green-300" href="https://www.youtube.com/watch?v=mAVRRUz1FxE" target="_blank" rel="noopener noreferrer">YouTube</a>
               </div>
             </div>
@@ -72,8 +73,8 @@
             <div class="flex flex-col gap-6 mb-8">
               <div class="retro-border p-4 bg-black">
                 <span class="prompt">$</span> <span class="font-bold text-lg text-yellow-400">Digit Recognizer</span>
-                <p class="ml-6 text-yellow-200">Python digit recognizer with GUI, trained on data, no libraries except numpy. (Filler description)</p>
-                <a class="ml-6 text-yellow-300 hover:text-black hover:bg-yellow-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <p class="ml-6 text-yellow-200">Python digit recognizer with GUI, trained on data, no libraries except numpy.</p>
+                <!-- Only YouTube -->
                 <a class="ml-4 text-yellow-300 hover:text-black hover:bg-yellow-300" href="https://www.youtube.com/watch?v=c63ioyWuPUM" target="_blank" rel="noopener noreferrer">YouTube</a>
               </div>
             </div>
@@ -84,26 +85,26 @@
             <div class="flex flex-col gap-6 mb-8">
               <div class="retro-border p-4 bg-black">
                 <span class="prompt">$</span> <span class="font-bold text-lg text-cyan-400">Ray Tracing</span>
-                <p class="ml-6 text-cyan-200">Java ray tracer for depth perception, sphere rendering, and transparency. (Filler description)</p>
-                <a class="ml-6 text-cyan-300 hover:text-black hover:bg-cyan-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <p class="ml-6 text-cyan-200">Java ray tracer for depth perception, sphere rendering, and transparency.</p>
+                <!-- Only YouTube -->
                 <a class="ml-4 text-cyan-300 hover:text-black hover:bg-cyan-300" href="https://www.youtube.com/watch?v=9r9MSqD6vKc" target="_blank" rel="noopener noreferrer">YouTube</a>
               </div>
               <div class="retro-border p-4 bg-black">
                 <span class="prompt">$</span> <span class="font-bold text-lg text-cyan-400">Ray Caster</span>
-                <p class="ml-6 text-cyan-200">Wolfenstein-like ray caster. (Filler description)</p>
-                <a class="ml-6 text-cyan-300 hover:text-black hover:bg-cyan-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <p class="ml-6 text-cyan-200">Wolfenstein-like ray caster.</p>
+                <!-- Only YouTube -->
                 <a class="ml-4 text-cyan-300 hover:text-black hover:bg-cyan-300" href="https://www.youtube.com/watch?v=U9RTGmFqN7U" target="_blank" rel="noopener noreferrer">YouTube</a>
               </div>
               <div class="retro-border p-4 bg-black">
                 <span class="prompt">$</span> <span class="font-bold text-lg text-cyan-400">Fractal Renderer</span>
-                <p class="ml-6 text-cyan-200">Python fractal renderer. (Filler description)</p>
-                <a class="ml-6 text-cyan-300 hover:text-black hover:bg-cyan-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <p class="ml-6 text-cyan-200">Python fractal renderer.</p>
+                <!-- Only YouTube -->
                 <a class="ml-4 text-cyan-300 hover:text-black hover:bg-cyan-300" href="https://www.youtube.com/watch?v=baKRlHixcQY" target="_blank" rel="noopener noreferrer">YouTube</a>
               </div>
               <div class="retro-border p-4 bg-black">
                 <span class="prompt">$</span> <span class="font-bold text-lg text-cyan-400">PSX Demo</span>
-                <p class="ml-6 text-cyan-200">PSX style demo game made with Godot. (Filler description)</p>
-                <a class="ml-6 text-cyan-300 hover:text-black hover:bg-cyan-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <p class="ml-6 text-cyan-200">PSX style demo game made with Godot.</p>
+                <!-- Only YouTube -->
                 <a class="ml-4 text-cyan-300 hover:text-black hover:bg-cyan-300" href="https://www.youtube.com/watch?v=1s81vzSt3_g" target="_blank" rel="noopener noreferrer">YouTube</a>
               </div>
             </div>
@@ -114,36 +115,158 @@
             <div class="flex flex-col gap-6 mb-8">
               <div class="retro-border p-4 bg-black">
                 <span class="prompt">$</span> <span class="font-bold text-lg text-pink-400">Fast Paced Shooter</span>
-                <p class="ml-6 text-pink-200">Unity project for game design class. (Filler description)</p>
-                <a class="ml-6 text-pink-300 hover:text-black hover:bg-pink-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <p class="ml-6 text-pink-200">Unity project for game design class.</p>
+                <!-- Only YouTube -->
                 <a class="ml-4 text-pink-300 hover:text-black hover:bg-pink-300" href="https://www.youtube.com/watch?v=i5At7d9uaQ0" target="_blank" rel="noopener noreferrer">YouTube</a>
               </div>
               <div class="retro-border p-4 bg-black">
                 <span class="prompt">$</span> <span class="font-bold text-lg text-pink-400">Pac-Man Clone</span>
-                <p class="ml-6 text-pink-200">Pac-Man clone made from scratch, no additional libraries. (Filler description)</p>
-                <a class="ml-6 text-pink-300 hover:text-black hover:bg-pink-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <p class="ml-6 text-pink-200">Pac-Man clone made from scratch, no additional libraries.</p>
+                <!-- Only YouTube -->
                 <a class="ml-4 text-pink-300 hover:text-black hover:bg-pink-300" href="https://www.youtube.com/watch?v=TIrYUZJPQ_k" target="_blank" rel="noopener noreferrer">YouTube</a>
               </div>
               <div class="retro-border p-4 bg-black">
                 <span class="prompt">$</span> <span class="font-bold text-lg text-pink-400">Chess Game</span>
-                <p class="ml-6 text-pink-200">Chess game using SDL2 and C++. (Filler description)</p>
-                <a class="ml-6 text-pink-300 hover:text-black hover:bg-pink-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <p class="ml-6 text-pink-200">Chess game using SDL2 and C++.</p>
+                <!-- Only YouTube -->
                 <a class="ml-4 text-pink-300 hover:text-black hover:bg-pink-300" href="https://www.youtube.com/watch?v=EjIU1NLMAPk" target="_blank" rel="noopener noreferrer">YouTube</a>
               </div>
               <div class="retro-border p-4 bg-black">
                 <span class="prompt">$</span> <span class="font-bold text-lg text-pink-400">Sand Simulator</span>
-                <p class="ml-6 text-pink-200">Sand particle simulator using wingdi. (Filler description)</p>
-                <a class="ml-6 text-pink-300 hover:text-black hover:bg-pink-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <p class="ml-6 text-pink-200">Sand particle simulator using wingdi.</p>
+                <!-- Only YouTube -->
                 <a class="ml-4 text-pink-300 hover:text-black hover:bg-pink-300" href="https://www.youtube.com/watch?v=jb5hq8EoAU8" target="_blank" rel="noopener noreferrer">YouTube</a>
               </div>
               <div class="retro-border p-4 bg-black">
                 <span class="prompt">$</span> <span class="font-bold text-lg text-pink-400">Physics Collider</span>
-                <p class="ml-6 text-pink-200">RayLib with C++ and physics collisions with spheres. (Filler description)</p>
-                <a class="ml-6 text-pink-300 hover:text-black hover:bg-pink-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <p class="ml-6 text-pink-200">RayLib with C++ and physics collisions with spheres.</p>
+                <!-- Only YouTube -->
                 <a class="ml-4 text-pink-300 hover:text-black hover:bg-pink-300" href="https://www.youtube.com/watch?v=-c1E1xJwxCU" target="_blank" rel="noopener noreferrer">YouTube</a>
               </div>
             </div>
           </div>
+        </div>
+        <!-- Experiences Section -->
+        <div id="section-experiences" class="p-6 main-section hidden">
+          <h2 class="text-xl font-bold text-green-400 mb-2 tracking-widest">Jobs</h2>
+          <div class="flex flex-col gap-4">
+            <!-- Columbia Athletic Clubs - Pine Lake -->
+            <div>
+              <div class="font-bold text-green-300">Swim Instructor</div>
+              <div class="text-green-400 text-sm">Columbia Athletic Clubs - Pine Lake · Part-time</div>
+              <div class="text-green-400 text-sm">Oct 2024 to Present · Washington, United States · On-site</div>
+              <div class="text-green-100 text-sm mt-1">Private swim instructor and life guard</div>
+            </div>
+            <!-- iLink Digital -->
+            <div>
+              <div class="font-bold text-green-300">Intern</div>
+              <div class="text-green-400 text-sm">iLink Digital · Internship</div>
+              <div class="text-green-400 text-sm">Jun 2024 to Aug 2024 · Washington, United States · Remote</div>
+              <ul class="list-disc ml-6 text-green-100 text-sm mt-1">
+                <li>Created interactive dashboards in Power BI, enabling real-time data visualization and reporting, assisting in creating more data-driven decisions</li>
+                <li>Conducted comprehensive data analysis using Python and Power BI to clean data and uncover trends and actionable insights to make strategic choices</li>
+                <li>Presented data findings to senior management and stakeholders, translating complex data insights into clear, actionable recommendations</li>
+              </ul>
+            </div>
+            <!-- Code Ninjas -->
+            <div>
+              <div class="font-bold text-green-300">Teacher</div>
+              <div class="text-green-400 text-sm">Code Ninjas · Part-time</div>
+              <div class="text-green-400 text-sm">Jul 2022 to Feb 2024 · Sammamish, Washington, United States · On-site</div>
+              <ul class="list-disc ml-6 text-green-100 text-sm mt-1">
+                <li>Taught a comprehensive coding curriculum, empowering elementary students to learn programming concepts through interactive game development using JavaScript and C# languages.</li>
+                <li>Facilitated engaging coding workshops, fostering a passion for technology and computer science while promoting critical thinking, problem-solving, and teamwork skills among students.</li>
+              </ul>
+            </div>
+          </div>
+          <h2 class="text-xl font-bold text-green-400 mb-2 mt-6 tracking-widest">Certifications</h2>
+          <div class="flex flex-col gap-4">
+            <!-- Certiport - Unity Certified User: Programmer -->
+            <div>
+              <div class="font-bold text-green-300">Unity Certified User: Programmer</div>
+              <div class="text-green-400 text-sm">Certiport - A Pearson VUE Business</div>
+              <div class="text-green-100 text-sm mt-1">Skills: Game Development · Game Design · 2D graphics · 3D Graphics · C#</div>
+            </div>
+            <!-- Columbia Athletic Clubs - Pine Lake Lifeguarding -->
+            <div>
+              <div class="font-bold text-green-300">Shallow Water Lifeguarding with CPR/AED for Professional Rescuers and First Aid</div>
+              <div class="text-green-400 text-sm">Columbia Athletic Clubs - Pine Lake</div>
+              <div class="text-green-100 text-sm mt-1">Skills: Swimming · Pools · Cardiopulmonary Resuscitation (CPR) · Adult CPR · Pediatric CPR</div>
+            </div>
+            <!-- Certiport - Visual Design using Adobe Photoshop -->
+            <div>
+              <div class="font-bold text-green-300">Visual Design using Adobe Photoshop 2024 (v 25.x)</div>
+              <div class="text-green-400 text-sm">Certiport - A Pearson VUE Business</div>
+              <div class="text-green-100 text-sm mt-1">Skills: Adobe Photoshop · Photography</div>
+            </div>
+          </div>
+        </div>
+        <!-- Academics Section -->
+        <div id="section-academics" class="p-6 main-section hidden">
+          <h2 class="text-xl font-bold text-green-400 mb-4 tracking-widest">Academics</h2>
+          <!-- University of Wisconsin Madison -->
+          <div class="mb-8">
+            <div class="font-bold text-green-300 text-lg mb-1">The University of Wisconsin-Madison</div>
+            <div class="text-green-400 text-sm mb-2"><b>Relevant</b> Courses (Fall 2025):</div>
+            <ul class="list-disc ml-8 text-green-100 text-sm">
+              <li>COMP SCI/​E C E 252 — Introduction to Computer Engineering</li>
+              <li>COMP SCI 400 — Programming III</li>
+              <li>COMP SCI/​MATH 240 — Introduction to Discrete Mathematics</li>
+            </ul>
+          </div>
+          <!-- Bellevue College (Dual Enrollment) -->
+          <div class="mb-8">
+            <div class="font-bold text-green-300 text-lg mb-1">Bellevue College (Dual Enrollment)</div>
+            <div class="text-green-400 text-sm mb-2">Cumulative GPA: 3.930</div>
+            <div class="text-green-400 text-sm mb-1">Courses:</div>
+            <div class="ml-4">
+              <div class="font-bold text-green-200 mt-2">Summer 2024</div>
+              <ul class="list-disc ml-8 text-green-100 text-sm">
+                <li>CS 211 - Fundamentals of CS II (A)</li>
+                <li>MATH& 254 - Calculus IV (A)</li>
+              </ul>
+              <div class="font-bold text-green-200 mt-2">Fall 2024</div>
+              <ul class="list-disc ml-8 text-green-100 text-sm">
+                <li>MATH 238 - Differential Equations (A)</li>
+              </ul>
+              <div class="font-bold text-green-200 mt-2">Spring 2025</div>
+              <ul class="list-disc ml-8 text-green-100 text-sm">
+                <li>MATH 208 - Introduction to Linear Algebra (A-)</li>
+              </ul>
+            </div>
+          </div>
+          <!-- AP Section -->
+          <div class="mb-8">
+            <div class="font-bold text-green-300 text-lg mb-1">Advanced Placement (AP)</div>
+            <div class="text-green-400 text-sm mb-2">AP Scholar with Distinction (2024, 2025)</div>
+            <div class="text-green-400 text-sm mb-2"><b>Relevant</b> Scores:</div>
+            <div class="font-bold text-green-200 mt-2">2025</div>
+            <ul class="list-disc ml-8 text-green-100 text-sm">
+              <li>AP Environmental Science – 4</li>
+              <li>AP Physics C: Electricity and Magnetism – 3</li>
+              <li>AP Statistics – 4</li>
+            </ul>
+            <div class="font-bold text-green-200 mt-2">2024</div>
+            <ul class="list-disc ml-8 text-green-100 text-sm">
+              <li>AP Calculus BC – 5 (AB Subscore: 5)</li>
+              <li>AP Physics C: Mechanics – 4</li>
+            </ul>
+            <div class="font-bold text-green-200 mt-2">2023</div>
+            <ul class="list-disc ml-8 text-green-100 text-sm">
+              <li>AP Calculus AB – 5</li>
+              <li>AP Computer Science A – 5</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Hobbies Section -->
+        <div id="section-hobbies" class="p-6 main-section hidden">
+          <h2 class="text-xl font-bold text-green-400 mb-4 tracking-widest">Hobbies</h2>
+          <ul class="list-disc ml-8 text-green-100 text-base">
+            <li><span class="text-green-300 font-bold">Music:</span> I play the guitar (currently own an acoustic electric) and room-DJ for fun every now and then. I love listening to music and creating Spotify playlists for different vibes/genres.</li>
+            <li><span class="text-green-300 font-bold">Fitness:</span> I lift weights, but I've also participated in 5k's, ran 10k's, and swam competitively in high school.</li>
+            <li><span class="text-green-300 font-bold">Tech:</span> I've been coding since 4th grade and love making passion projects. I love attending hackathons and I love cool gadgets and tech.</li>
+            <li><span class="text-green-300 font-bold">Gaming:</span> Big video game nerd. I've played several titles across different genres and platforms. Mention one and I've probably played it.</li>
+          </ul>
         </div>
       </section>
     </main>

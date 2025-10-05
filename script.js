@@ -81,9 +81,14 @@ class TreeNav extends HTMLElement {
         }
       </style>
       <div class="tree-nav">
-        <pre class="tree-block"><b>$</b> tree ~
+        <div class="tree-block">
+<b>$</b> tree
 ├── <button class="tree-btn" data-section="about">about.txt</button>
-└── <button class="tree-btn" data-section="projects">projects.txt</button></pre>
+├── <button class="tree-btn" data-section="projects">projects.txt</button>
+├── <button class="tree-btn" data-section="experiences">experiences.txt</button>
+├── <button class="tree-btn" data-section="academics">academics.txt</button>
+└── <button class="tree-btn" data-section="hobbies">hobbies.txt</button>
+        </div>
       </div>
     `;
   }
@@ -93,7 +98,7 @@ class TreeNav extends HTMLElement {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.main-section').forEach(div => div.classList.add('hidden'));
         document.getElementById('section-' + btn.dataset.section).classList.remove('hidden');
-        document.getElementById('section-title').textContent = btn.dataset.section === 'about' ? 'about.txt' : 'projects.txt';
+        document.getElementById('section-title').textContent = btn.dataset.section === 'about' ? 'about.txt' : btn.dataset.section === 'projects' ? 'projects.txt' : btn.dataset.section === 'experiences' ? 'experiences.txt' : 'academics.txt';
         items.forEach(b => b.classList.remove('selected'));
         btn.classList.add('selected');
       });
@@ -109,6 +114,7 @@ customElements.define('tree-nav', TreeNav);
 function showCategory(cat) {
   document.querySelectorAll('.project-category').forEach(div => div.classList.add('hidden'));
   document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('ring', 'ring-2'));
+  document.getElementById('project-category-placeholder').style.display = 'none';
   if (cat) {
     document.getElementById('category-' + cat).classList.remove('hidden');
     const btn = Array.from(document.querySelectorAll('.category-btn')).find(b => b.textContent.toLowerCase().includes(cat));
@@ -120,4 +126,13 @@ window.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.main-section').forEach(div => div.classList.add('hidden'));
   document.getElementById('section-about').classList.remove('hidden');
   document.getElementById('section-title').textContent = 'about.txt';
+  // Show project placeholder by default
+  var placeholder = document.getElementById('project-category-placeholder');
+  if (placeholder) placeholder.style.display = '';
+  document.querySelectorAll('.project-category').forEach(div => div.classList.add('hidden'));
+  // Move the placeholder above the category buttons if not already
+  var catBtns = document.querySelector('.project-categories');
+  if (placeholder && catBtns && placeholder.parentNode !== catBtns.parentNode) {
+    catBtns.parentNode.insertBefore(placeholder, catBtns);
+  }
 });
