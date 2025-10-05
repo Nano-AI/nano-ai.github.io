@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aditya Bankoti | Portfolio</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      body {
+        background: #111;
+        color: #00ff00;
+        font-family: 'Fira Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+      }
+      .retro-border {
+        border: 2px solid #00ff00;
+        /* Remove box-shadow to avoid double outline */
+        box-shadow: none;
+      }
+      .retro-scroll {
+        scrollbar-width: thin;
+        scrollbar-color: #00ff00 #111;
+      }
+      .retro-scroll::-webkit-scrollbar {
+        width: 8px;
+        background: #111;
+      }
+      .retro-scroll::-webkit-scrollbar-thumb {
+        background: #00ff00;
+      }
+      a {
+        color: #00ff00;
+        text-decoration: underline;
+        transition: color 0.2s, background 0.2s;
+      }
+      a:hover {
+        color: #111;
+        background: #00ff00;
+      }
+      .terminal-bar {
+        background: #222;
+        color: #00ff00;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        border-bottom: 2px solid #00ff00;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        letter-spacing: 0.1em;
+      }
+      .terminal-dot {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 6px;
+        border-radius: 2px;
+        background: #111;
+        border: 2px solid #00ff00;
+        font-size: 1rem;
+        font-family: 'Fira Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+        color: #00ff00;
+        font-weight: bold;
+        letter-spacing: 0.05em;
+        box-shadow: none;
+        padding: 0;
+      }
+      .terminal-dot:last-child { margin-right: 0; }
+      .dot-x::before { content: 'X'; }
+      .dot-box::before { content: '□'; }
+      .dot-minus::before { content: '-'; }
+      .prompt {
+        color: #00ff00;
+        font-weight: bold;
+        margin-right: 0.5em;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex items-stretch justify-center">
+    <main class="w-full max-w-7xl mx-auto flex min-h-screen gap-12 p-12">
+      <!-- Left: Scrollable Info as a window -->
+      <section class="flex-1 overflow-y-auto retro-scroll bg-black retro-border flex flex-col p-0 min-h-[500px] max-h-[90vh]">
+        <div class="terminal-bar w-full">
+          <span class="ml-2">aditya@portfolio:~$</span>
+        </div>
+        <div class="p-6">
+          <span class="prompt">$</span> <span>// Welcome to my portfolio. Type 'help' to get started.</span>
+          <br /><br />
+          <span class="prompt">$</span> <span>cat projects.txt</span>
+
+          <div class="flex gap-2 mb-6">
+            <button class="category-btn text-green-300 border border-green-700 px-4 py-2 rounded bg-black hover:bg-green-900 focus:bg-green-800" onclick="showCategory('fullstack')">Full-Stack / Web</button>
+            <button class="category-btn text-yellow-300 border border-yellow-700 px-4 py-2 rounded bg-black hover:bg-yellow-900 focus:bg-yellow-800" onclick="showCategory('ai')">AI / ML</button>
+            <button class="category-btn text-cyan-300 border border-cyan-700 px-4 py-2 rounded bg-black hover:bg-cyan-900 focus:bg-cyan-800" onclick="showCategory('graphics')">Graphics</button>
+            <button class="category-btn text-pink-300 border border-pink-700 px-4 py-2 rounded bg-black hover:bg-pink-900 focus:bg-pink-800" onclick="showCategory('games')">Games</button>
+          </div>
+
+          <div id="category-fullstack" class="project-category hidden">
+            <!-- Full-Stack / Web Development -->
+            <h2 class="mb-2 text-xl font-bold text-green-400 border-b border-green-700">Full-Stack / Web Development</h2>
+            <div class="flex flex-col gap-6 mb-8">
+              <div class="retro-border p-4 bg-black">
+                <span class="prompt">$</span> <span class="font-bold text-lg text-green-400">CleanEats</span>
+                <p class="ml-6 text-green-200">A full-stack app for scanning food barcodes to access nutritional and health info. (Filler description)</p>
+                <a class="ml-6 text-green-300 hover:text-black hover:bg-green-300" href="https://github.com/Nano-AI/CleanEats" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="ml-4 text-green-300 hover:text-black hover:bg-green-300" href="https://www.youtube.com/watch?v=FSq0EKt5-Bs" target="_blank" rel="noopener noreferrer">YouTube</a>
+              </div>
+              <div class="retro-border p-4 bg-black">
+                <span class="prompt">$</span> <span class="font-bold text-lg text-green-400">Litter.ly</span>
+                <p class="ml-6 text-green-200">A social networking platform to create a cleaner world. (Filler description)</p>
+                <a class="ml-6 text-green-300 hover:text-black hover:bg-green-300" href="https://github.com/Nano-AI/litter.ly" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="ml-4 text-green-300 hover:text-black hover:bg-green-300" href="https://www.youtube.com/watch?v=dlUDO7SRVz8" target="_blank" rel="noopener noreferrer">YouTube</a>
+              </div>
+              <div class="retro-border p-4 bg-black">
+                <span class="prompt">$</span> <span class="font-bold text-lg text-green-400">Smarty Pants</span>
+                <p class="ml-6 text-green-200">Hackathon project using LLM's RAG-based searching to find opportunities for students. (Filler description)</p>
+                <a class="ml-6 text-green-300 hover:text-black hover:bg-green-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="ml-4 text-green-300 hover:text-black hover:bg-green-300" href="https://www.youtube.com/watch?v=PzeFaZ95Kig" target="_blank" rel="noopener noreferrer">YouTube</a>
+              </div>
+              <div class="retro-border p-4 bg-black">
+                <span class="prompt">$</span> <span class="font-bold text-lg text-green-400">SAT-Shark</span>
+                <p class="ml-6 text-green-200">Multiplayer educational game for SAT prep with competitive gameplay. (Filler description)</p>
+                <a class="ml-6 text-green-300 hover:text-black hover:bg-green-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="ml-4 text-green-300 hover:text-black hover:bg-green-300" href="https://www.youtube.com/watch?v=mAVRRUz1FxE" target="_blank" rel="noopener noreferrer">YouTube</a>
+              </div>
+            </div>
+          </div>
+          <div id="category-ai" class="project-category hidden">
+            <!-- AI / Machine Learning -->
+            <h2 class="mb-2 text-xl font-bold text-yellow-400 border-b border-yellow-700">AI / Machine Learning</h2>
+            <div class="flex flex-col gap-6 mb-8">
+              <div class="retro-border p-4 bg-black">
+                <span class="prompt">$</span> <span class="font-bold text-lg text-yellow-400">Digit Recognizer</span>
+                <p class="ml-6 text-yellow-200">Python digit recognizer with GUI, trained on data, no libraries except numpy. (Filler description)</p>
+                <a class="ml-6 text-yellow-300 hover:text-black hover:bg-yellow-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="ml-4 text-yellow-300 hover:text-black hover:bg-yellow-300" href="https://www.youtube.com/watch?v=c63ioyWuPUM" target="_blank" rel="noopener noreferrer">YouTube</a>
+              </div>
+            </div>
+          </div>
+          <div id="category-graphics" class="project-category hidden">
+            <!-- Graphics Programming / Rendering -->
+            <h2 class="mb-2 text-xl font-bold text-cyan-400 border-b border-cyan-700">Graphics Programming / Rendering</h2>
+            <div class="flex flex-col gap-6 mb-8">
+              <div class="retro-border p-4 bg-black">
+                <span class="prompt">$</span> <span class="font-bold text-lg text-cyan-400">Ray Tracing</span>
+                <p class="ml-6 text-cyan-200">Java ray tracer for depth perception, sphere rendering, and transparency. (Filler description)</p>
+                <a class="ml-6 text-cyan-300 hover:text-black hover:bg-cyan-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="ml-4 text-cyan-300 hover:text-black hover:bg-cyan-300" href="https://www.youtube.com/watch?v=9r9MSqD6vKc" target="_blank" rel="noopener noreferrer">YouTube</a>
+              </div>
+              <div class="retro-border p-4 bg-black">
+                <span class="prompt">$</span> <span class="font-bold text-lg text-cyan-400">Ray Caster</span>
+                <p class="ml-6 text-cyan-200">Wolfenstein-like ray caster. (Filler description)</p>
+                <a class="ml-6 text-cyan-300 hover:text-black hover:bg-cyan-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="ml-4 text-cyan-300 hover:text-black hover:bg-cyan-300" href="https://www.youtube.com/watch?v=U9RTGmFqN7U" target="_blank" rel="noopener noreferrer">YouTube</a>
+              </div>
+              <div class="retro-border p-4 bg-black">
+                <span class="prompt">$</span> <span class="font-bold text-lg text-cyan-400">Fractal Renderer</span>
+                <p class="ml-6 text-cyan-200">Python fractal renderer. (Filler description)</p>
+                <a class="ml-6 text-cyan-300 hover:text-black hover:bg-cyan-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="ml-4 text-cyan-300 hover:text-black hover:bg-cyan-300" href="https://www.youtube.com/watch?v=baKRlHixcQY" target="_blank" rel="noopener noreferrer">YouTube</a>
+              </div>
+              <div class="retro-border p-4 bg-black">
+                <span class="prompt">$</span> <span class="font-bold text-lg text-cyan-400">PSX Demo</span>
+                <p class="ml-6 text-cyan-200">PSX style demo game made with Godot. (Filler description)</p>
+                <a class="ml-6 text-cyan-300 hover:text-black hover:bg-cyan-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="ml-4 text-cyan-300 hover:text-black hover:bg-cyan-300" href="https://www.youtube.com/watch?v=1s81vzSt3_g" target="_blank" rel="noopener noreferrer">YouTube</a>
+              </div>
+            </div>
+          </div>
+          <div id="category-games" class="project-category hidden">
+            <!-- Game Development -->
+            <h2 class="mb-2 text-xl font-bold text-pink-400 border-b border-pink-700">Game Development</h2>
+            <div class="flex flex-col gap-6 mb-8">
+              <div class="retro-border p-4 bg-black">
+                <span class="prompt">$</span> <span class="font-bold text-lg text-pink-400">Fast Paced Shooter</span>
+                <p class="ml-6 text-pink-200">Unity project for game design class. (Filler description)</p>
+                <a class="ml-6 text-pink-300 hover:text-black hover:bg-pink-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="ml-4 text-pink-300 hover:text-black hover:bg-pink-300" href="https://www.youtube.com/watch?v=i5At7d9uaQ0" target="_blank" rel="noopener noreferrer">YouTube</a>
+              </div>
+              <div class="retro-border p-4 bg-black">
+                <span class="prompt">$</span> <span class="font-bold text-lg text-pink-400">Pac-Man Clone</span>
+                <p class="ml-6 text-pink-200">Pac-Man clone made from scratch, no additional libraries. (Filler description)</p>
+                <a class="ml-6 text-pink-300 hover:text-black hover:bg-pink-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="ml-4 text-pink-300 hover:text-black hover:bg-pink-300" href="https://www.youtube.com/watch?v=TIrYUZJPQ_k" target="_blank" rel="noopener noreferrer">YouTube</a>
+              </div>
+              <div class="retro-border p-4 bg-black">
+                <span class="prompt">$</span> <span class="font-bold text-lg text-pink-400">Chess Game</span>
+                <p class="ml-6 text-pink-200">Chess game using SDL2 and C++. (Filler description)</p>
+                <a class="ml-6 text-pink-300 hover:text-black hover:bg-pink-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="ml-4 text-pink-300 hover:text-black hover:bg-pink-300" href="https://www.youtube.com/watch?v=EjIU1NLMAPk" target="_blank" rel="noopener noreferrer">YouTube</a>
+              </div>
+              <div class="retro-border p-4 bg-black">
+                <span class="prompt">$</span> <span class="font-bold text-lg text-pink-400">Sand Simulator</span>
+                <p class="ml-6 text-pink-200">Sand particle simulator using wingdi. (Filler description)</p>
+                <a class="ml-6 text-pink-300 hover:text-black hover:bg-pink-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="ml-4 text-pink-300 hover:text-black hover:bg-pink-300" href="https://www.youtube.com/watch?v=jb5hq8EoAU8" target="_blank" rel="noopener noreferrer">YouTube</a>
+              </div>
+              <div class="retro-border p-4 bg-black">
+                <span class="prompt">$</span> <span class="font-bold text-lg text-pink-400">Physics Collider</span>
+                <p class="ml-6 text-pink-200">RayLib with C++ and physics collisions with spheres. (Filler description)</p>
+                <a class="ml-6 text-pink-300 hover:text-black hover:bg-pink-300" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="ml-4 text-pink-300 hover:text-black hover:bg-pink-300" href="https://www.youtube.com/watch?v=-c1E1xJwxCU" target="_blank" rel="noopener noreferrer">YouTube</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Right: Name & Personal Info as a window -->
+      <aside class="w-full max-w-xs flex flex-col items-center justify-center bg-black retro-border text-center min-h-[500px] max-h-[90vh] p-0">
+        <div class="terminal-bar w-full">
+          <span class="ml-2">about.txt</span>
+        </div>
+        <div class="flex-1 flex flex-col justify-center items-center p-6">
+          <h1 class="text-2xl font-extrabold mb-2 tracking-widest text-green-400">Aditya Bankoti</h1>
+          <p class="mb-2 text-base text-green-200">Full Stack Developer</p>
+          <p class="mb-6 text-sm text-green-300">I build impactful software, love creative challenges, and thrive in collaborative teams.</p>
+          <div class="flex flex-col gap-2 text-sm">
+            <span class="text-green-200">GitHub: <a href="https://github.com/Nano-AI" target="_blank" rel="noopener noreferrer" class="text-green-300 hover:text-black hover:bg-green-300">Nano-AI</a></span>
+            <span class="text-green-200">YouTube: <a href="https://www.youtube.com/@nano-ai" target="_blank" rel="noopener noreferrer" class="text-green-300 hover:text-black hover:bg-green-300">@nano-ai</a></span>
+            <span class="text-green-200">LinkedIn: <a href="https://www.linkedin.com/in/adityanb/" target="_blank" rel="noopener noreferrer" class="text-green-300 hover:text-black hover:bg-green-300">adityanb</a></span>
+          </div>
+        </div>
+      </aside>
+    </main>
+    <script>
+      function showCategory(cat) {
+        document.querySelectorAll('.project-category').forEach(div => div.classList.add('hidden'));
+        document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('ring', 'ring-2'));
+        if (cat) {
+          document.getElementById('category-' + cat).classList.remove('hidden');
+          const btn = Array.from(document.querySelectorAll('.category-btn')).find(b => b.textContent.toLowerCase().includes(cat));
+          if (btn) btn.classList.add('ring', 'ring-2');
+        }
+      }
+      // By default, nothing is selected
+    </script>
+  </body>
+</html>
