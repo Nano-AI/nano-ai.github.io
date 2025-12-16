@@ -5,271 +5,614 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aditya Bankoti | Portfolio</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="min-h-screen flex items-center justify-center bg-black">
-    <canvas id="matrix-canvas" style="position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; pointer-events:none;"></canvas>
-    <main class="w-full max-w-7xl mx-auto flex min-h-[500px] max-h-[90vh] gap-0 p-0 retro-border-outer" style="z-index:1; position:relative; height:700px; max-height:90vh;">
-      <!-- Terminal Tree Nav using Web Components -->
-      <tree-nav class="retro-border-inner-none" style="height:100%;"></tree-nav>
-      <!-- Main Content Area -->
-      <section class="flex-1 overflow-y-auto retro-scroll bg-black flex flex-col p-0 min-h-[500px] max-h-full retro-border-inner-none" style="height:100%;">
-        <div class="terminal-bar w-full" style="background:#181f1a; color:#00913a; border-bottom:2px solid #00913a;">
-          <span class="ml-2" id="section-title">about.txt</span>
+  <body class="min-h-screen bg-slate-50 text-slate-900">
+    <!-- Navigation bar - fixed at top -->
+    <nav class="fixed top-0 left-0 right-0 z-50 w-full border-b border-white/20 bg-black/30 backdrop-blur-md">
+      <div class="max-w-5xl mx-auto px-4 py-4">
+        <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm md:text-base">
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#experience" class="nav-link">Experience</a>
+          <a href="#education" class="nav-link">Education</a>
+          <a href="#hobbies" class="nav-link">Hobbies</a>
+          <a href="#contact" class="nav-link">Contact</a>
         </div>
-        <!-- About Section -->
-        <div id="section-about" class="p-6 main-section">
-          <h1 class="text-2xl font-extrabold mb-2 tracking-widest text-green-400">Aditya Bankoti</h1>
-          <p class="mb-2 text-base text-green-200">Full Stack Developer</p>
-          <p class="mb-6 text-sm text-green-300">I build impactful software, love creative challenges, and thrive in collaborative teams.</p>
-          <div class="flex flex-col gap-2 text-sm">
-            <span class="text-green-200">GitHub: <a href="https://github.com/Nano-AI" target="_blank" rel="noopener noreferrer" class="text-green-300 hover:text-black hover:bg-green-300">Nano-AI</a></span>
-            <span class="text-green-200">YouTube: <a href="https://www.youtube.com/@nano-ai" target="_blank" rel="noopener noreferrer" class="text-green-300 hover:text-black hover:bg-green-300">@nano-ai</a></span>
-            <span class="text-green-200">LinkedIn: <a href="https://www.linkedin.com/in/adityanb/" target="_blank" rel="noopener noreferrer" class="text-green-300 hover:text-black hover:bg-green-300">adityanb</a></span>
-          </div>
-        </div>
-        <!-- Projects Section -->
-        <div id="section-projects" class="p-6 main-section hidden">
-          <div id="project-category-placeholder" class="text-green-300 text-base mb-4">Select a category...</div>
-          <div class="flex gap-2 mb-6 mt-2">
-            <button class="category-btn text-green-300 border border-green-700 px-4 py-2 rounded bg-black hover:bg-green-900 focus:bg-green-800" onclick="showCategory('fullstack')">Full-Stack / Web</button>
-            <button class="category-btn text-yellow-300 border border-yellow-700 px-4 py-2 rounded bg-black hover:bg-yellow-900 focus:bg-yellow-800" onclick="showCategory('ai')">AI / ML</button>
-            <button class="category-btn text-cyan-300 border border-cyan-700 px-4 py-2 rounded bg-black hover:bg-cyan-900 focus:bg-cyan-800" onclick="showCategory('graphics')">Graphics</button>
-            <button class="category-btn text-pink-300 border border-pink-700 px-4 py-2 rounded bg-black hover:bg-pink-900 focus:bg-pink-800" onclick="showCategory('games')">Games</button>
-          </div>
-          <div id="category-fullstack" class="project-category hidden">
-            <!-- Full-Stack / Web Development -->
-            <h2 class="mb-2 text-xl font-bold text-green-400 border-b border-green-700">Full-Stack / Web Development</h2>
-            <div class="flex flex-col gap-6 mb-8">
-              <div class="retro-border p-4 bg-black">
-                <span class="prompt">$</span> <span class="font-bold text-lg text-green-400">CleanEats</span>
-                <p class="ml-6 text-green-200">A full-stack app for scanning food barcodes to access nutritional and health info.</p>
-                <a class="ml-6 text-green-300 hover:text-black hover:bg-green-300" href="https://github.com/Nano-AI/CleanEats" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a class="ml-4 text-green-300 hover:text-black hover:bg-green-300" href="https://www.youtube.com/watch?v=FSq0EKt5-Bs" target="_blank" rel="noopener noreferrer">YouTube</a>
-              </div>
-              <div class="retro-border p-4 bg-black">
-                <span class="prompt">$</span> <span class="font-bold text-lg text-green-400">Litter.ly</span>
-                <p class="ml-6 text-green-200">A social networking platform to create a cleaner world.</p>
-                <a class="ml-6 text-green-300 hover:text-black hover:bg-green-300" href="https://github.com/Nano-AI/litter.ly" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a class="ml-4 text-green-300 hover:text-black hover:bg-green-300" href="https://www.youtube.com/watch?v=dlUDO7SRVz8" target="_blank" rel="noopener noreferrer">YouTube</a>
-              </div>
-              <div class="retro-border p-4 bg-black">
-                <span class="prompt">$</span> <span class="font-bold text-lg text-green-400">Smarty Pants</span>
-                <p class="ml-6 text-green-200">Hackathon project using LLM's RAG-based searching to find opportunities for students.</p>
-                <!-- No GitHub, only YouTube -->
-                <a class="ml-4 text-green-300 hover:text-black hover:bg-green-300" href="https://www.youtube.com/watch?v=PzeFaZ95Kig" target="_blank" rel="noopener noreferrer">YouTube</a>
-              </div>
-              <div class="retro-border p-4 bg-black">
-                <span class="prompt">$</span> <span class="font-bold text-lg text-green-400">SAT-Shark</span>
-                <p class="ml-6 text-green-200">Multiplayer educational game for SAT prep with competitive gameplay.</p>
-                <!-- No GitHub, only YouTube -->
-                <a class="ml-4 text-green-300 hover:text-black hover:bg-green-300" href="https://www.youtube.com/watch?v=mAVRRUz1FxE" target="_blank" rel="noopener noreferrer">YouTube</a>
-              </div>
-            </div>
-          </div>
-          <div id="category-ai" class="project-category hidden">
-            <!-- AI / Machine Learning -->
-            <h2 class="mb-2 text-xl font-bold text-yellow-400 border-b border-yellow-700">AI / Machine Learning</h2>
-            <div class="flex flex-col gap-6 mb-8">
-              <div class="retro-border p-4 bg-black">
-                <span class="prompt">$</span> <span class="font-bold text-lg text-yellow-400">Digit Recognizer</span>
-                <p class="ml-6 text-yellow-200">Python digit recognizer with GUI, trained on data, no libraries except numpy.</p>
-                <!-- Only YouTube -->
-                <a class="ml-4 text-yellow-300 hover:text-black hover:bg-yellow-300" href="https://www.youtube.com/watch?v=c63ioyWuPUM" target="_blank" rel="noopener noreferrer">YouTube</a>
-              </div>
-            </div>
-          </div>
-          <div id="category-graphics" class="project-category hidden">
-            <!-- Graphics Programming / Rendering -->
-            <h2 class="mb-2 text-xl font-bold text-cyan-400 border-b border-cyan-700">Graphics Programming / Rendering</h2>
-            <div class="flex flex-col gap-6 mb-8">
-              <div class="retro-border p-4 bg-black">
-                <span class="prompt">$</span> <span class="font-bold text-lg text-cyan-400">Ray Tracing</span>
-                <p class="ml-6 text-cyan-200">Java ray tracer for depth perception, sphere rendering, and transparency.</p>
-                <!-- Only YouTube -->
-                <a class="ml-4 text-cyan-300 hover:text-black hover:bg-cyan-300" href="https://www.youtube.com/watch?v=9r9MSqD6vKc" target="_blank" rel="noopener noreferrer">YouTube</a>
-              </div>
-              <div class="retro-border p-4 bg-black">
-                <span class="prompt">$</span> <span class="font-bold text-lg text-cyan-400">Ray Caster</span>
-                <p class="ml-6 text-cyan-200">Wolfenstein-like ray caster.</p>
-                <!-- Only YouTube -->
-                <a class="ml-4 text-cyan-300 hover:text-black hover:bg-cyan-300" href="https://www.youtube.com/watch?v=U9RTGmFqN7U" target="_blank" rel="noopener noreferrer">YouTube</a>
-              </div>
-              <div class="retro-border p-4 bg-black">
-                <span class="prompt">$</span> <span class="font-bold text-lg text-cyan-400">Fractal Renderer</span>
-                <p class="ml-6 text-cyan-200">Python fractal renderer.</p>
-                <!-- Only YouTube -->
-                <a class="ml-4 text-cyan-300 hover:text-black hover:bg-cyan-300" href="https://www.youtube.com/watch?v=baKRlHixcQY" target="_blank" rel="noopener noreferrer">YouTube</a>
-              </div>
-              <div class="retro-border p-4 bg-black">
-                <span class="prompt">$</span> <span class="font-bold text-lg text-cyan-400">PSX Demo</span>
-                <p class="ml-6 text-cyan-200">PSX style demo game made with Godot.</p>
-                <!-- Only YouTube -->
-                <a class="ml-4 text-cyan-300 hover:text-black hover:bg-cyan-300" href="https://www.youtube.com/watch?v=1s81vzSt3_g" target="_blank" rel="noopener noreferrer">YouTube</a>
-              </div>
-            </div>
-          </div>
-          <div id="category-games" class="project-category hidden">
-            <!-- Game Development -->
-            <h2 class="mb-2 text-xl font-bold text-pink-400 border-b border-pink-700">Game Development</h2>
-            <div class="flex flex-col gap-6 mb-8">
-              <div class="retro-border p-4 bg-black">
-                <span class="prompt">$</span> <span class="font-bold text-lg text-pink-400">Fast Paced Shooter</span>
-                <p class="ml-6 text-pink-200">Unity project for game design class.</p>
-                <!-- Only YouTube -->
-                <a class="ml-4 text-pink-300 hover:text-black hover:bg-pink-300" href="https://www.youtube.com/watch?v=i5At7d9uaQ0" target="_blank" rel="noopener noreferrer">YouTube</a>
-              </div>
-              <div class="retro-border p-4 bg-black">
-                <span class="prompt">$</span> <span class="font-bold text-lg text-pink-400">Pac-Man Clone</span>
-                <p class="ml-6 text-pink-200">Pac-Man clone made from scratch, no additional libraries.</p>
-                <!-- Only YouTube -->
-                <a class="ml-4 text-pink-300 hover:text-black hover:bg-pink-300" href="https://www.youtube.com/watch?v=TIrYUZJPQ_k" target="_blank" rel="noopener noreferrer">YouTube</a>
-              </div>
-              <div class="retro-border p-4 bg-black">
-                <span class="prompt">$</span> <span class="font-bold text-lg text-pink-400">Chess Game</span>
-                <p class="ml-6 text-pink-200">Chess game using SDL2 and C++.</p>
-                <!-- Only YouTube -->
-                <a class="ml-4 text-pink-300 hover:text-black hover:bg-pink-300" href="https://www.youtube.com/watch?v=EjIU1NLMAPk" target="_blank" rel="noopener noreferrer">YouTube</a>
-              </div>
-              <div class="retro-border p-4 bg-black">
-                <span class="prompt">$</span> <span class="font-bold text-lg text-pink-400">Sand Simulator</span>
-                <p class="ml-6 text-pink-200">Sand particle simulator using wingdi.</p>
-                <!-- Only YouTube -->
-                <a class="ml-4 text-pink-300 hover:text-black hover:bg-pink-300" href="https://www.youtube.com/watch?v=jb5hq8EoAU8" target="_blank" rel="noopener noreferrer">YouTube</a>
-              </div>
-              <div class="retro-border p-4 bg-black">
-                <span class="prompt">$</span> <span class="font-bold text-lg text-pink-400">Physics Collider</span>
-                <p class="ml-6 text-pink-200">RayLib with C++ and physics collisions with spheres.</p>
-                <!-- Only YouTube -->
-                <a class="ml-4 text-pink-300 hover:text-black hover:bg-pink-300" href="https://www.youtube.com/watch?v=-c1E1xJwxCU" target="_blank" rel="noopener noreferrer">YouTube</a>
-              </div>
-            </div>
+      </div>
+    </nav>
+
+    <!-- Full-width header with slideshow background -->
+    <header class="relative w-full overflow-hidden min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
+      <!-- Background slideshow -->
+      <div id="hero-slideshow-container" class="hero-slideshow-container">
+        <div id="hero-slideshow-1" class="hero-slideshow pixel-bg active"></div>
+        <div id="hero-slideshow-2" class="hero-slideshow pixel-bg"></div>
+      </div>
+      <!-- Header content -->
+      <div class="relative z-10 max-w-5xl mx-auto px-4 py-20 md:py-28 lg:py-32 flex items-center min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
+        <div class="space-y-6 w-full">
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white drop-shadow-lg">Aditya Bankoti</h1>
+          <p class="text-lg md:text-xl lg:text-2xl text-white/95 drop-shadow-md">
+            Computer science at The University of Wisconsin–Madison
+          </p>
+          <div class="flex flex-wrap gap-3 mt-6">
+            <a
+              href="https://github.com/Nano-AI"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/20 backdrop-blur-sm px-5 py-2 text-sm md:text-base text-white hover:bg-white/30 hover:border-white/50 transition-colors"
+            >
+              <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+              GitHub
+            </a>
+            <a
+              href="https://www.youtube.com/@nano-ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/20 backdrop-blur-sm px-5 py-2 text-sm md:text-base text-white hover:bg-white/30 hover:border-white/50 transition-colors"
+            >
+              <span class="h-1.5 w-1.5 rounded-full bg-rose-400"></span>
+              YouTube
+            </a>
+            <a
+              href="https://www.linkedin.com/in/adityanb/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/20 backdrop-blur-sm px-5 py-2 text-sm md:text-base text-white hover:bg-white/30 hover:border-white/50 transition-colors"
+            >
+              <span class="h-1.5 w-1.5 rounded-full bg-sky-400"></span>
+              LinkedIn
+            </a>
           </div>
         </div>
-        <!-- Experiences Section -->
-        <div id="section-experiences" class="p-6 main-section hidden">
-          <h2 class="text-xl font-bold text-green-400 mb-2 tracking-widest">Jobs</h2>
-          <div class="flex flex-col gap-4">
-            <!-- Columbia Athletic Clubs - Pine Lake -->
-            <div>
-              <div class="font-bold text-green-300">Swim Instructor</div>
-              <div class="text-green-400 text-sm">Columbia Athletic Clubs - Pine Lake · Part-time</div>
-              <div class="text-green-400 text-sm">Oct 2024 to Present · Washington, United States · On-site</div>
-              <div class="text-green-100 text-sm mt-1">Private swim instructor and life guard</div>
-            </div>
-            <!-- iLink Digital -->
-            <div>
-              <div class="font-bold text-green-300">Intern</div>
-              <div class="text-green-400 text-sm">iLink Digital · Internship</div>
-              <div class="text-green-400 text-sm">Jun 2024 to Aug 2024 · Washington, United States · Remote</div>
-              <ul class="list-disc ml-6 text-green-100 text-sm mt-1">
-                <li>Created interactive dashboards in Power BI, enabling real-time data visualization and reporting, assisting in creating more data-driven decisions</li>
-                <li>Conducted comprehensive data analysis using Python and Power BI to clean data and uncover trends and actionable insights to make strategic choices</li>
-                <li>Presented data findings to senior management and stakeholders, translating complex data insights into clear, actionable recommendations</li>
-              </ul>
-            </div>
-            <!-- Code Ninjas -->
-            <div>
-              <div class="font-bold text-green-300">Teacher</div>
-              <div class="text-green-400 text-sm">Code Ninjas · Part-time</div>
-              <div class="text-green-400 text-sm">Jul 2022 to Feb 2024 · Sammamish, Washington, United States · On-site</div>
-              <ul class="list-disc ml-6 text-green-100 text-sm mt-1">
-                <li>Taught a comprehensive coding curriculum, empowering elementary students to learn programming concepts through interactive game development using JavaScript and C# languages.</li>
-                <li>Facilitated engaging coding workshops, fostering a passion for technology and computer science while promoting critical thinking, problem-solving, and teamwork skills among students.</li>
-              </ul>
-            </div>
-          </div>
-          <h2 class="text-xl font-bold text-green-400 mb-2 mt-6 tracking-widest">Certifications</h2>
-          <div class="flex flex-col gap-4">
-            <!-- Certiport - Unity Certified User: Programmer -->
-            <div>
-              <div class="font-bold text-green-300">Unity Certified User: Programmer</div>
-              <div class="text-green-400 text-sm">Certiport - A Pearson VUE Business</div>
-              <div class="text-green-100 text-sm mt-1">Skills: Game Development · Game Design · 2D graphics · 3D Graphics · C#</div>
-            </div>
-            <!-- Columbia Athletic Clubs - Pine Lake Lifeguarding -->
-            <div>
-              <div class="font-bold text-green-300">Shallow Water Lifeguarding with CPR/AED for Professional Rescuers and First Aid</div>
-              <div class="text-green-400 text-sm">Columbia Athletic Clubs - Pine Lake</div>
-              <div class="text-green-100 text-sm mt-1">Skills: Swimming · Pools · Cardiopulmonary Resuscitation (CPR) · Adult CPR · Pediatric CPR</div>
-            </div>
-            <!-- Certiport - Visual Design using Adobe Photoshop -->
-            <div>
-              <div class="font-bold text-green-300">Visual Design using Adobe Photoshop 2024 (v 25.x)</div>
-              <div class="text-green-400 text-sm">Certiport - A Pearson VUE Business</div>
-              <div class="text-green-100 text-sm mt-1">Skills: Adobe Photoshop · Photography</div>
-            </div>
-          </div>
+      </div>
+    </header>
+
+    <main id="top" class="max-w-5xl mx-auto px-4 py-10 md:py-16 space-y-20 md:space-y-28">
+      <!-- Projects -->
+      <section id="projects" class="space-y-6">
+        <div class="flex items-baseline justify-between gap-4">
+          <h2 class="text-xl md:text-2xl font-semibold text-slate-900">Projects</h2>
+          <!-- <span class="text-xs text-slate-500">Grouped by area · more on GitHub / YouTube</span> -->
         </div>
-        <!-- Academics Section -->
-        <div id="section-academics" class="p-6 main-section hidden">
-          <h2 class="text-xl font-bold text-green-400 mb-4 tracking-widest">Academics</h2>
-          <!-- University of Wisconsin Madison -->
-          <div class="mb-8">
-            <div class="font-bold text-green-300 text-lg mb-1">The University of Wisconsin-Madison</div>
-            <div class="text-green-400 text-sm mb-2"><b>Relevant</b> Courses (Fall 2025):</div>
-            <ul class="list-disc ml-8 text-green-100 text-sm">
-              <li>COMP SCI/​E C E 252 — Introduction to Computer Engineering</li>
-              <li>COMP SCI 400 — Programming III</li>
-              <li>COMP SCI/​MATH 240 — Introduction to Discrete Mathematics</li>
+
+        <div class="space-y-3">
+          <!-- Full‑stack / web -->
+          <details class="project-group">
+            <summary class="project-group-summary">
+              <span>FULL‑STACK & WEB</span>
+              <span class="project-group-count">3 projects</span>
+            </summary>
+            <div class="project-group-body">
+              <div class="grid md:grid-cols-2 gap-5 md:gap-6">
+                <!-- CleanEats -->
+                <article class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">CleanEats</h3>
+                    <p class="card-tag">Full‑stack app</p>
+                  </div>
+                  <p class="card-body">
+                    Scan food barcodes to see nutritional and health information, helping people make
+                    better choices at the store.
+                  </p>
+                  <div class="card-links">
+                    <a
+                      href="https://github.com/Nano-AI/CleanEats"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="card-link"
+                      >GitHub</a
+                    >
+                    <a
+                      href="https://www.youtube.com/watch?v=FSq0EKt5-Bs"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="card-link"
+                      >Demo</a
+                    >
+                  </div>
+                </article>
+
+                <!-- Litter.ly -->
+                <article class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Litter.ly</h3>
+                    <p class="card-tag">Social platform</p>
+                  </div>
+                  <p class="card-body">
+                    A social network centered around community clean‑up, making it easier to organize and
+                    share local environmental impact.
+                  </p>
+                  <div class="card-links">
+                    <a
+                      href="https://github.com/Nano-AI/litter.ly"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="card-link"
+                      >GitHub</a
+                    >
+                    <a
+                      href="https://www.youtube.com/watch?v=dlUDO7SRVz8"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="card-link"
+                      >Demo</a
+                    >
+                  </div>
+                </article>
+
+                <!-- MedCheck -->
+                <article class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">MedCheck</h3>
+                    <p class="card-tag">Hackathon · Blockchain in pharmacy</p>
+                  </div>
+                  <p class="card-body">
+                    Uses an Ethereum‑based ledger to let pharmacies log drug batches and warnings on‑chain,
+                    with QR codes patients can scan to verify authenticity, dosage, and manufacturer alerts.
+                  </p>
+                  <div class="card-links">
+                    <a
+                      href="https://www.youtube.com/watch?v=cdb0WkGtaUc"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="card-link"
+                      >Demo</a
+                    >
+                    <a
+                      href="https://devpost.com/software/medcheck-pg7orq"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="card-link"
+                      >Devpost</a
+                    >
+                    <a
+                      href="https://github.com/Nano-AI/Med-Check"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="card-link"
+                      >GitHub</a
+                    >
+                  </div>
+                </article>
+              </div>
+            </div>
+          </details>
+
+          <!-- AI / ML -->
+          <details class="project-group">
+            <summary class="project-group-summary">
+              <span>AI & MACHINE LEARNING</span>
+              <span class="project-group-count">2 projects</span>
+            </summary>
+            <div class="project-group-body">
+              <div class="grid md:grid-cols-2 gap-5 md:gap-6">
+                <!-- Smarty Pants -->
+                <article class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Smarty Pants</h3>
+                    <p class="card-tag">Hackathon · AI / RAG</p>
+                  </div>
+                  <p class="card-body">
+                    An LLM‑powered tool that uses retrieval‑augmented generation to help students quickly
+                    find scholarships and opportunities.
+                  </p>
+                  <div class="card-links">
+                    <a
+                      href="https://www.youtube.com/watch?v=PzeFaZ95Kig"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="card-link"
+                      >Demo</a
+                    >
+                  </div>
+                </article>
+
+                <!-- Digit Recognizer -->
+                <article class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Digit Recognizer</h3>
+                    <p class="card-tag">AI / ML</p>
+                  </div>
+                  <p class="card-body">
+                    Python digit recognizer with a custom GUI, trained on image data without any external
+                    ML libraries besides NumPy.
+                  </p>
+                  <div class="card-links">
+                    <a
+                      href="https://www.youtube.com/watch?v=c63ioyWuPUM"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="card-link"
+                      >Demo</a
+                    >
+                  </div>
+                </article>
+              </div>
+            </div>
+          </details>
+
+          <!-- Graphics / engines -->
+          <details class="project-group">
+            <summary class="project-group-summary">
+              <span>GRAPHICS & ENGINES</span>
+              <span class="project-group-count">5 projects</span>
+            </summary>
+            <div class="project-group-body">
+              <div class="grid md:grid-cols-2 gap-5 md:gap-6">
+                <!-- Ray Tracing -->
+                <article class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Ray Tracing</h3>
+                    <p class="card-tag">Graphics</p>
+                  </div>
+                  <p class="card-body">
+                    Java ray tracer exploring depth perception, sphere rendering, lighting, and basic
+                    transparency.
+                  </p>
+                  <div class="card-links">
+                    <a
+                      href="https://www.youtube.com/watch?v=9r9MSqD6vKc"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="card-link"
+                      >Demo</a
+                    >
+                  </div>
+                </article>
+
+                <!-- Ray Caster -->
+                <article class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Ray Caster</h3>
+                    <p class="card-tag">Graphics · Engine</p>
+                  </div>
+                  <p class="card-body">
+                    A Wolfenstein‑style ray‑casting engine that renders a 3D maze from a 2D grid map.
+                  </p>
+                  <div class="card-links">
+                    <a
+                      href="https://www.youtube.com/watch?v=U9RTGmFqN7U"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="card-link"
+                      >Demo</a
+                    >
+                  </div>
+                </article>
+
+                <!-- Fractal Renderer -->
+                <article class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Fractal Renderer</h3>
+                    <p class="card-tag">Graphics · Math</p>
+                  </div>
+                  <p class="card-body">
+                    Python renderer for visualizing fractals, experimenting with color palettes and zoom‑in
+                    animations.
+                  </p>
+                  <div class="card-links">
+                    <a
+                      href="https://www.youtube.com/watch?v=baKRlHixcQY"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="card-link"
+                      >Demo</a
+                    >
+                  </div>
+                </article>
+
+                <!-- PSX Demo -->
+                <article class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">PSX Demo</h3>
+                    <p class="card-tag">Game · Graphics</p>
+                  </div>
+                  <p class="card-body">
+                    A PlayStation‑style demo scene built in Godot, focusing on low‑poly visuals and retro
+                    rendering techniques.
+                  </p>
+                  <div class="card-links">
+                    <a
+                      href="https://www.youtube.com/watch?v=1s81vzSt3_g"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="card-link"
+                      >Demo</a
+                    >
+                  </div>
+                </article>
+
+                <!-- Physics Collider -->
+                <article class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Physics Collider</h3>
+                    <p class="card-tag">Simulation · C++</p>
+                  </div>
+                  <p class="card-body">
+                    A RayLib + C++ demo that simulates sphere collisions in 3D, visualizing basic physics
+                    and collision response.
+                  </p>
+                  <div class="card-links">
+                    <a
+                      href="https://www.youtube.com/watch?v=-c1E1xJwxCU"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="card-link"
+                      >Demo</a
+                    >
+                  </div>
+                </article>
+              </div>
+            </div>
+          </details>
+
+          <!-- Games / simulations -->
+          <details class="project-group">
+            <summary class="project-group-summary">
+              <span>GAMES & SIMULATIONS</span>
+              <span class="project-group-count">5 projects</span>
+            </summary>
+            <div class="project-group-body">
+              <div class="grid md:grid-cols-2 gap-5 md:gap-6">
+                <!-- SAT‑Shark -->
+                <article class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">SAT‑Shark</h3>
+                    <p class="card-tag">Multiplayer game</p>
+                  </div>
+                  <p class="card-body">
+                    A competitive, multiplayer SAT prep game that turns practice questions into fast,
+                    engaging gameplay with friends.
+                  </p>
+                  <div class="card-links">
+                    <a
+                      href="https://www.youtube.com/watch?v=mAVRRUz1FxE"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="card-link"
+                      >Demo</a
+                    >
+                  </div>
+                </article>
+
+                <!-- Fast Paced Shooter -->
+                <article class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Fast Paced Shooter</h3>
+                    <p class="card-tag">Game</p>
+                  </div>
+                  <p class="card-body">
+                    A Unity‑based shooter prototype built for a game design class, experimenting with
+                    movement, aiming, and enemy AI.
+                  </p>
+                  <div class="card-links">
+                    <a
+                      href="https://www.youtube.com/watch?v=i5At7d9uaQ0"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="card-link"
+                      >Demo</a
+                    >
+                  </div>
+                </article>
+
+                <!-- Pac‑Man Clone -->
+                <article class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Pac‑Man Clone</h3>
+                    <p class="card-tag">Game</p>
+                  </div>
+                  <p class="card-body">
+                    A Pac‑Man clone built from scratch with no extra libraries, focusing on precise movement
+                    and classic arcade feel.
+                  </p>
+                  <div class="card-links">
+                    <a
+                      href="https://www.youtube.com/watch?v=TIrYUZJPQ_k"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="card-link"
+                      >Demo</a
+                    >
+                  </div>
+                </article>
+
+                <!-- Chess Game -->
+                <article class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Chess Game</h3>
+                    <p class="card-tag">Game · C++</p>
+                  </div>
+                  <p class="card-body">
+                    A chess implementation using C++ and SDL2, including move logic and a simple 2D
+                    interface.
+                  </p>
+                  <div class="card-links">
+                    <a
+                      href="https://www.youtube.com/watch?v=EjIU1NLMAPk"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="card-link"
+                      >Demo</a
+                    >
+                  </div>
+                </article>
+
+                <!-- Sand Simulator -->
+                <article class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Sand Simulator</h3>
+                    <p class="card-tag">Simulation</p>
+                  </div>
+                  <p class="card-body">
+                    A falling‑sand particle simulator using WinGDI, exploring simple physics and cellular
+                    automata‑style rules.
+                  </p>
+                  <div class="card-links">
+                    <a
+                      href="https://www.youtube.com/watch?v=jb5hq8EoAU8"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="card-link"
+                      >Demo</a
+                    >
+                  </div>
+                </article>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience" class="space-y-6">
+        <h2 class="text-xl md:text-2xl font-semibold text-slate-900">Experience</h2>
+
+        <div class="space-y-4">
+          <!-- Swim Instructor -->
+          <article class="experience-item">
+            <header class="experience-header">
+              <div>
+                <h3 class="experience-title">Swim Instructor</h3>
+                <p class="experience-meta">Columbia Athletic Clubs – Pine Lake · Part‑time</p>
+              </div>
+              <p class="experience-meta">Oct 2024 – Present · Washington · On‑site</p>
+            </header>
+            <p class="experience-body">
+              Teaching private lessons and lifeguarding, combining clear communication, patience,
+              and attention to detail—skills that also translate into mentoring and collaborating on
+              technical teams.
+            </p>
+          </article>
+
+          <!-- iLink Digital -->
+          <article class="experience-item">
+            <header class="experience-header">
+              <div>
+                <h3 class="experience-title">Software / Data Intern</h3>
+                <p class="experience-meta">iLink Digital · Internship</p>
+              </div>
+              <p class="experience-meta">Jun 2024 – Aug 2024 · Washington · Remote</p>
+            </header>
+            <ul class="experience-list">
+              <li>
+                Built interactive Power BI dashboards that made it easier for stakeholders to explore
+                data and track key metrics in real time.
+              </li>
+              <li>
+                Cleaned and analyzed datasets using Python and BI tools to surface trends and
+                opportunities for the business.
+              </li>
+              <li>
+                Presented findings to senior leadership, turning technical analysis into clear,
+                actionable recommendations.
+              </li>
             </ul>
-          </div>
-          <!-- Bellevue College (Dual Enrollment) -->
-          <div class="mb-8">
-            <div class="font-bold text-green-300 text-lg mb-1">Bellevue College (Dual Enrollment)</div>
-            <div class="text-green-400 text-sm mb-2">Cumulative GPA: 3.930</div>
-            <div class="text-green-400 text-sm mb-1">Courses:</div>
-            <div class="ml-4">
-              <div class="font-bold text-green-200 mt-2">Summer 2024</div>
-              <ul class="list-disc ml-8 text-green-100 text-sm">
-                <li>CS 211 - Fundamentals of CS II (A)</li>
-                <li>MATH& 254 - Calculus IV (A)</li>
-              </ul>
-              <div class="font-bold text-green-200 mt-2">Fall 2024</div>
-              <ul class="list-disc ml-8 text-green-100 text-sm">
-                <li>MATH 238 - Differential Equations (A)</li>
-              </ul>
-              <div class="font-bold text-green-200 mt-2">Spring 2025</div>
-              <ul class="list-disc ml-8 text-green-100 text-sm">
-                <li>MATH 208 - Introduction to Linear Algebra (A-)</li>
+          </article>
+
+          <!-- Code Ninjas -->
+          <article class="experience-item">
+            <header class="experience-header">
+              <div>
+                <h3 class="experience-title">Coding Instructor</h3>
+                <p class="experience-meta">Code Ninjas · Part‑time</p>
+              </div>
+              <p class="experience-meta">Jul 2022 – Feb 2024 · Sammamish, WA · On‑site</p>
+            </header>
+            <ul class="experience-list">
+              <li>
+                Taught programming fundamentals to elementary students through game development in
+                JavaScript and C#.
+              </li>
+              <li>
+                Ran hands‑on workshops that encouraged curiosity, problem‑solving, and teamwork.
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section id="education" class="space-y-6">
+        <h2 class="text-xl md:text-2xl font-semibold text-slate-900">Education</h2>
+
+        <div class="space-y-4">
+          <!-- University of Wisconsin-Madison -->
+          <article class="experience-item">
+            <header class="experience-header">
+              <div>
+                <h3 class="experience-title">University of Wisconsin–Madison</h3>
+                <p class="experience-meta">Bachelor of Science - BS, Computer Science</p>
+              </div>
+              <p class="experience-meta">Aug 2025 – Present</p>
+            </header>
+            <div class="mt-3">
+              <p class="text-sm font-semibold text-slate-700 mb-2">Fall 2025:</p>
+              <ul class="list-disc pl-5 space-y-1 text-sm text-slate-600">
+                <li>COM ARTS 260 – Communication and Human Behavior</li>
+                <li>COMP SCI 252 – Introduction to Computer Engineering</li>
+                <li>MATH / COMP SCI 240 – Introduction to Discrete Mathematics</li>
+                <li>COMP SCI 400 – Programming III</li>
               </ul>
             </div>
-          </div>
-          <!-- AP Section -->
-          <div class="mb-8">
-            <div class="font-bold text-green-300 text-lg mb-1">Advanced Placement (AP)</div>
-            <div class="text-green-400 text-sm mb-2">AP Scholar with Distinction (2024, 2025)</div>
-            <div class="text-green-400 text-sm mb-2"><b>Relevant</b> Scores:</div>
-            <div class="font-bold text-green-200 mt-2">2025</div>
-            <ul class="list-disc ml-8 text-green-100 text-sm">
-              <li>AP Environmental Science – 4</li>
-              <li>AP Physics C: Electricity and Magnetism – 3</li>
-              <li>AP Statistics – 4</li>
-            </ul>
-            <div class="font-bold text-green-200 mt-2">2024</div>
-            <ul class="list-disc ml-8 text-green-100 text-sm">
-              <li>AP Calculus BC – 5 (AB Subscore: 5)</li>
-              <li>AP Physics C: Mechanics – 4</li>
-            </ul>
-            <div class="font-bold text-green-200 mt-2">2023</div>
-            <ul class="list-disc ml-8 text-green-100 text-sm">
-              <li>AP Calculus AB – 5</li>
-              <li>AP Computer Science A – 5</li>
-            </ul>
-          </div>
+          </article>
+
+          <!-- Bellevue College -->
+          <article class="experience-item">
+            <header class="experience-header">
+              <div>
+                <h3 class="experience-title">Bellevue College</h3>
+              </div>
+              <p class="experience-meta">Jul 2024 – Jun 2025</p>
+            </header>
+            <div class="mt-3">
+              <p class="text-sm font-semibold text-slate-700 mb-2">Grade: 3.9 / 4.0</p>
+              <ul class="list-disc pl-5 space-y-1 text-sm text-slate-600">
+                <li><span class="font-semibold">Summer 2024:</span> Calculus IV (MATH& 254), Fundamentals of Computer Science II (CS 211)</li>
+                <li><span class="font-semibold">Fall 2024:</span> Differential Equations (MATH 238)</li>
+                <li><span class="font-semibold">Spring 2025:</span> Introduction to Linear Algebra (MATH 208)</li>
+              </ul>
+            </div>
+          </article>
         </div>
-        <!-- Hobbies Section -->
-        <div id="section-hobbies" class="p-6 main-section hidden">
-          <h2 class="text-xl font-bold text-green-400 mb-4 tracking-widest">Hobbies</h2>
-          <ul class="list-disc ml-8 text-green-100 text-base">
-            <li><span class="text-green-300 font-bold">Music:</span> I play the guitar (currently own an acoustic electric) and room-DJ for fun every now and then. I listen to music from time to time and create Spotify playlists for different vibes/genres.</li>
-            <li><span class="text-green-300 font-bold">Fitness:</span> I lift weights, but I've also participated in 5k's, ran 10k's, and swam competitively in high school.</li>
-            <li><span class="text-green-300 font-bold">Tech:</span> I've been coding since 4th grade and enjoy making passion projects. I love attending hackathons and admire random cool gadgets and tech.</li>
-            <li><span class="text-green-300 font-bold">Gaming:</span> Big video game nerd. I've played several titles across different genres and platforms. Mention one and I've probably played it.</li>
-          </ul>
+      </section>
+
+      <!-- Hobbies -->
+      <section id="hobbies" class="space-y-4 border-t border-slate-200 pt-10">
+        <h2 class="text-xl md:text-2xl font-semibold text-slate-900">Hobbies</h2>
+        <p class="text-sm md:text-base text-slate-600 max-w-xl">
+          Outside of code, I care a lot about staying creative and active—it keeps my problem‑solving
+          sharper and projects more fun.
+        </p>
+        <ul class="list-disc pl-5 text-sm md:text-base text-slate-700 space-y-1">
+          <li><span class="font-semibold">Music</span>: Guitar (acoustic & electric), ukulele, and casual listening.</li>
+          <li><span class="font-semibold">Weight lifting</span>: Strength training and staying consistent in the gym.</li>
+          <li><span class="font-semibold">Gaming</span>: Exploring a wide range of genres and game design ideas. My favorite genre recently has been Indie-style 2D games.</li>
+          <li><span class="font-semibold">Photography</span>: Shooting and editing photos, with prior experience with formal course experience in photography.</li>
+        </ul>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="space-y-5 border-t border-slate-200 pt-10">
+        <h2 class="text-xl md:text-2xl font-semibold text-slate-900">Say Hello!</h2>
+        <p class="text-sm md:text-base text-slate-600 max-w-xl">
+          Open to internships, part‑time roles, and collaborations on interesting projects. The
+          fastest way to reach me is through LinkedIn, but you can also explore my work on GitHub
+          and YouTube.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href="https://www.linkedin.com/in/adityanb/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="primary-button"
+            >Message on LinkedIn</a
+          >
         </div>
       </section>
     </main>
+
     <script src="script.js"></script>
   </body>
 </html>

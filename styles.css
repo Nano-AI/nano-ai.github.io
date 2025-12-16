@@ -1,118 +1,345 @@
-/* ...existing code... */
-:root {
-  --bg-main: #101613;
-  --bg-panel: #181f1a;
-  --green-primary: #00ff70;
-  --green-secondary: #00913a;
-  --green-accent: #005c23;
-  --white: #e5ffe5;
+/* Minimal custom styling on top of Tailwind */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for fixed navbar height */
 }
+
 body {
-  background: var(--bg-main);
-  color: var(--green-primary);
-  font-family: 'Fira Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
-}
-.retro-border {
-  border: 1.5px solid #00ff41;
-  border-radius: 0;
-  box-shadow: 0 0 0 1px #003b1a;
-}
-.retro-border-outer {
-  border: 3px solid #00c932;
-  border-radius: 0;
-  box-shadow: 0 0 12px 2px #00c932, 0 0 32px 4px #003b1a;
-  background: #101510;
-  /* Remove animation for steady glow */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
 }
 
-.retro-border-inner-none {
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
+.section-heading {
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(100 116 139); /* slate-500 */
 }
 
-.retro-border-inner {
-  border: 2px solid #00ff41;
-  border-radius: 0;
-  box-shadow: 0 0 0 1px #003b1a;
-  background: #101510;
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.35rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(51 65 85); /* slate-700 */
+  padding: 0.35rem 0.75rem;
+  color: rgb(226 232 240); /* slate-200 */
+  background: rgba(15, 23, 42, 0.8); /* slate-900/80 */
 }
 
-.retro-scroll {
-  scrollbar-width: thin;
-  scrollbar-color: var(--green-primary) var(--bg-main);
+.pill::before {
+  content: "";
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 9999px;
+  background: rgb(52 211 153); /* emerald-400 */
 }
-.retro-scroll::-webkit-scrollbar {
-  width: 8px;
-  background: var(--bg-main);
+
+.card {
+  border-radius: 1rem;
+  border: 1px solid rgb(221 214 254); /* violet-100 */
+  background: radial-gradient(circle at top left, #fdf2ff, #eef2ff);
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: 0 14px 30px rgba(148, 163, 184, 0.25);
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    border-color 0.18s ease, background 0.18s ease;
 }
-.retro-scroll::-webkit-scrollbar-thumb {
-  background: var(--green-primary);
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: rgb(244 114 182); /* pink-400 */
+  box-shadow: 0 22px 50px rgba(148, 163, 184, 0.4);
+  background: radial-gradient(circle at top left, #fdf2ff, #e0f2fe);
 }
-a {
-  color: var(--green-primary);
-  text-decoration: underline;
-  transition: color 0.2s, background 0.2s;
+
+.card-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
 }
-a:hover {
-  color: var(--bg-main);
-  background: var(--green-primary);
-}
-.terminal-bar {
-  background: var(--bg-panel);
-  color: var(--green-secondary);
-  padding: 0.5rem 1rem;
+
+.card-title {
   font-size: 1rem;
-  border-bottom: 2px solid var(--green-secondary);
+  font-weight: 600;
+  color: rgb(15 23 42); /* slate-900 */
+}
+
+.card-tag {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgb(148 163 184); /* slate-400 */
+}
+
+.card-body {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgb(71 85 105); /* slate-600 */
+}
+
+.card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.card-link {
+  font-size: 0.75rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(196 181 253); /* violet-300 */
+  color: rgb(88 28 135); /* purple-900 */
+  text-decoration: none;
+  background: rgba(238, 242, 255, 0.9); /* indigo-50/90 */
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    color 0.15s ease, transform 0.15s ease;
+}
+
+.card-link:hover {
+  border-color: rgb(244 114 182); /* pink-400 */
+  background: rgb(250 250 250);
+  color: rgb(190 24 93); /* rose-700 */
+  transform: translateY(-1px);
+}
+
+.experience-item {
+  border-radius: 0.9rem;
+  border: 1px solid rgb(226 232 240); /* slate-200 */
+  background: #ffffff;
+  padding: 1rem 1.1rem;
+}
+
+@media (min-width: 768px) {
+  .experience-item {
+    padding: 1.25rem 1.4rem;
+  }
+}
+
+.experience-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.experience-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgb(15 23 42); /* slate-900 */
+}
+
+.experience-meta {
+  font-size: 0.75rem;
+  color: rgb(107 114 128); /* gray-500 */
+}
+
+.experience-body {
+  font-size: 0.85rem;
+  color: rgb(71 85 105); /* slate-600 */
+  line-height: 1.65;
+}
+
+.experience-list {
+  margin: 0.25rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.85rem;
+  color: rgb(71 85 105); /* slate-600 */
+  line-height: 1.65;
+}
+
+.experience-list li + li {
+  margin-top: 0.25rem;
+}
+
+.primary-button,
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  padding: 0.55rem 1.15rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  border-width: 1px;
+  border-style: solid;
+  transition: background-color 0.18s ease, border-color 0.18s ease,
+    color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.primary-button {
+  border-color: rgb(244 114 182); /* pink-400 */
+  background: linear-gradient(135deg, #f9a8d4, #a5b4fc);
+  color: rgb(76 29 149); /* purple-800 */
+  box-shadow: 0 18px 40px rgba(244, 114, 182, 0.45);
+}
+
+.primary-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 22px 50px rgba(16, 185, 129, 0.6);
+}
+
+.secondary-button {
+  border-color: rgb(51 65 85); /* slate-700 */
+  background: rgba(248, 250, 252, 0.9); /* slate-50/90 */
+  color: rgb(30 64 175); /* indigo-700 */
+}
+
+.secondary-button:hover {
+  border-color: rgb(129 140 248); /* indigo-400 */
+  background: #ffffff;
+}
+
+/* Project groups (accordion) */
+.project-group {
+  border-radius: 0.9rem;
+  border: 1px solid rgb(226 232 240); /* slate-200 */
+  background: rgba(248, 250, 252, 0.9); /* slate-50/90 */
+  overflow: hidden;
+}
+
+.project-group-summary {
+  list-style: none;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  letter-spacing: 0.1em;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.7rem 0.9rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgb(15 23 42); /* slate-900 */
 }
-.prompt {
-  color: var(--green-primary);
-  font-weight: bold;
-  margin-right: 0.5em;
+
+.project-group-summary::-webkit-details-marker {
+  display: none;
 }
-/* Tree nav styles for web component */
-tree-nav {
-  display: block;
-  border-right: 3px solid #00913a;
-  border-top-left-radius: 14px;
-  border-bottom-left-radius: 14px;
-  background-clip: padding-box;
-  box-shadow: 0 0 0 2px #101613;
+
+.project-group-summary::before {
+  content: "▶";
+  font-size: 0.7rem;
+  margin-right: 0.25rem;
+  color: rgb(148 163 184); /* slate-400 */
 }
-@media (max-width: 768px) {
-  main.retro-border-outer {
-    flex-direction: column !important;
-    height: 100dvh !important;
-    max-height: 100dvh !important;
-    min-height: 0 !important;
-  }
-  tree-nav {
-    width: 100% !important;
-    height: auto !important;
-    min-height: unset !important;
-    max-height: unset !important;
-    border-bottom: 2px solid #00c932;
-    border-right: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem 0;
-  }
-  section.retro-border-inner-none {
-    max-height: 100dvh !important;
-    min-height: 0 !important;
-    height: 100% !important;
-  }
-  .retro-scroll {
-    overflow-y: auto;
-    max-height: calc(100dvh - 48px) !important;
-  }
+
+.project-group[open] .project-group-summary::before {
+  content: "▼";
 }
-/* ...existing code... */
+
+.project-group-count {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgb(148 163 184); /* slate-400 */
+}
+
+.project-group-body {
+  border-top: 1px solid rgb(226 232 240); /* slate-200 */
+  padding: 0.9rem 0.9rem 1rem;
+}
+
+/* Navigation links */
+.nav-link {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Scroll offset for sections to account for fixed navbar */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+/* Hero slideshow container */
+.hero-slideshow-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Hero slideshow background */
+.hero-slideshow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Use contain to ensure full image is visible, then scale up if needed */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: translateX(0);
+  transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+  z-index: 0;
+  will-change: transform, opacity;
+}
+
+.hero-slideshow.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Better image fitting - ensures images cover the area without cropping important parts */
+.hero-slideshow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.3); /* Subtle dark overlay for better text contrast */
+  z-index: -1;
+}
+
+.hero-slideshow::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(30, 41, 59, 0.5));
+  z-index: 1;
+}
+
+/* Pixel art rendering for background images */
+.pixel-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures it fills the container */
+  
+  /* THE MAGIC PART: Keeps sharp edges when zooming in */
+  image-rendering: pixelated;       /* Chrome/Edge */
+  image-rendering: -moz-crisp-edges; /* Firefox */
+  image-rendering: crisp-edges;      /* Standard */
+}
+
+/* Apply pixel rendering to background images */
+.hero-slideshow {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
