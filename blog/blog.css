@@ -20,7 +20,14 @@
   --accent:       #22d3ee;
   --accent-dim:   rgba(34, 211, 238, 0.1);
   --accent-2:     #a78bfa;
+  --accent-2-dim: rgba(167, 139, 250, 0.1);
   --green:        #4ade80;
+
+  /* Derived / theme-switchable */
+  --nav-bg:          rgba(6, 6, 13, 0.80);
+  --nav-bg-scrolled: rgba(6, 6, 13, 0.94);
+  --grid-line:       rgba(34, 211, 238, 0.04);
+  --code-bg:         #0d1117;
 
   --nav-h:   64px;
   --max-w:   900px;
@@ -54,15 +61,15 @@ a { color: inherit; text-decoration: none; }
   inset-inline: 0;
   z-index: 100;
   height: var(--nav-h);
-  background: rgba(6, 6, 13, 0.8);
+  background: var(--nav-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   transition: background 0.3s, border-color 0.3s;
 }
 .site-nav.scrolled {
-  background: rgba(6, 6, 13, 0.94);
-  border-bottom-color: rgba(148, 163, 184, 0.14);
+  background: var(--nav-bg-scrolled);
+  border-bottom-color: var(--border-hover);
 }
 
 .nav-inner {
@@ -313,8 +320,8 @@ a { color: inherit; text-decoration: none; }
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(34, 211, 238, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 211, 238, 0.04) 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 28px 28px;
 }
 .post-card-initials {
@@ -547,7 +554,7 @@ a { color: inherit; text-decoration: none; }
 
 /* Code blocks — Prism.js overrides */
 .prose pre {
-  background: #0d1117 !important;
+  background: var(--code-bg) !important;
   border: 1px solid rgba(148, 163, 184, 0.1);
   border-radius: var(--r) !important;
   padding: 20px 20px !important;

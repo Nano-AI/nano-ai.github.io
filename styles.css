@@ -18,6 +18,15 @@
   --accent-2-dim: rgba(167, 139, 250, 0.1);
   --green:        #4ade80;
 
+  /* Derived / theme-switchable */
+  --nav-bg:          rgba(6, 6, 13, 0.75);
+  --nav-bg-scrolled: rgba(6, 6, 13, 0.92);
+  --grid-line:       rgba(34, 211, 238, 0.035);
+  --glow-accent:     rgba(34, 211, 238, 0.11);
+  --glow-accent-2:   rgba(167, 139, 250, 0.06);
+  --code-bg:         #0d1117;
+  --name-gradient:   linear-gradient(135deg, #ffffff 0%, #e2e8f0 45%, #67e8f9 100%);
+
   --nav-h:   64px;
   --max-w:   900px;
   --r:       10px;
@@ -59,7 +68,7 @@ img, svg { display: block; }
   inset-inline: 0;
   z-index: 100;
   height: var(--nav-h);
-  background: rgba(6, 6, 13, 0.75);
+  background: var(--nav-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
@@ -67,8 +76,8 @@ img, svg { display: block; }
 }
 
 .site-nav.scrolled {
-  background: rgba(6, 6, 13, 0.92);
-  border-bottom-color: rgba(148, 163, 184, 0.14);
+  background: var(--nav-bg-scrolled);
+  border-bottom-color: var(--border-hover);
 }
 
 .nav-inner {
@@ -205,8 +214,8 @@ img, svg { display: block; }
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(34, 211, 238, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 211, 238, 0.035) 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, black 20%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, black 20%, transparent 100%);
@@ -219,7 +228,7 @@ img, svg { display: block; }
   transform: translateX(-50%);
   width: 900px;
   height: 600px;
-  background: radial-gradient(ellipse at center, rgba(34, 211, 238, 0.11) 0%, transparent 65%);
+  background: radial-gradient(ellipse at center, var(--glow-accent) 0%, transparent 65%);
   animation: glow-breathe 7s ease-in-out infinite;
 }
 
@@ -229,7 +238,7 @@ img, svg { display: block; }
   left: 15%;
   width: 500px;
   height: 500px;
-  background: radial-gradient(ellipse at center, rgba(167, 139, 250, 0.06) 0%, transparent 65%);
+  background: radial-gradient(ellipse at center, var(--glow-accent-2) 0%, transparent 65%);
 }
 
 @keyframes glow-breathe {
@@ -280,7 +289,7 @@ img, svg { display: block; }
   font-weight: 800;
   line-height: 1.0;
   letter-spacing: -0.035em;
-  background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 45%, #67e8f9 100%);
+  background: var(--name-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
