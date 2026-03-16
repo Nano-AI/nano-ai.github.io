@@ -3,615 +3,470 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aditya Bankoti | Portfolio</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Aditya Bankoti</title>
+    <meta name="description" content="Computer Science student at UW–Madison. Building things at the intersection of graphics, AI, and systems." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="min-h-screen bg-slate-50 text-slate-900">
-    <!-- Navigation bar - fixed at top -->
-    <nav class="fixed top-0 left-0 right-0 z-50 w-full border-b border-white/20 bg-black/30 backdrop-blur-md">
-      <div class="max-w-5xl mx-auto px-4 py-4">
-        <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm md:text-base">
-          <a href="#projects" class="nav-link">Projects</a>
-          <a href="#experience" class="nav-link">Experience</a>
-          <a href="#education" class="nav-link">Education</a>
-          <a href="#hobbies" class="nav-link">Hobbies</a>
-          <a href="#contact" class="nav-link">Contact</a>
-        </div>
+  <body>
+
+    <!-- ─── NAVIGATION ─────────────────────────────────────────── -->
+    <nav class="site-nav" id="site-nav">
+      <div class="nav-inner">
+        <a href="#top" class="nav-logo">AB<span class="blink">_</span></a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="blog/index.html" class="nav-link">Blog</a></li>
+          <li><a href="#contact" class="nav-link nav-link-cta">Contact</a></li>
+        </ul>
       </div>
     </nav>
 
-    <!-- Full-width header with slideshow background -->
-    <header class="relative w-full overflow-hidden min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
-      <!-- Background slideshow -->
-      <div id="hero-slideshow-container" class="hero-slideshow-container">
-        <div id="hero-slideshow-1" class="hero-slideshow pixel-bg active"></div>
-        <div id="hero-slideshow-2" class="hero-slideshow pixel-bg"></div>
+    <!-- ─── HERO ───────────────────────────────────────────────── -->
+    <header class="hero" id="top">
+      <div class="hero-bg">
+        <div class="hero-grid"></div>
+        <div class="hero-glow-cyan"></div>
+        <div class="hero-glow-violet"></div>
       </div>
-      <!-- Header content -->
-      <div class="relative z-10 max-w-5xl mx-auto px-4 py-20 md:py-28 lg:py-32 flex items-center min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
-        <div class="space-y-6 w-full">
-          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white drop-shadow-lg">Aditya Bankoti</h1>
-          <p class="text-lg md:text-xl lg:text-2xl text-white/95 drop-shadow-md">
-            Computer science at The University of Wisconsin–Madison
-          </p>
-          <div class="flex flex-wrap gap-3 mt-6">
-            <a
-              href="https://github.com/Nano-AI"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/20 backdrop-blur-sm px-5 py-2 text-sm md:text-base text-white hover:bg-white/30 hover:border-white/50 transition-colors"
-            >
-              <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
-              GitHub
-            </a>
-            <a
-              href="https://www.youtube.com/@nano-ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/20 backdrop-blur-sm px-5 py-2 text-sm md:text-base text-white hover:bg-white/30 hover:border-white/50 transition-colors"
-            >
-              <span class="h-1.5 w-1.5 rounded-full bg-rose-400"></span>
-              YouTube
-            </a>
-            <a
-              href="https://www.linkedin.com/in/adityanb/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/20 backdrop-blur-sm px-5 py-2 text-sm md:text-base text-white hover:bg-white/30 hover:border-white/50 transition-colors"
-            >
-              <span class="h-1.5 w-1.5 rounded-full bg-sky-400"></span>
-              LinkedIn
-            </a>
-          </div>
+      <div class="hero-content">
+        <h1 class="hero-name">Aditya<br />Bankoti</h1>
+        <p class="hero-tagline">
+          Computer Science @ <span class="text-accent">University of Wisconsin–Madison</span>
+        </p>
+        <div class="hero-actions">
+          <a href="https://github.com/Nano-AI" target="_blank" rel="noopener noreferrer" class="btn-outline">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+            </svg>
+            GitHub
+          </a>
+          <a href="https://www.youtube.com/@nano-ai" target="_blank" rel="noopener noreferrer" class="btn-outline">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            YouTube
+          </a>
+          <a href="https://www.linkedin.com/in/adityanb/" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            LinkedIn →
+          </a>
         </div>
       </div>
+      <div class="hero-scroll-hint">scroll ↓</div>
     </header>
 
-    <main id="top" class="max-w-5xl mx-auto px-4 py-10 md:py-16 space-y-20 md:space-y-28">
-      <!-- Projects -->
-      <section id="projects" class="space-y-6">
-        <div class="flex items-baseline justify-between gap-4">
-          <h2 class="text-xl md:text-2xl font-semibold text-slate-900">Projects</h2>
-          <!-- <span class="text-xs text-slate-500">Grouped by area · more on GitHub / YouTube</span> -->
-        </div>
+    <!-- ─── MAIN ───────────────────────────────────────────────── -->
+    <main class="site-main">
 
-        <div class="space-y-3">
-          <!-- Full‑stack / web -->
-          <details class="project-group">
-            <summary class="project-group-summary">
-              <span>FULL‑STACK & WEB</span>
-              <span class="project-group-count">3 projects</span>
+      <!-- PROJECTS -->
+      <section id="projects" class="section">
+        <p class="section-eyebrow">// projects</p>
+        <h2 class="section-heading">Things I've Built</h2>
+
+        <div class="accordion-list">
+
+          <details class="accordion">
+            <summary class="accordion-summary">
+              <span class="accordion-left">
+                <span class="accordion-arrow">▶</span>
+                <span class="accordion-title">Full‑Stack &amp; Web</span>
+              </span>
+              <span class="accordion-count">3 projects</span>
             </summary>
-            <div class="project-group-body">
-              <div class="grid md:grid-cols-2 gap-5 md:gap-6">
-                <!-- CleanEats -->
-                <article class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">CleanEats</h3>
-                    <p class="card-tag">Full‑stack app</p>
+            <div class="accordion-body">
+              <div class="card-grid">
+
+                <article class="project-card">
+                  <div class="card-top">
+                    <h3 class="card-name">CleanEats</h3>
+                    <span class="card-tag">Full‑stack app</span>
                   </div>
-                  <p class="card-body">
-                    Scan food barcodes to see nutritional and health information, helping people make
-                    better choices at the store.
-                  </p>
+                  <p class="card-desc">Scan food barcodes to see nutritional and health information, helping people make better choices at the store.</p>
                   <div class="card-links">
-                    <a
-                      href="https://github.com/Nano-AI/CleanEats"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="card-link"
-                      >GitHub</a
-                    >
-                    <a
-                      href="https://www.youtube.com/watch?v=FSq0EKt5-Bs"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="card-link"
-                      >Demo</a
-                    >
+                    <a href="https://github.com/Nano-AI/CleanEats" target="_blank" rel="noopener noreferrer" class="card-link">GitHub ↗</a>
+                    <a href="https://www.youtube.com/watch?v=FSq0EKt5-Bs" target="_blank" rel="noopener noreferrer" class="card-link">Demo ↗</a>
                   </div>
                 </article>
 
-                <!-- Litter.ly -->
-                <article class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Litter.ly</h3>
-                    <p class="card-tag">Social platform</p>
+                <article class="project-card">
+                  <div class="card-top">
+                    <h3 class="card-name">Litter.ly</h3>
+                    <span class="card-tag">Social platform</span>
                   </div>
-                  <p class="card-body">
-                    A social network centered around community clean‑up, making it easier to organize and
-                    share local environmental impact.
-                  </p>
+                  <p class="card-desc">A social network centered around community clean‑up, making it easier to organize and share local environmental impact.</p>
                   <div class="card-links">
-                    <a
-                      href="https://github.com/Nano-AI/litter.ly"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="card-link"
-                      >GitHub</a
-                    >
-                    <a
-                      href="https://www.youtube.com/watch?v=dlUDO7SRVz8"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="card-link"
-                      >Demo</a
-                    >
+                    <a href="https://github.com/Nano-AI/litter.ly" target="_blank" rel="noopener noreferrer" class="card-link">GitHub ↗</a>
+                    <a href="https://www.youtube.com/watch?v=dlUDO7SRVz8" target="_blank" rel="noopener noreferrer" class="card-link">Demo ↗</a>
                   </div>
                 </article>
 
-                <!-- MedCheck -->
-                <article class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">MedCheck</h3>
-                    <p class="card-tag">Hackathon · Blockchain in pharmacy</p>
+                <article class="project-card">
+                  <div class="card-top">
+                    <h3 class="card-name">MedCheck</h3>
+                    <span class="card-tag">Hackathon · Blockchain</span>
                   </div>
-                  <p class="card-body">
-                    Uses an Ethereum‑based ledger to let pharmacies log drug batches and warnings on‑chain,
-                    with QR codes patients can scan to verify authenticity, dosage, and manufacturer alerts.
-                  </p>
+                  <p class="card-desc">Uses an Ethereum‑based ledger to let pharmacies log drug batches on‑chain, with QR codes patients can scan to verify authenticity and dosage.</p>
                   <div class="card-links">
-                    <a
-                      href="https://www.youtube.com/watch?v=cdb0WkGtaUc"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="card-link"
-                      >Demo</a
-                    >
-                    <a
-                      href="https://devpost.com/software/medcheck-pg7orq"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="card-link"
-                      >Devpost</a
-                    >
-                    <a
-                      href="https://github.com/Nano-AI/Med-Check"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="card-link"
-                      >GitHub</a
-                    >
+                    <a href="https://www.youtube.com/watch?v=cdb0WkGtaUc" target="_blank" rel="noopener noreferrer" class="card-link">Demo ↗</a>
+                    <a href="https://devpost.com/software/medcheck-pg7orq" target="_blank" rel="noopener noreferrer" class="card-link">Devpost ↗</a>
+                    <a href="https://github.com/Nano-AI/Med-Check" target="_blank" rel="noopener noreferrer" class="card-link">GitHub ↗</a>
                   </div>
                 </article>
+
               </div>
             </div>
           </details>
 
-          <!-- AI / ML -->
-          <details class="project-group">
-            <summary class="project-group-summary">
-              <span>AI & MACHINE LEARNING</span>
-              <span class="project-group-count">2 projects</span>
+          <details class="accordion">
+            <summary class="accordion-summary">
+              <span class="accordion-left">
+                <span class="accordion-arrow">▶</span>
+                <span class="accordion-title">AI &amp; Machine Learning</span>
+              </span>
+              <span class="accordion-count">2 projects</span>
             </summary>
-            <div class="project-group-body">
-              <div class="grid md:grid-cols-2 gap-5 md:gap-6">
-                <!-- Smarty Pants -->
-                <article class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Smarty Pants</h3>
-                    <p class="card-tag">Hackathon · AI / RAG</p>
+            <div class="accordion-body">
+              <div class="card-grid">
+
+                <article class="project-card">
+                  <div class="card-top">
+                    <h3 class="card-name">Smarty Pants</h3>
+                    <span class="card-tag">Hackathon · RAG</span>
                   </div>
-                  <p class="card-body">
-                    An LLM‑powered tool that uses retrieval‑augmented generation to help students quickly
-                    find scholarships and opportunities.
-                  </p>
+                  <p class="card-desc">An LLM‑powered tool that uses retrieval‑augmented generation to help students quickly find scholarships and opportunities.</p>
                   <div class="card-links">
-                    <a
-                      href="https://www.youtube.com/watch?v=PzeFaZ95Kig"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="card-link"
-                      >Demo</a
-                    >
+                    <a href="https://www.youtube.com/watch?v=PzeFaZ95Kig" target="_blank" rel="noopener noreferrer" class="card-link">Demo ↗</a>
                   </div>
                 </article>
 
-                <!-- Digit Recognizer -->
-                <article class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Digit Recognizer</h3>
-                    <p class="card-tag">AI / ML</p>
+                <article class="project-card">
+                  <div class="card-top">
+                    <h3 class="card-name">Digit Recognizer</h3>
+                    <span class="card-tag">AI / ML</span>
                   </div>
-                  <p class="card-body">
-                    Python digit recognizer with a custom GUI, trained on image data without any external
-                    ML libraries besides NumPy.
-                  </p>
+                  <p class="card-desc">Python digit recognizer with a custom GUI, trained on image data without any external ML libraries besides NumPy.</p>
                   <div class="card-links">
-                    <a
-                      href="https://www.youtube.com/watch?v=c63ioyWuPUM"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="card-link"
-                      >Demo</a
-                    >
+                    <a href="https://www.youtube.com/watch?v=c63ioyWuPUM" target="_blank" rel="noopener noreferrer" class="card-link">Demo ↗</a>
                   </div>
                 </article>
+
               </div>
             </div>
           </details>
 
-          <!-- Graphics / engines -->
-          <details class="project-group">
-            <summary class="project-group-summary">
-              <span>GRAPHICS & ENGINES</span>
-              <span class="project-group-count">5 projects</span>
+          <details class="accordion">
+            <summary class="accordion-summary">
+              <span class="accordion-left">
+                <span class="accordion-arrow">▶</span>
+                <span class="accordion-title">Graphics &amp; Engines</span>
+              </span>
+              <span class="accordion-count">5 projects</span>
             </summary>
-            <div class="project-group-body">
-              <div class="grid md:grid-cols-2 gap-5 md:gap-6">
-                <!-- Ray Tracing -->
-                <article class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Ray Tracing</h3>
-                    <p class="card-tag">Graphics</p>
+            <div class="accordion-body">
+              <div class="card-grid">
+
+                <article class="project-card">
+                  <div class="card-top">
+                    <h3 class="card-name">Ray Tracing</h3>
+                    <span class="card-tag">Graphics</span>
                   </div>
-                  <p class="card-body">
-                    Java ray tracer exploring depth perception, sphere rendering, lighting, and basic
-                    transparency.
-                  </p>
+                  <p class="card-desc">Java ray tracer exploring depth perception, sphere rendering, lighting, and basic transparency.</p>
                   <div class="card-links">
-                    <a
-                      href="https://www.youtube.com/watch?v=9r9MSqD6vKc"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="card-link"
-                      >Demo</a
-                    >
+                    <a href="https://www.youtube.com/watch?v=9r9MSqD6vKc" target="_blank" rel="noopener noreferrer" class="card-link">Demo ↗</a>
                   </div>
                 </article>
 
-                <!-- Ray Caster -->
-                <article class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Ray Caster</h3>
-                    <p class="card-tag">Graphics · Engine</p>
+                <article class="project-card">
+                  <div class="card-top">
+                    <h3 class="card-name">Ray Caster</h3>
+                    <span class="card-tag">Graphics · Engine</span>
                   </div>
-                  <p class="card-body">
-                    A Wolfenstein‑style ray‑casting engine that renders a 3D maze from a 2D grid map.
-                  </p>
+                  <p class="card-desc">A Wolfenstein‑style ray‑casting engine that renders a 3D maze from a 2D grid map.</p>
                   <div class="card-links">
-                    <a
-                      href="https://www.youtube.com/watch?v=U9RTGmFqN7U"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="card-link"
-                      >Demo</a
-                    >
+                    <a href="https://www.youtube.com/watch?v=U9RTGmFqN7U" target="_blank" rel="noopener noreferrer" class="card-link">Demo ↗</a>
                   </div>
                 </article>
 
-                <!-- Fractal Renderer -->
-                <article class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Fractal Renderer</h3>
-                    <p class="card-tag">Graphics · Math</p>
+                <article class="project-card">
+                  <div class="card-top">
+                    <h3 class="card-name">Fractal Renderer</h3>
+                    <span class="card-tag">Graphics · Math</span>
                   </div>
-                  <p class="card-body">
-                    Python renderer for visualizing fractals, experimenting with color palettes and zoom‑in
-                    animations.
-                  </p>
+                  <p class="card-desc">Python renderer for visualizing fractals, experimenting with color palettes and zoom‑in animations.</p>
                   <div class="card-links">
-                    <a
-                      href="https://www.youtube.com/watch?v=baKRlHixcQY"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="card-link"
-                      >Demo</a
-                    >
+                    <a href="https://www.youtube.com/watch?v=baKRlHixcQY" target="_blank" rel="noopener noreferrer" class="card-link">Demo ↗</a>
                   </div>
                 </article>
 
-                <!-- PSX Demo -->
-                <article class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">PSX Demo</h3>
-                    <p class="card-tag">Game · Graphics</p>
+                <article class="project-card">
+                  <div class="card-top">
+                    <h3 class="card-name">PSX Demo</h3>
+                    <span class="card-tag">Game · Graphics</span>
                   </div>
-                  <p class="card-body">
-                    A PlayStation‑style demo scene built in Godot, focusing on low‑poly visuals and retro
-                    rendering techniques.
-                  </p>
+                  <p class="card-desc">A PlayStation‑style demo scene built in Godot, focusing on low‑poly visuals and retro rendering techniques.</p>
                   <div class="card-links">
-                    <a
-                      href="https://www.youtube.com/watch?v=1s81vzSt3_g"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="card-link"
-                      >Demo</a
-                    >
+                    <a href="https://www.youtube.com/watch?v=1s81vzSt3_g" target="_blank" rel="noopener noreferrer" class="card-link">Demo ↗</a>
                   </div>
                 </article>
 
-                <!-- Physics Collider -->
-                <article class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Physics Collider</h3>
-                    <p class="card-tag">Simulation · C++</p>
+                <article class="project-card">
+                  <div class="card-top">
+                    <h3 class="card-name">Physics Collider</h3>
+                    <span class="card-tag">Simulation · C++</span>
                   </div>
-                  <p class="card-body">
-                    A RayLib + C++ demo that simulates sphere collisions in 3D, visualizing basic physics
-                    and collision response.
-                  </p>
+                  <p class="card-desc">A RayLib + C++ demo that simulates sphere collisions in 3D, visualizing basic physics and collision response.</p>
                   <div class="card-links">
-                    <a
-                      href="https://www.youtube.com/watch?v=-c1E1xJwxCU"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="card-link"
-                      >Demo</a
-                    >
+                    <a href="https://www.youtube.com/watch?v=-c1E1xJwxCU" target="_blank" rel="noopener noreferrer" class="card-link">Demo ↗</a>
                   </div>
                 </article>
+
               </div>
             </div>
           </details>
 
-          <!-- Games / simulations -->
-          <details class="project-group">
-            <summary class="project-group-summary">
-              <span>GAMES & SIMULATIONS</span>
-              <span class="project-group-count">5 projects</span>
+          <details class="accordion">
+            <summary class="accordion-summary">
+              <span class="accordion-left">
+                <span class="accordion-arrow">▶</span>
+                <span class="accordion-title">Games &amp; Simulations</span>
+              </span>
+              <span class="accordion-count">5 projects</span>
             </summary>
-            <div class="project-group-body">
-              <div class="grid md:grid-cols-2 gap-5 md:gap-6">
-                <!-- SAT‑Shark -->
-                <article class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">SAT‑Shark</h3>
-                    <p class="card-tag">Multiplayer game</p>
+            <div class="accordion-body">
+              <div class="card-grid">
+
+                <article class="project-card">
+                  <div class="card-top">
+                    <h3 class="card-name">SAT‑Shark</h3>
+                    <span class="card-tag">Multiplayer game</span>
                   </div>
-                  <p class="card-body">
-                    A competitive, multiplayer SAT prep game that turns practice questions into fast,
-                    engaging gameplay with friends.
-                  </p>
+                  <p class="card-desc">A competitive, multiplayer SAT prep game that turns practice questions into fast, engaging gameplay with friends.</p>
                   <div class="card-links">
-                    <a
-                      href="https://www.youtube.com/watch?v=mAVRRUz1FxE"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="card-link"
-                      >Demo</a
-                    >
+                    <a href="https://www.youtube.com/watch?v=mAVRRUz1FxE" target="_blank" rel="noopener noreferrer" class="card-link">Demo ↗</a>
                   </div>
                 </article>
 
-                <!-- Fast Paced Shooter -->
-                <article class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Fast Paced Shooter</h3>
-                    <p class="card-tag">Game</p>
+                <article class="project-card">
+                  <div class="card-top">
+                    <h3 class="card-name">Fast Paced Shooter</h3>
+                    <span class="card-tag">Game</span>
                   </div>
-                  <p class="card-body">
-                    A Unity‑based shooter prototype built for a game design class, experimenting with
-                    movement, aiming, and enemy AI.
-                  </p>
+                  <p class="card-desc">A Unity‑based shooter prototype built for a game design class, experimenting with movement, aiming, and enemy AI.</p>
                   <div class="card-links">
-                    <a
-                      href="https://www.youtube.com/watch?v=i5At7d9uaQ0"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="card-link"
-                      >Demo</a
-                    >
+                    <a href="https://www.youtube.com/watch?v=i5At7d9uaQ0" target="_blank" rel="noopener noreferrer" class="card-link">Demo ↗</a>
                   </div>
                 </article>
 
-                <!-- Pac‑Man Clone -->
-                <article class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Pac‑Man Clone</h3>
-                    <p class="card-tag">Game</p>
+                <article class="project-card">
+                  <div class="card-top">
+                    <h3 class="card-name">Pac‑Man Clone</h3>
+                    <span class="card-tag">Game</span>
                   </div>
-                  <p class="card-body">
-                    A Pac‑Man clone built from scratch with no extra libraries, focusing on precise movement
-                    and classic arcade feel.
-                  </p>
+                  <p class="card-desc">A Pac‑Man clone built from scratch with no extra libraries, focusing on precise movement and classic arcade feel.</p>
                   <div class="card-links">
-                    <a
-                      href="https://www.youtube.com/watch?v=TIrYUZJPQ_k"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="card-link"
-                      >Demo</a
-                    >
+                    <a href="https://www.youtube.com/watch?v=TIrYUZJPQ_k" target="_blank" rel="noopener noreferrer" class="card-link">Demo ↗</a>
                   </div>
                 </article>
 
-                <!-- Chess Game -->
-                <article class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Chess Game</h3>
-                    <p class="card-tag">Game · C++</p>
+                <article class="project-card">
+                  <div class="card-top">
+                    <h3 class="card-name">Chess Game</h3>
+                    <span class="card-tag">Game · C++</span>
                   </div>
-                  <p class="card-body">
-                    A chess implementation using C++ and SDL2, including move logic and a simple 2D
-                    interface.
-                  </p>
+                  <p class="card-desc">A chess implementation using C++ and SDL2, including full move logic and a clean 2D interface.</p>
                   <div class="card-links">
-                    <a
-                      href="https://www.youtube.com/watch?v=EjIU1NLMAPk"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="card-link"
-                      >Demo</a
-                    >
+                    <a href="https://www.youtube.com/watch?v=EjIU1NLMAPk" target="_blank" rel="noopener noreferrer" class="card-link">Demo ↗</a>
                   </div>
                 </article>
 
-                <!-- Sand Simulator -->
-                <article class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Sand Simulator</h3>
-                    <p class="card-tag">Simulation</p>
+                <article class="project-card">
+                  <div class="card-top">
+                    <h3 class="card-name">Sand Simulator</h3>
+                    <span class="card-tag">Simulation</span>
                   </div>
-                  <p class="card-body">
-                    A falling‑sand particle simulator using WinGDI, exploring simple physics and cellular
-                    automata‑style rules.
-                  </p>
+                  <p class="card-desc">A falling‑sand particle simulator using WinGDI, exploring simple physics and cellular automata‑style rules.</p>
                   <div class="card-links">
-                    <a
-                      href="https://www.youtube.com/watch?v=jb5hq8EoAU8"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="card-link"
-                      >Demo</a
-                    >
+                    <a href="https://www.youtube.com/watch?v=jb5hq8EoAU8" target="_blank" rel="noopener noreferrer" class="card-link">Demo ↗</a>
                   </div>
                 </article>
+
               </div>
             </div>
           </details>
+
         </div>
       </section>
 
-      <!-- Experience -->
-      <section id="experience" class="space-y-6">
-        <h2 class="text-xl md:text-2xl font-semibold text-slate-900">Experience</h2>
+      <!-- EXPERIENCE -->
+      <section id="experience" class="section section-divided">
+        <p class="section-eyebrow">// experience</p>
+        <h2 class="section-heading">Where I've Worked</h2>
 
-        <div class="space-y-4">
-          <!-- Swim Instructor -->
-          <article class="experience-item">
-            <header class="experience-header">
-              <div>
-                <h3 class="experience-title">Swim Instructor</h3>
-                <p class="experience-meta">Columbia Athletic Clubs – Pine Lake · Part‑time</p>
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-role">Data Science Intern</h3>
+                  <p class="timeline-org">iLink Digital</p>
+                </div>
+                <div class="timeline-meta">
+                  <span class="timeline-date">Jun 2024 – Aug 2024</span>
+                  <span class="timeline-badge">Bothell, WA</span>
+                </div>
               </div>
-              <p class="experience-meta">Oct 2024 – Present · Washington · On‑site</p>
-            </header>
-            <p class="experience-body">
-              Teaching private lessons and lifeguarding, combining clear communication, patience,
-              and attention to detail—skills that also translate into mentoring and collaborating on
-              technical teams.
-            </p>
-          </article>
-
-          <!-- iLink Digital -->
-          <article class="experience-item">
-            <header class="experience-header">
-              <div>
-                <h3 class="experience-title">Software / Data Intern</h3>
-                <p class="experience-meta">iLink Digital · Internship</p>
-              </div>
-              <p class="experience-meta">Jun 2024 – Aug 2024 · Washington · Remote</p>
-            </header>
-            <ul class="experience-list">
-              <li>
-                Built interactive Power BI dashboards that made it easier for stakeholders to explore
-                data and track key metrics in real time.
-              </li>
-              <li>
-                Cleaned and analyzed datasets using Python and BI tools to surface trends and
-                opportunities for the business.
-              </li>
-              <li>
-                Presented findings to senior leadership, turning technical analysis into clear,
-                actionable recommendations.
-              </li>
-            </ul>
-          </article>
-
-          <!-- Code Ninjas -->
-          <article class="experience-item">
-            <header class="experience-header">
-              <div>
-                <h3 class="experience-title">Coding Instructor</h3>
-                <p class="experience-meta">Code Ninjas · Part‑time</p>
-              </div>
-              <p class="experience-meta">Jul 2022 – Feb 2024 · Sammamish, WA · On‑site</p>
-            </header>
-            <ul class="experience-list">
-              <li>
-                Taught programming fundamentals to elementary students through game development in
-                JavaScript and C#.
-              </li>
-              <li>
-                Ran hands‑on workshops that encouraged curiosity, problem‑solving, and teamwork.
-              </li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <!-- Education -->
-      <section id="education" class="space-y-6">
-        <h2 class="text-xl md:text-2xl font-semibold text-slate-900">Education</h2>
-
-        <div class="space-y-4">
-          <!-- University of Wisconsin-Madison -->
-          <article class="experience-item">
-            <header class="experience-header">
-              <div>
-                <h3 class="experience-title">University of Wisconsin–Madison</h3>
-                <p class="experience-meta">Bachelor of Science - BS, Computer Science</p>
-              </div>
-              <p class="experience-meta">Aug 2025 – Present</p>
-            </header>
-            <div class="mt-3">
-              <p class="text-sm font-semibold text-slate-700 mb-2">Fall 2025:</p>
-              <ul class="list-disc pl-5 space-y-1 text-sm text-slate-600">
-                <li>COM ARTS 260 – Communication and Human Behavior</li>
-                <li>COMP SCI 252 – Introduction to Computer Engineering</li>
-                <li>MATH / COMP SCI 240 – Introduction to Discrete Mathematics</li>
-                <li>COMP SCI 400 – Programming III</li>
+              <ul class="timeline-list">
+                <li>Built Python data pipelines to ingest, validate, and normalize market datasets; automated cleaning and feature standardization.</li>
+                <li>Wrote reusable SQL reporting tables (CTEs / window functions) powering KPI dashboards and recurring analytics.</li>
               </ul>
             </div>
-          </article>
+          </div>
 
-          <!-- Bellevue College -->
-          <article class="experience-item">
-            <header class="experience-header">
-              <div>
-                <h3 class="experience-title">Bellevue College</h3>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-role">Programming Instructor</h3>
+                  <p class="timeline-org">Code Ninjas</p>
+                </div>
+                <div class="timeline-meta">
+                  <span class="timeline-date">Jul 2022 – Feb 2024</span>
+                  <span class="timeline-badge">Sammamish, WA</span>
+                </div>
               </div>
-              <p class="experience-meta">Jul 2024 – Jun 2025</p>
-            </header>
-            <div class="mt-3">
-              <p class="text-sm font-semibold text-slate-700 mb-2">Grade: 3.9 / 4.0</p>
-              <ul class="list-disc pl-5 space-y-1 text-sm text-slate-600">
-                <li><span class="font-semibold">Summer 2024:</span> Calculus IV (MATH& 254), Fundamentals of Computer Science II (CS 211)</li>
-                <li><span class="font-semibold">Fall 2024:</span> Differential Equations (MATH 238)</li>
-                <li><span class="font-semibold">Spring 2025:</span> Introduction to Linear Algebra (MATH 208)</li>
+              <ul class="timeline-list">
+                <li>Taught Java, C#, and Lua fundamentals (OOP, debugging, decomposition); coached students through building complete projects end-to-end.</li>
+                <li>Performed code reviews and refactors to improve correctness, structure, and runtime performance across student projects.</li>
+                <li>Led small-group sessions and demos; translated technical decisions into clear explanations for mixed audiences.</li>
               </ul>
             </div>
-          </article>
+          </div>
+
         </div>
       </section>
 
-      <!-- Hobbies -->
-      <section id="hobbies" class="space-y-4 border-t border-slate-200 pt-10">
-        <h2 class="text-xl md:text-2xl font-semibold text-slate-900">Hobbies</h2>
-        <p class="text-sm md:text-base text-slate-600 max-w-xl">
-          Outside of code, I care a lot about staying creative and active—it keeps my problem‑solving
-          sharper and projects more fun.
-        </p>
-        <ul class="list-disc pl-5 text-sm md:text-base text-slate-700 space-y-1">
-          <li><span class="font-semibold">Music</span>: Guitar (acoustic & electric), ukulele, and casual listening.</li>
-          <li><span class="font-semibold">Weight lifting</span>: Strength training and staying consistent in the gym.</li>
-          <li><span class="font-semibold">Gaming</span>: Exploring a wide range of genres and game design ideas. My favorite genre recently has been Indie-style 2D games.</li>
-          <li><span class="font-semibold">Photography</span>: Shooting and editing photos, with prior experience with formal course experience in photography.</li>
-        </ul>
-      </section>
+      <!-- EDUCATION -->
+      <section id="education" class="section section-divided">
+        <p class="section-eyebrow">// education</p>
+        <h2 class="section-heading">Academic Background</h2>
 
-      <!-- Contact -->
-      <section id="contact" class="space-y-5 border-t border-slate-200 pt-10">
-        <h2 class="text-xl md:text-2xl font-semibold text-slate-900">Say Hello!</h2>
-        <p class="text-sm md:text-base text-slate-600 max-w-xl">
-          Open to internships, part‑time roles, and collaborations on interesting projects. The
-          fastest way to reach me is through LinkedIn, but you can also explore my work on GitHub
-          and YouTube.
-        </p>
-        <div class="flex flex-wrap gap-3">
-          <a
-            href="https://www.linkedin.com/in/adityanb/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="primary-button"
-            >Message on LinkedIn</a
-          >
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-dot timeline-dot--accent"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-role">University of Wisconsin–Madison</h3>
+                  <p class="timeline-org">B.S. Computer Science · GPA: 3.92 / 4.00</p>
+                </div>
+                <div class="timeline-meta">
+                  <span class="timeline-date">Expected May 2027</span>
+                </div>
+              </div>
+              <div class="timeline-courses">
+                <p class="courses-label">Coursework</p>
+                <ul class="courses-list">
+                  <li>CS 577 – Algorithms</li>
+                  <li>CS 354 – Machine Organization &amp; Systems</li>
+                  <li>CS 532 – Matrix Methods in Machine Learning</li>
+                  <li>MATH 320 – Linear Algebra &amp; Differential Equations</li>
+                  <li>MATH 234 – Multivariable Calculus</li>
+                </ul>
+                <p class="courses-label" style="margin-top:12px;">Activities</p>
+                <ul class="courses-list">
+                  <li>Cardinal Trading Group — Quant Software Engineer</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-role">Bellevue College</h3>
+                  <p class="timeline-org">Math coursework · GPA: 3.90 / 4.00</p>
+                </div>
+                <div class="timeline-meta">
+                  <span class="timeline-date">Jul 2024 – Jun 2025</span>
+                </div>
+              </div>
+              <div class="timeline-courses">
+                <ul class="courses-list">
+                  <li>Linear Algebra</li>
+                  <li>Differential Equations</li>
+                  <li>Multivariable Calculus</li>
+                  <li>Java Programming</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
+
+      <!-- HOBBIES -->
+      <section id="hobbies" class="section section-divided">
+        <p class="section-eyebrow">// hobbies</p>
+        <h2 class="section-heading">Beyond the Code</h2>
+        <p class="section-intro">Outside of code, I care about staying creative and active—it keeps my problem‑solving sharper and projects more fun.</p>
+
+        <div class="hobby-grid">
+          <div class="hobby-card">
+            <span class="hobby-icon">🎸</span>
+            <h3 class="hobby-name">Music</h3>
+            <p class="hobby-desc">Guitar (acoustic &amp; electric), ukulele, and casual listening.</p>
+          </div>
+          <div class="hobby-card">
+            <span class="hobby-icon">🏋️</span>
+            <h3 class="hobby-name">Weight Lifting</h3>
+            <p class="hobby-desc">Strength training and staying consistent in the gym.</p>
+          </div>
+          <div class="hobby-card">
+            <span class="hobby-icon">🎮</span>
+            <h3 class="hobby-name">Gaming</h3>
+            <p class="hobby-desc">Wide range of genres. Favourite recently: indie 2D games.</p>
+          </div>
+          <div class="hobby-card">
+            <span class="hobby-icon">📷</span>
+            <h3 class="hobby-name">Photography</h3>
+            <p class="hobby-desc">Shooting and editing photos with formal course experience.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section section-divided">
+        <p class="section-eyebrow">// contact</p>
+        <h2 class="section-heading">Say Hello</h2>
+        <p class="section-intro">Open to internships, part‑time roles, and collaborations on interesting projects. The fastest way to reach me is LinkedIn.</p>
+        <div class="contact-actions">
+          <a href="https://www.linkedin.com/in/adityanb/" target="_blank" rel="noopener noreferrer" class="btn-primary">Message on LinkedIn →</a>
+          <a href="https://github.com/Nano-AI" target="_blank" rel="noopener noreferrer" class="btn-outline">View GitHub ↗</a>
+        </div>
+      </section>
+
     </main>
+
+    <!-- ─── FOOTER ─────────────────────────────────────────────── -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span class="footer-name">Aditya Bankoti</span>
+        <span class="footer-copy">Built with HTML, CSS &amp; caffeine.</span>
+      </div>
+    </footer>
 
     <script src="script.js"></script>
   </body>

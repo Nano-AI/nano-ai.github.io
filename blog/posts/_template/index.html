@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<!--
+  ================================================================
+  BLOG POST TEMPLATE
+  ================================================================
+
+  This file is scaffolded automatically by new-post.sh.
+  You only need to edit the content inside <article class="prose">.
+
+  CODE BLOCKS:
+    <pre><code class="language-python">your code here</code></pre>
+    Languages: python, javascript, typescript, java, c, cpp,
+               rust, go, bash, json, html, css, sql, yaml
+
+  LATEX:
+    Inline:  $E = mc^2$
+    Display: $$\int_0^\infty e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2}$$
+
+  CALLOUTS:
+    <div class="callout callout-info">
+      <span class="callout-icon">ℹ️</span>
+      <span>Your message here.</span>
+    </div>
+    Types: callout-info  callout-tip  callout-warn
+
+  SCREENSHOT:
+    Drop a screenshot.png in this directory, then update
+    the screenshot field in blog/posts.js:
+      screenshot: "screenshot.png",
+
+  ================================================================
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post Title — Aditya Bankoti</title>
+    <meta name="description" content="Post description for search engines." />
+    <link rel="stylesheet" href="../../blog.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  </head>
+  <body>
+
+    <nav class="site-nav" id="site-nav">
+      <div class="nav-inner">
+        <a href="../../../index.html" class="nav-logo">AB<span class="blink">_</span></a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../../../index.html#projects"   class="nav-link">Projects</a></li>
+          <li><a href="../../../index.html#experience" class="nav-link">Experience</a></li>
+          <li><a href="../../../index.html#education"  class="nav-link">Education</a></li>
+          <li><a href="../../index.html"               class="nav-link active">Blog</a></li>
+          <li><a href="../../../index.html#contact"    class="nav-link nav-link-cta">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="post-wrap">
+
+      <div class="post-back">
+        <a href="../../index.html" class="back-link">← Back to Blog</a>
+      </div>
+
+      <header class="post-header">
+        <div class="post-header-meta">
+          <span class="post-header-date">Month DD, YYYY</span>
+          <span class="post-header-sep">·</span>
+          <span class="post-header-readtime">? min read</span>
+        </div>
+        <h1 class="post-header-title">Your Post Title Here</h1>
+        <div class="post-header-tags">
+          <span class="post-header-tag"># tag-one</span>
+          <span class="post-header-tag"># tag-two</span>
+        </div>
+      </header>
+
+      <hr class="post-divider" />
+
+      <!-- ═══════════════════════════════════════════════════════
+           WRITE YOUR POST BELOW
+           ═══════════════════════════════════════════════════════ -->
+      <article class="prose">
+
+        <p>Start writing here.</p>
+
+        <h2>Section Heading</h2>
+
+        <p>
+          Body text. Use <strong>bold</strong>, <em>italic</em>, and <code>inline code</code>.
+        </p>
+
+        <p class="code-label">example.py</p>
+        <pre><code class="language-python">print("Hello, world!")
+</code></pre>
+
+        <p>Inline math: $x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$</p>
+
+        $$\nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}$$
+
+        <div class="callout callout-tip">
+          <span class="callout-icon">💡</span>
+          <span>This is a tip callout.</span>
+        </div>
+
+      </article>
+      <!-- ═══════════════════════════════════════════════════════ -->
+
+      <footer class="post-footer">
+        <a href="../../index.html" class="back-link">← All Posts</a>
+        <div style="display:flex;gap:12px;">
+          <a href="https://github.com/Nano-AI" target="_blank" rel="noopener noreferrer" class="back-link">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/adityanb/" target="_blank" rel="noopener noreferrer" class="back-link">LinkedIn ↗</a>
+        </div>
+      </footer>
+
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span class="footer-name">Aditya Bankoti</span>
+        <span class="footer-copy">Built with HTML, CSS &amp; caffeine.</span>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script>Prism.plugins.autoloader.languages_path = 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/';</script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+    <script>
+      renderMathInElement(document.body, {
+        delimiters: [
+          { left: '$$', right: '$$', display: true  },
+          { left: '$',  right: '$',  display: false },
+        ],
+        throwOnError: false,
+      });
+    </script>
+    <script>
+      document.querySelectorAll('pre').forEach(pre => {
+        const btn = document.createElement('button');
+        btn.className = 'copy-btn';
+        btn.textContent = 'copy';
+        pre.style.position = 'relative';
+        pre.appendChild(btn);
+        btn.addEventListener('click', () => {
+          navigator.clipboard.writeText(pre.querySelector('code')?.innerText ?? '').then(() => {
+            btn.textContent = 'copied!'; btn.classList.add('copied');
+            setTimeout(() => { btn.textContent = 'copy'; btn.classList.remove('copied'); }, 1800);
+          });
+        });
+      });
+      const nav = document.getElementById('site-nav');
+      const toggle = document.getElementById('nav-toggle');
+      const menu = document.getElementById('nav-menu');
+      window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20), { passive: true });
+      toggle.addEventListener('click', () => {
+        const open = menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+    </script>
+
+  </body>
+</html>

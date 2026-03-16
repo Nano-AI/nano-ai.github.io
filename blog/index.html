@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog — Aditya Bankoti</title>
+    <meta name="description" content="Writing about graphics, AI, systems, and things I find interesting enough to write down." />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+
+    <nav class="site-nav" id="site-nav">
+      <div class="nav-inner">
+        <a href="../index.html" class="nav-logo">AB<span class="blink">_</span></a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../index.html#projects"   class="nav-link">Projects</a></li>
+          <li><a href="../index.html#experience" class="nav-link">Experience</a></li>
+          <li><a href="../index.html#education"  class="nav-link">Education</a></li>
+          <li><a href="index.html"               class="nav-link active">Blog</a></li>
+          <li><a href="../index.html#contact"    class="nav-link nav-link-cta">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="blog-hero">
+      <p class="blog-eyebrow">// writing</p>
+      <h1 class="blog-title">Blog</h1>
+      <p class="blog-subtitle">Notes on graphics, AI, systems, and whatever else I find interesting enough to write down.</p>
+    </div>
+
+    <!-- Tag filter bar -->
+    <div class="tag-filter" id="tag-filter" role="group" aria-label="Filter by tag"></div>
+
+    <!-- Posts grid -->
+    <div class="posts-grid" id="posts-grid"></div>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span class="footer-name">Aditya Bankoti</span>
+        <span class="footer-copy">Built with HTML, CSS &amp; caffeine.</span>
+      </div>
+    </footer>
+
+    <!-- Posts manifest — defines the POSTS array -->
+    <script src="posts.js"></script>
+
+    <script>
+      // ── Helpers ────────────────────────────────────────────────
+      function fmtDate(str) {
+        const d = new Date(str + 'T00:00:00');
+        return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+      }
+
+      function initials(title) {
+        return title.split(' ').filter(Boolean).map(w => w[0]).join('').slice(0, 3).toUpperCase();
+      }
+
+      // Cycle through a few gradient variants based on index
+      const GRADIENTS = [
+        'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0c1a2e 100%)',
+        'linear-gradient(135deg, #0a0f1e 0%, #1a0f2e 60%, #0f1a2e 100%)',
+        'linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0a1628 100%)',
+        'linear-gradient(135deg, #0f0a1e 0%, #1a1040 50%, #0a0f20 100%)',
+      ];
+
+      // ── Tag filter ─────────────────────────────────────────────
+      const visible = POSTS.filter(p => !p.archived);
+      let activeTag = 'all';
+      const allTags = ['all', ...new Set(visible.flatMap(p => p.tags))];
+
+      const tagFilter = document.getElementById('tag-filter');
+      allTags.forEach(tag => {
+        const btn = document.createElement('button');
+        btn.className = 'tag-btn' + (tag === 'all' ? ' active' : '');
+        btn.textContent = tag === 'all' ? 'All posts' : `# ${tag}`;
+        btn.addEventListener('click', () => {
+          activeTag = tag;
+          tagFilter.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderPosts();
+        });
+        tagFilter.appendChild(btn);
+      });
+
+      // ── Render ─────────────────────────────────────────────────
+      function renderPosts() {
+        const grid = document.getElementById('posts-grid');
+        const posts = activeTag === 'all'
+          ? visible
+          : visible.filter(p => p.tags.includes(activeTag));
+
+        if (posts.length === 0) {
+          grid.innerHTML = `<p class="no-posts">No posts tagged <code>${activeTag}</code> yet.</p>`;
+          return;
+        }
+
+        grid.innerHTML = posts.map((p, i) => {
+          const imgBlock = p.screenshot
+            ? `<img src="posts/${p.slug}/${p.screenshot}" class="post-card-img" alt="${p.title}" loading="lazy" />`
+            : `<div class="post-card-placeholder" style="background:${GRADIENTS[i % GRADIENTS.length]}">
+                 <span class="post-card-initials">${initials(p.title)}</span>
+               </div>`;
+
+          return `
+            <a href="posts/${p.slug}/index.html" class="post-card">
+              ${imgBlock}
+              <div class="post-card-body">
+                <div class="post-card-header">
+                  <h2 class="post-card-title">${p.title}</h2>
+                  <p class="post-card-meta">${fmtDate(p.date)} &nbsp;·&nbsp; ${p.readTime} read</p>
+                </div>
+                <p class="post-card-excerpt">${p.excerpt}</p>
+                <div class="post-card-tags">
+                  ${p.tags.map(t => `<span class="post-tag"># ${t}</span>`).join('')}
+                </div>
+                <span class="post-card-link">Read post →</span>
+              </div>
+            </a>`;
+        }).join('');
+      }
+
+      renderPosts();
+
+      // ── Nav ────────────────────────────────────────────────────
+      const nav    = document.getElementById('site-nav');
+      const toggle = document.getElementById('nav-toggle');
+      const menu   = document.getElementById('nav-menu');
+      window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20), { passive: true });
+      toggle.addEventListener('click', () => {
+        const open = menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+    </script>
+
+  </body>
+</html>
