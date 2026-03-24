@@ -5,4 +5,14 @@
 // ================================================================
 
 const POSTS = [
+  {
+    title:      "Eigenfaces",
+    date:       "2026-03-24",
+    slug:       "2026-03-24-eigenfaces",
+    tags:       ["Machine Learning"],
+    excerpt:    "Using SVD to create Eigenfaces",
+    readTime:   "10 min",
+    screenshot: null,
+    archived:   false,
+  },
 ];

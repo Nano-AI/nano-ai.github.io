@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<!--
+  ================================================================
+  BLOG POST TEMPLATE
+  ================================================================
+
+  This file is scaffolded automatically by new-post.sh.
+  You only need to edit the content inside <article class="prose">.
+
+  CODE BLOCKS:
+    <pre><code class="language-python">your code here</code></pre>
+    Languages: python, javascript, typescript, java, c, cpp,
+               rust, go, bash, json, html, css, sql, yaml
+
+  LATEX:
+    Inline:  $E = mc^2$
+    Display: $$\int_0^\infty e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2}$$
+
+  CALLOUTS:
+    <div class="callout callout-info">
+      <span class="callout-icon">ℹ️</span>
+      <span>Your message here.</span>
+    </div>
+    Types: callout-info  callout-tip  callout-warn
+
+  SCREENSHOT:
+    Drop a screenshot.png in this directory, then update
+    the screenshot field in blog/posts.js:
+      screenshot: "screenshot.png",
+
+  ================================================================
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eigenfaces — Aditya Bankoti</title>
+    <meta name="description" content="Eigenfaces." />
+    <script src="../../../theme-switcher.js"></script>
+    <link rel="stylesheet" href="../../blog.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  </head>
+  <body>
+
+    <nav class="site-nav" id="site-nav">
+      <div class="nav-inner">
+        <a href="../../../index.html" class="nav-logo">AB<span class="blink">_</span></a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../../../index.html#projects"   class="nav-link">Projects</a></li>
+          <li><a href="../../../index.html#experience" class="nav-link">Experience</a></li>
+          <li><a href="../../../index.html#education"  class="nav-link">Education</a></li>
+          <li><a href="../../index.html"               class="nav-link active">Blog</a></li>
+          <li><a href="../../../index.html#contact"    class="nav-link nav-link-cta">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="post-wrap">
+
+      <div class="post-back">
+        <a href="../../index.html" class="back-link">← Back to Blog</a>
+      </div>
+
+      <header class="post-header"> 
+        <div class="post-header-meta">
+          <span class="post-header-date">March 24, 2026</span>
+          <span class="post-header-sep">·</span>
+          <span class="post-header-readtime">10 min read</span>
+        </div>
+        <h1 class="post-header-title">Eigenfaces</h1>
+        <div class="post-header-tags">
+          <span class="post-header-tag">Machine Learning</span>
+        </div>
+      </header>
+
+      <hr class="post-divider" />
+
+      <!-- ═══════════════════════════════════════════════════════
+           WRITE YOUR POST BELOW
+           ═══════════════════════════════════════════════════════ -->
+      <article class="prose">
+        
+        <img src="./sc1.png" />
+        <h2>Introduction</h2>
+        <p> 
+            Eigenfaces are a cool application of SVD, and in this article, we'll take a look into how we can generate 
+            some interesting pictures using a large dataset.
+        </p>
+
+        <h2>SVD</h2>
+        <p>
+            SVD (Singular Value Decomposition) 
+            According to Wikipedia, SVD "is a factorization of a real or complex matrix into a rotation, 
+            followed by a rescaling followed by another rotation. 
+            It generalizes the eigendecomposition of a square normal matrix with an orthonormal eigenbasis to any m × n matrix."
+        
+            <br>
+            <br>
+
+            <b>But what does this mean?</b>
+
+            <br>
+
+            Let's say we have a matrix $M \in \mathbb{R}^{m \times n}$. We can represent this given matrix as $M = U \Sigma V^T$, 
+            where the orthogonal matracies $U \in \mathbb{R}^{m\times m}$, and $V \in \mathbb{R}^{n \times n}$.
+            $\Sigma \in \mathbb{R}^{m \times n}$, such that $\Sigma$ is a diagonal matrix containing values of $\sigma_1 \geq \dotsb \geq \sigma_r > 0$.
+            <br/>
+            Visually, $\Sigma$ looks something like this, where the empty spots will be just zeros:
+            <br/>
+            $$
+            \Sigma = 
+\begin{pmatrix}
+\sigma_1 & & & & & \\
+& \sigma_2 & & & & \\
+& & \ddots & & & \\
+& & & \sigma_r & & \\
+& & & & \ddots & \\
+& & & & & 0
+\end{pmatrix}_{m \times n}
+            $$
+
+            <br>
+            This still doesn't tell us much. 
+            In an intuitive way, let's think about each component individually:
+            <ol>
+                <li>$V^T$: Convert the input space (images we can see) into some unknown $\Sigma$'s sapce</li>
+                <li>$\Sigma$: How much to stretch the given feature by</li>
+                <li>$U$: Converts $\Sigma$'s space back to the output space (back to images we can see)</li>
+            </ol>
+            <br>
+
+            The fun thing is, it can be done for any real matrix $M$!
+
+            <br>
+            If we use the definition that we stated, we know that as we iterate through values of $\sigma_i$, 
+            they decrease.
+            This means that the most important features will be on the upper values of $\sigma_i$.
+        </p>
+
+
+        <h2>Coding</h2>
+
+        <h3>Loading the Data</h3>
+        <p>
+            Okay, let's try and apply this.
+            The first thing we'll do is load the dataset, and turn it into something we can perform matrix operations on.
+            <br/>
+            This is just some boilerplating, so feel free to copy it.
+
+        <pre><code class="language-python">
+import kagglehub
+import numpy as np
+import os
+import cv2
+import matplotlib.pyplot as plt
+
+path = kagglehub.dataset_download("jessicali9530/celeba-dataset") 
+
+def load_images(image_directory, count=1000, img_size=(64, 64)):
+  flattened_images = []
+  processed_count = 0
+  full_image_path = os.path.join(image_directory, 'img_align_celeba')
+  for root, _, files in os.walk(full_image_path):
+    for file in files:
+      if processed_count >= count:
+        break
+      if file.endswith(('.jpg', '.png', '.jpeg')):
+        filepath = os.path.join(root, file)
+        img = cv2.imread(filepath, cv2.IMREAD_GRAYSCALE)
+        if img is not None:
+          img_resized = cv2.resize(img, img_size, interpolation=cv2.INTER_CUBIC)
+          flattened_images.append(img_resized.flatten())
+          processed_count += 1
+
+  return np.array(flattened_images)
+  </code></pre>
+        <br>
+        Here, this function returns a matrix where each row is a compressed grayscale image.
+        Keeping it flat and grayscale allows us to conform the images into something we can process through SVD.
+        We will keep the images as 64 by 64 images so we don't spend too much processing power trying to compute these images.
+
+        
+        </p>
+        <h3>SVD</h3>
+        <p>
+            Thankfully, Numpy provides us with an SVD function to handle most of the heavy lifting.
+            We subtract the mean face to remove any uniform information (say the background),
+            and just keep track of values that vary from face to face.
+            
+            <pre><code class="language-python">
+images = load_images(path, count=1_000)
+X = images - mean_faces
+U, s, Vt = np.linalg.svd(X)
+# U: (1000, 1000), s: (1000,), Vt: (4096, 4096)
+            </code></pre>
+            
+            Something fun we can do is to graph values of $V^T$, which gives us some pretty fun images:
+            <img src="sc1.png" />
+
+            <b>Why do some rows generate faces?</b>
+            Using our definition of what $V^T$ and $\Sigma$ means, the
+            first few rows of $\Sigma$ represent what features have the 
+            greatest impact in the variance of faces.
+            They capture big, global patterns between images.
+            Since this is a dataset of images, the global pattern will be of faces.
+            As you notice, as we continue through, we get more noise than faces.
+        </p>
+
+        <h3>Generating a Face</h3>
+        <p>
+            Something fun we can do is attempt to generate random faces through a linear model. 
+
+            We already have the values of $\Sigma$, we can just multiply a random matrix with it.
+        <pre><code class="language-python">
+def generate_random_face(Vt, s, mean_face, r=100):
+  c = np.random.randn(r) * s[:r]
+  face = mean_face + c @ Vt[:r]
+  face = np.clip(face, 0, 255)
+  face.reshape(64, 64)
+</code></pre>
+            $r$ is just the rank of approximation. 
+            Referring back to the SVD section, we want to keep values that are global,
+            and that vary the most between images.
+            By keeping the value of $r$ relatively small, we can remove the noise and keep
+            track of just the important features.
+            <br />
+            Here are just some collections I was able to generate:
+            <img src="sc5.png" />
+            <img src="sc6.png" />
+            <img src="sc4.png" />
+            <img src="sc3.png" />
+            <img src="sc2.png" />
+        </p>
+      </article>
+      <!-- ═══════════════════════════════════════════════════════ -->
+
+      <footer class="post-footer">
+        <a href="../../index.html" class="back-link">← All Posts</a>
+        <div style="display:flex;gap:12px;">
+          <a href="https://github.com/Nano-AI" target="_blank" rel="noopener noreferrer" class="back-link">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/adityanb/" target="_blank" rel="noopener noreferrer" class="back-link">LinkedIn ↗</a>
+        </div>
+      </footer>
+
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span class="footer-name">Aditya Bankoti</span>
+        <span class="footer-copy">Built with HTML, CSS &amp; caffeine.</span>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script>Prism.plugins.autoloader.languages_path = 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/';</script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+    <script>
+      renderMathInElement(document.body, {
+        delimiters: [
+          { left: '$$', right: '$$', display: true  },
+          { left: '$',  right: '$',  display: false },
+        ],
+        throwOnError: false,
+      });
+    </script>
+    <script>
+      document.querySelectorAll('pre').forEach(pre => {
+        const btn = document.createElement('button');
+        btn.className = 'copy-btn';
+        btn.textContent = 'copy';
+        pre.style.position = 'relative';
+        pre.appendChild(btn);
+        btn.addEventListener('click', () => {
+          navigator.clipboard.writeText(pre.querySelector('code')?.innerText ?? '').then(() => {
+            btn.textContent = 'copied!'; btn.classList.add('copied');
+            setTimeout(() => { btn.textContent = 'copy'; btn.classList.remove('copied'); }, 1800);
+          });
+        });
+      });
+      const nav = document.getElementById('site-nav');
+      const toggle = document.getElementById('nav-toggle');
+      const menu = document.getElementById('nav-menu');
+      window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20), { passive: true });
+      toggle.addEventListener('click', () => {
+        const open = menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+    </script>
+
+  </body>
+</html>
