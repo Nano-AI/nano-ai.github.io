@@ -12,7 +12,7 @@ const POSTS = [
     tags:       ["Machine Learning"],
     excerpt:    "Using SVD to create Eigenfaces",
     readTime:   "10 min",
-    screenshot: null,
+    screenshot: "sc4.png",
     archived:   false,
   },
 ];
