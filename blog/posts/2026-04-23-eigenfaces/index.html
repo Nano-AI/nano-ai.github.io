@@ -40,6 +40,22 @@
     <link rel="stylesheet" href="../../blog.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+    <style>
+      .prose img { cursor: zoom-in; transition: transform 0.2s ease; }
+      .lightbox-overlay {
+        position: fixed; inset: 0; background: rgba(0,0,0,0.9);
+        display: flex; align-items: center; justify-content: center;
+        z-index: 9999; opacity: 0; pointer-events: none;
+        transition: opacity 0.2s ease; cursor: zoom-out;
+      }
+      .lightbox-overlay.open { opacity: 1; pointer-events: auto; }
+      .lightbox-overlay img {
+        max-width: 92vw; max-height: 92vh; object-fit: contain;
+        transform: scale(0.95); transition: transform 0.2s ease;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      }
+      .lightbox-overlay.open img { transform: scale(1); }
+    </style>
   </head>
   <body>
 
@@ -474,6 +490,22 @@ Compared to SVD, we can see <b>a lot</b> more visible facial features!
       });
     </script>
     <script>
+      (() => {
+        const overlay = document.createElement('div');
+        overlay.className = 'lightbox-overlay';
+        const big = document.createElement('img');
+        overlay.appendChild(big);
+        document.body.appendChild(overlay);
+        const close = () => overlay.classList.remove('open');
+        overlay.addEventListener('click', close);
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+        document.querySelectorAll('.prose img').forEach(img => {
+          img.addEventListener('click', () => {
+            big.src = img.currentSrc || img.src;
+            overlay.classList.add('open');
+          });
+        });
+      })();
       document.querySelectorAll('pre').forEach(pre => {
         const btn = document.createElement('button');
         btn.className = 'copy-btn';
