@@ -67,7 +67,7 @@
 
       <header class="post-header"> 
         <div class="post-header-meta">
-          <span class="post-header-date">March 24, 2026</span>
+          <span class="post-header-date">April 23, 2026</span>
           <span class="post-header-sep">·</span>
           <span class="post-header-readtime">10 min read</span>
         </div>
@@ -93,11 +93,8 @@
 
         <h2>SVD</h2>
         <p>
-            SVD (Singular Value Decomposition) 
-            According to Wikipedia, SVD "is a factorization of a real or complex matrix into a rotation, 
-            followed by a rescaling followed by another rotation. 
-            It generalizes the eigendecomposition of a square normal matrix with an orthonormal eigenbasis to any m × n matrix."
-        
+            SVD, or Singular Value Decomposition, is a way of breaking any matrix down into three simpler pieces that reveal its underlying structure.
+
             <br>
             <br>
 
@@ -127,9 +124,9 @@
             This still doesn't tell us much. 
             In an intuitive way, let's think about each component individually:
             <ol>
-                <li>$V^T$: Convert the input space (images we can see) into some unknown $\Sigma$'s sapce</li>
-                <li>$\Sigma$: How much to stretch the given feature by</li>
-                <li>$U$: Converts $\Sigma$'s space back to the output space (back to images we can see)</li>
+                <li>$V^T$: Projects the data into a new coordinate system aligned with its most important directions</li>
+                <li>$\Sigma$: Scales each direction by how much variance it captures</li>
+                <li>$U$: Expresses each original data point as a combination of those directions</li>
             </ol>
             <br>
 
@@ -180,7 +177,9 @@ def load_images(image_directory, count=1000, img_size=(64, 64)):
   </code></pre>
         <br>
         Here, this function returns a matrix where each row is a compressed grayscale image.
+        $\newline$
         Keeping it flat and grayscale allows us to conform the images into something we can process through SVD.
+        $\newline$
         We will keep the images as 64 by 64 images so we don't spend too much processing power trying to compute these images.
 
         
@@ -229,12 +228,216 @@ def generate_random_face(Vt, s, mean_face, r=100):
             track of just the important features.
             <br />
             Here are just some collections I was able to generate:
-            <img src="sc5.png" />
-            <img src="sc6.png" />
-            <img src="sc4.png" />
-            <img src="sc3.png" />
-            <img src="sc2.png" />
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;">
+              <img src="sc5.png" style="width:100%;height:auto;" />
+              <img src="sc6.png" style="width:100%;height:auto;" />
+              <img src="sc4.png" style="width:100%;height:auto;" />
+              <img src="sc3.png" style="width:100%;height:auto;" />
+              <img src="sc2.png" style="width:100%;height:auto;" />
+            </div>
         </p>
+
+        <h2>Another way...?</h2>
+        SVD gives us globally blended features — each eigenface is a ghostly mix of the entire dataset. NNMF takes a different approach: it constrains both WW
+$W$ and $H$
+to be non-negative, which forces the decomposition to find <b>parts</b> rather than blends. In practice, this means rows of $H$
+end up looking like localized facial features — eyes, noses, hair — rather than full-face ghosts.
+
+        $$\newline$$
+
+        This method generates photos that resemble faces, but I think we can do better.
+
+        You can read more about Non-Negative Matrix Factorization <a href="https://en.wikipedia.org/wiki/Non-negative_matrix_factorization">here</a>.
+
+
+        <pre><code class="language-python">def NNMF(V, k=100, MAX_ITERATION=500):
+  eps = 1e-9
+  tol = 1e-4
+  
+  m, n = V.shape
+  W = np.random.rand(m, k)
+  H = np.random.rand(k, n)
+  previous_error = np.inf
+  
+  for i in range(MAX_ITERATION):
+    H_num = W.T @ V
+    H_den = W.T @ W @ H + eps
+    H *= (H_num / H_den)
+    
+    W_num = V @ H.T
+    W_den = W @ H @ H.T + eps
+    W *= (W_num / W_den)
+    
+    current_error = np.linalg.norm(V - W @ H, 'fro')
+    diff = abs(previous_error - current_error)
+    
+    if i > 0 and diff / previous_error < tol:
+      break
+
+    previous_error = np.linalg.norm(V - W @ H, 'fro')
+  return W, H
+</code></pre>
+
+    We are attempting to minimize the Frobenius norm by updating values of $W$ and $H$ as given by the equations on the Wiki page.
+    
+    <h3>Errors</h3>
+    We will compute the errors too to pick a $k$ size and a $MAX\_ITERATION$ size.
+
+    <pre><code class="language-python">errors = {}
+error_ranges = list(range(1, 100, 10)) \
+                + list(range(100, 200, 25)) \
+                + list(range(200, 400, 75))  \
+                + list(range(400, 500, 100)) \
+                + list(range(500, 1000, 200))
+# same as
+error_ranges = [1, 11, 21, 31, 41, 51, 61, 71,
+                81, 91, 100, 125, 150, 175, 200,
+                275, 350, 400, 500, 700, 900]
+    </code></pre>
+
+    This just creates a list of error ranges that we will use to compute. Feel free to modify these values accordingly.
+
+    To calculate the error, the equation is given as $||V - WH||_F$.
+    
+    In addition to just the error, we will also calculate the difference on each iteration.
+
+<pre><code class="language-python">errors = {}
+error_ranges = list(range(1, 100, 10)) \
+                + list(range(100, 200, 25)) \
+                + list(range(200, 400, 75))  \
+                + list(range(400, 500, 100)) \
+                + list(range(500, 1000, 200))
+error_ranges = sorted(set(error_ranges))
+
+for k in tqdm.tqdm(error_ranges):
+    W, H = NNMF(images, k, 100)
+    WH = W @ H
+    errors[k] = np.linalg.norm(images - WH, 'fro')
+
+keys = list(errors.keys())
+vals = list(errors.values())
+
+d_errs = {
+    keys[i]: (errors[keys[i]] - errors[keys[i-1]]) / (keys[i] - keys[i-1])
+    for i in range(1, len(keys))
+}
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
+
+ax1.plot(keys, vals)
+ax1.set_title("Reconstruction Error")
+ax1.set_xlabel("k")
+ax1.set_ylabel("Frobenius Norm")
+
+ax2.plot(list(d_errs.keys()), list(d_errs.values()))
+ax2.set_title("d(Error)/dk")
+ax2.set_xlabel("k")
+ax2.set_ylabel("Error Rate of Change")
+
+plt.tight_layout()
+</code></pre>
+
+
+    <img src="err1.png" />
+    <img src="err2.png" />
+
+    As you can see, the error converges to zero with a $k\approx 200$ and $MAX\_ITERATION \approx 200$.
+
+    We can now start reconstructing faces to see how accurate our model is.
+
+    <h3>Reconstruction!</h3>
+
+    Run this code, we can see how our model is able to reconstruct faces.
+    <pre><code class="language-python">W, H = NNMF(images, 200, 200)
+def reconstruct_face(idx):
+    # W[idx] is the coefficient vector for image idx, shape (k,)
+    # W[idx] @ H is a weighted sum of the k components
+    reconstructed = W[idx] @ H  # shape (n,) = (4096,)
+    return reconstructed.reshape(64, 64)
+
+# Plot original vs reconstructed
+fig, axes = plt.subplots(2, 5, figsize=(12, 5))
+counter = 0
+amount = 5
+pictures = random.choices(list(range(0, images.shape[0])), k = amount)
+for i in pictures:
+    original = images[i].reshape(64, 64)
+    reconstructed = reconstruct_face(i)
+    
+    # Normalize for display
+    reconstructed = np.clip(reconstructed, 0, 255)
+    
+    axes[0, counter].imshow(original, cmap='gray')
+    axes[0, counter].set_title(f'Original {i}')
+    axes[0, counter].axis('off')
+    
+    axes[1, counter].imshow(reconstructed, cmap='gray')
+    axes[1, counter].set_title(f'Reconstructed {i}')
+    axes[1, counter].axis('off')
+    counter += 1
+
+plt.tight_layout()
+    </code></pre>
+
+    <img src="re1.png" />
+
+    We can even see how much space we have saved by using a compression model!
+
+    <pre><code class="language-python">per_image_original = images[0].nbytes
+per_image_compressed_amortized = W[0].nbytes + H.nbytes / len(images)
+print(f"Compression took {per_image_compressed_amortized / per_image_original:.4f}x less space")
+    </code></pre>
+
+    Which gives me the output:
+
+    <pre>Compression took 0.4977x less space</pre>
+
+    Sick!
+
+    We can also see each feature individually:
+
+    <pre><code class="language-python">feature_importance = W.sum(axis=0)
+top_indices = np.argsort(feature_importance)[::-1][:rows * cols]
+
+fig_row_count = 3
+fig_col_count = 4
+# Auto-scale figure height based on grid size
+fig, axes = plt.subplots(fig_row_count, fig_col_count, figsize=(10, 10))
+
+for i, ax in enumerate(axes.flat):
+    component = H[top_indices[i]]
+    component = np.clip((component - component.min()) / (component.max() - component.min() + 1e-9), 0, 1)
+    component = component.reshape(64, 64)
+    axes[i // fig_col_count, i % fig_col_count].imshow(component, cmap='gray')
+    axes[i // fig_col_count, i % fig_col_count].set_title(f"Feature {top_indices[i]}", fontsize=16)
+    # ax.axis('off')
+
+plt.tight_layout()
+plt.show()
+    </code></pre>
+
+    <img src="./re2.png" />
+
+    Alright, final step, just for fun, we'll just generate some random faces.
+
+<pre><code class="language-python">def generate_random_face(mean, std, H):
+    coeffs = np.clip(np.random.normal(mean, std), 0, None)
+    face = coeffs @ H
+    return np.clip(face, 0, 255).reshape(64, 64)
+
+mean = W.mean(axis=0)
+std  = W.std(axis=0)
+
+fig, axes = plt.subplots(4, 5, figsize=(12, 10))
+for ax in axes.flat:
+    ax.imshow(generate_random_face(mean, std, H), cmap='gray')
+    ax.axis('off')
+plt.tight_layout()</code></pre>
+
+<img src="./re3.png" />
+
+Compared to SVD, we can see <b>a lot</b> more visible facial features!
+        
       </article>
       <!-- ═══════════════════════════════════════════════════════ -->
 
@@ -255,6 +458,7 @@ def generate_random_face(Vt, s, mean_face, r=100):
       </div>
     </footer>
 
+    <script src="../../toc.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
     <script>Prism.plugins.autoloader.languages_path = 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/';</script>
