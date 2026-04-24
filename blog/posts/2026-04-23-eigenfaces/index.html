@@ -34,8 +34,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eigenfaces — Aditya Bankoti</title>
-    <meta name="description" content="Eigenfaces." />
+    <title>Ways to Decompose a Face — Aditya Bankoti</title>
+    <meta name="description" content="Using Machine Learning to deconstruct and reconstruct faces" />
     <script src="../../../theme-switcher.js"></script>
     <link rel="stylesheet" href="../../blog.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" />
@@ -85,11 +85,12 @@
         <div class="post-header-meta">
           <span class="post-header-date">April 23, 2026</span>
           <span class="post-header-sep">·</span>
-          <span class="post-header-readtime">10 min read</span>
+          <span class="post-header-readtime">15 min read</span>
         </div>
-        <h1 class="post-header-title">Eigenfaces</h1>
+        <h1 class="post-header-title">Ways to Decompose a Face</h1>
         <div class="post-header-tags">
           <span class="post-header-tag">Machine Learning</span>
+          <span class="post-header-tag">Linear Algebra</span>
         </div>
       </header>
 
@@ -102,9 +103,11 @@
         
         <img src="./sc1.png" />
         <h2>Introduction</h2>
-        <p> 
-            Eigenfaces are a cool application of SVD, and in this article, we'll take a look into how we can generate 
-            some interesting pictures using a large dataset.
+        <p>
+            Eigenfaces are a cool application of SVD. Feed a bunch of face photos into it and you get back a
+            set of "average" faces that can be mixed together to rebuild any face in the dataset.
+            We'll build them from scratch, then look at a second approach (NNMF) that pulls out
+            localized features like eyes and noses instead of full-face blends.
         </p>
 
         <h2>SVD</h2>
@@ -118,9 +121,9 @@
 
             <br>
 
-            Let's say we have a matrix $M \in \mathbb{R}^{m \times n}$. We can represent this given matrix as $M = U \Sigma V^T$, 
-            where the orthogonal matracies $U \in \mathbb{R}^{m\times m}$, and $V \in \mathbb{R}^{n \times n}$.
-            $\Sigma \in \mathbb{R}^{m \times n}$, such that $\Sigma$ is a diagonal matrix containing values of $\sigma_1 \geq \dotsb \geq \sigma_r > 0$.
+            Let's say we have a matrix $M \in \mathbb{R}^{m \times n}$. We can write it as $M = U \Sigma V^T$,
+            where $U \in \mathbb{R}^{m\times m}$ and $V \in \mathbb{R}^{n \times n}$ are orthogonal matrices, and
+            $\Sigma \in \mathbb{R}^{m \times n}$ is a diagonal matrix whose entries $\sigma_1 \geq \dotsb \geq \sigma_r > 0$ are the singular values.
             <br/>
             Visually, $\Sigma$ looks something like this, where the empty spots will be just zeros:
             <br/>
@@ -137,21 +140,17 @@
             $$
 
             <br>
-            This still doesn't tell us much. 
-            In an intuitive way, let's think about each component individually:
+            Intuitively, each piece has its own job:
             <ol>
-                <li>$V^T$: Projects the data into a new coordinate system aligned with its most important directions</li>
-                <li>$\Sigma$: Scales each direction by how much variance it captures</li>
-                <li>$U$: Expresses each original data point as a combination of those directions</li>
+                <li>$V^T$: rotates the data into a new coordinate system aligned with its most important directions</li>
+                <li>$\Sigma$: scales each direction by how much variance it captures</li>
+                <li>$U$: expresses each original data point as a combination of those directions</li>
             </ol>
             <br>
 
-            The fun thing is, it can be done for any real matrix $M$!
-
-            <br>
-            If we use the definition that we stated, we know that as we iterate through values of $\sigma_i$, 
-            they decrease.
-            This means that the most important features will be on the upper values of $\sigma_i$.
+            The nice thing is this works for <i>any</i> real matrix $M$. Since the singular values are sorted
+            from big to small, the most important structure in the data lives in the first few $\sigma_i$.
+            Keep just the top $r$ of them and you get the best rank-$r$ approximation of $M$.
         </p>
 
 
@@ -159,10 +158,9 @@
 
         <h3>Loading the Data</h3>
         <p>
-            Okay, let's try and apply this.
-            The first thing we'll do is load the dataset, and turn it into something we can perform matrix operations on.
+            Let's apply this. First we'll load a dataset and reshape it into something we can feed to SVD.
             <br/>
-            This is just some boilerplating, so feel free to copy it.
+            This is mostly boilerplate, so feel free to copy it.
 
         <pre><code class="language-python">
 import kagglehub
@@ -192,58 +190,51 @@ def load_images(image_directory, count=1000, img_size=(64, 64)):
   return np.array(flattened_images)
   </code></pre>
         <br>
-        Here, this function returns a matrix where each row is a compressed grayscale image.
-        $\newline$
-        Keeping it flat and grayscale allows us to conform the images into something we can process through SVD.
-        $\newline$
-        We will keep the images as 64 by 64 images so we don't spend too much processing power trying to compute these images.
-
-        
+        This returns a matrix where each row is one flattened grayscale image.
+        Going flat and grayscale turns each picture into a single vector, which is what SVD wants.
+        We stick to 64×64 so the decomposition doesn't take forever to run.
         </p>
         <h3>SVD</h3>
         <p>
-            Thankfully, Numpy provides us with an SVD function to handle most of the heavy lifting.
-            We subtract the mean face to remove any uniform information (say the background),
-            and just keep track of values that vary from face to face.
-            
+            Thankfully NumPy gives us an SVD function, so most of the work's already handled. Before calling it,
+            we subtract the mean face from every image. That centers the data so SVD sees what varies
+            between faces instead of what they all share, like background brightness or average skin tone.
+
             <pre><code class="language-python">
 images = load_images(path, count=1_000)
-X = images - mean_faces
-U, s, Vt = np.linalg.svd(X)
-# U: (1000, 1000), s: (1000,), Vt: (4096, 4096)
+mean_face = images.mean(axis=0)
+X = images - mean_face
+U, s, Vt = np.linalg.svd(X, full_matrices=False)
+# U: (1000, 1000), s: (1000,), Vt: (1000, 4096)
             </code></pre>
-            
-            Something fun we can do is to graph values of $V^T$, which gives us some pretty fun images:
+
+            Each row of $V^T$ is a vector of length 4096. We can reshape it back into a 64×64 image and plot it,
+            which gives us some pretty fun pictures:
             <img src="sc1.png" />
 
-            <b>Why do some rows generate faces?</b>
-            Using our definition of what $V^T$ and $\Sigma$ means, the
-            first few rows of $\Sigma$ represent what features have the 
-            greatest impact in the variance of faces.
-            They capture big, global patterns between images.
-            Since this is a dataset of images, the global pattern will be of faces.
-            As you notice, as we continue through, we get more noise than faces.
+            <b>Why do some rows look like faces?</b>
+            Each row of $V^T$ is a direction in image-space, and $\sigma_i$ says how much variance the data has
+            along it. The top rows grab the most global patterns in the dataset, and since the dataset is
+            faces, those patterns <i>are</i> faces. Further down the list, the singular values shrink and the
+            rows pick up on smaller variations, then just noise.
         </p>
 
         <h3>Generating a Face</h3>
         <p>
-            Something fun we can do is attempt to generate random faces through a linear model. 
-
-            We already have the values of $\Sigma$, we can just multiply a random matrix with it.
+            We can also run the decomposition backwards to <i>make</i> new faces. Pick some random coefficients,
+            weight them by the singular values, and mix the top rows of $V^T$ together. Add the mean face back
+            on and you've got a new face pulled from the same linear space as the dataset.
         <pre><code class="language-python">
 def generate_random_face(Vt, s, mean_face, r=100):
   c = np.random.randn(r) * s[:r]
   face = mean_face + c @ Vt[:r]
   face = np.clip(face, 0, 255)
-  face.reshape(64, 64)
+  return face.reshape(64, 64)
 </code></pre>
-            $r$ is just the rank of approximation. 
-            Referring back to the SVD section, we want to keep values that are global,
-            and that vary the most between images.
-            By keeping the value of $r$ relatively small, we can remove the noise and keep
-            track of just the important features.
+            $r$ is the rank of the approximation. Like we saw earlier, the top rows of $V^T$ carry the global
+            structure and the tail is mostly noise, so a small $r$ keeps the big facial features and drops the rest.
             <br />
-            Here are just some collections I was able to generate:
+            Here are some that I generated:
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;">
               <img src="sc5.png" style="width:100%;height:auto;" />
               <img src="sc6.png" style="width:100%;height:auto;" />
@@ -254,16 +245,18 @@ def generate_random_face(Vt, s, mean_face, r=100):
         </p>
 
         <h2>Another way...?</h2>
-        SVD gives us globally blended features — each eigenface is a ghostly mix of the entire dataset. NNMF takes a different approach: it constrains both WW
-$W$ and $H$
-to be non-negative, which forces the decomposition to find <b>parts</b> rather than blends. In practice, this means rows of $H$
-end up looking like localized facial features — eyes, noses, hair — rather than full-face ghosts.
-
-        $$\newline$$
-
-        This method generates photos that resemble faces, but I think we can do better.
-
+        <p>
+        SVD gave us faces, but they're globally blended. Every eigenface is a ghostly mix of the whole dataset. We can do better.
+        <br><br>
+        Non-Negative Matrix Factorization (NNMF) is another way to break apart the image matrix. It factors
+        $V \approx W H$ with the constraint that <i>both</i> $W$ and $H$ only have non-negative entries.
+        That constraint is the whole point. With no subtraction allowed, the decomposition can't build a face
+        by cancelling features against each other, so it has to find additive <b>parts</b> instead of blends.
+        In practice, the rows of $H$ come out looking like localized facial features (eyes, noses, hairlines)
+        rather than full-face ghosts.
+        <br><br>
         You can read more about Non-Negative Matrix Factorization <a href="https://en.wikipedia.org/wiki/Non-negative_matrix_factorization">here</a>.
+        </p>
 
 
         <pre><code class="language-python">def NNMF(V, k=100, MAX_ITERATION=500):
@@ -294,10 +287,12 @@ end up looking like localized facial features — eyes, noses, hair — rather t
   return W, H
 </code></pre>
 
-    We are attempting to minimize the Frobenius norm by updating values of $W$ and $H$ as given by the equations on the Wiki page.
-    
+    Each loop applies the multiplicative update rules from the Wiki page to push $\|V - WH\|_F$ down.
+    We bail out early once the error stops changing much.
+
     <h3>Errors</h3>
-    We will compute the errors too to pick a $k$ size and a $MAX\_ITERATION$ size.
+    We still have to pick good values for $k$ (the number of components) and MAX_ITERATION. To do that,
+    we'll sweep over a range of $k$ values and plot the reconstruction error.
 
     <pre><code class="language-python">errors = {}
 error_ranges = list(range(1, 100, 10)) \
@@ -311,11 +306,11 @@ error_ranges = [1, 11, 21, 31, 41, 51, 61, 71,
                 275, 350, 400, 500, 700, 900]
     </code></pre>
 
-    This just creates a list of error ranges that we will use to compute. Feel free to modify these values accordingly.
+    That's just the list of $k$ values we'll try. Denser at the low end where the curve changes fast,
+    sparser at the tail. Tweak it however you want.
 
-    To calculate the error, the equation is given as $||V - WH||_F$.
-    
-    In addition to just the error, we will also calculate the difference on each iteration.
+    For each $k$ we compute the reconstruction error $\|V - WH\|_F$. We also track its discrete
+    derivative $d(\text{error})/dk$ so we can spot the elbow.
 
 <pre><code class="language-python">errors = {}
 error_ranges = list(range(1, 100, 10)) \
@@ -357,13 +352,14 @@ plt.tight_layout()
     <img src="err1.png" />
     <img src="err2.png" />
 
-    As you can see, the error converges to zero with a $k\approx 200$ and $MAX\_ITERATION \approx 200$.
+    The error curve flattens out and $d(\text{error})/dk$ settles near zero around $k \approx 200$,
+    so we'll go with $k = 200$ and MAX_ITERATION $= 200$.
 
-    We can now start reconstructing faces to see how accurate our model is.
+    Now let's reconstruct some faces and see how the model does.
 
     <h3>Reconstruction!</h3>
 
-    Run this code, we can see how our model is able to reconstruct faces.
+    Running this plots each original next to what the model reconstructs from $W$ and $H$.
     <pre><code class="language-python">W, H = NNMF(images, 200, 200)
 def reconstruct_face(idx):
     # W[idx] is the coefficient vector for image idx, shape (k,)
@@ -397,26 +393,29 @@ plt.tight_layout()
 
     <img src="re1.png" />
 
-    We can even see how much space we have saved by using a compression model!
+    We can also use NNMF as a compression scheme. Instead of storing a full 64×64 image per face, we only
+    need that face's coefficient vector $W_i$ (length $k$), plus one shared $H$ for the whole dataset.
 
     <pre><code class="language-python">per_image_original = images[0].nbytes
 per_image_compressed_amortized = W[0].nbytes + H.nbytes / len(images)
-print(f"Compression took {per_image_compressed_amortized / per_image_original:.4f}x less space")
+ratio = per_image_compressed_amortized / per_image_original
+print(f"Compressed size is {ratio:.4f}x the original")
     </code></pre>
 
     Which gives me the output:
 
-    <pre>Compression took 0.4977x less space</pre>
+    <pre>Compressed size is 0.4977x the original</pre>
 
-    Sick!
+    Roughly half the size. Sick!
 
-    We can also see each feature individually:
+    We can also look at the features themselves to see what the model learned:
 
-    <pre><code class="language-python">feature_importance = W.sum(axis=0)
-top_indices = np.argsort(feature_importance)[::-1][:rows * cols]
-
-fig_row_count = 3
+    <pre><code class="language-python">fig_row_count = 3
 fig_col_count = 4
+
+feature_importance = W.sum(axis=0)
+top_indices = np.argsort(feature_importance)[::-1][:fig_row_count * fig_col_count]
+
 # Auto-scale figure height based on grid size
 fig, axes = plt.subplots(fig_row_count, fig_col_count, figsize=(10, 10))
 
@@ -434,7 +433,9 @@ plt.show()
 
     <img src="./re2.png" />
 
-    Alright, final step, just for fun, we'll just generate some random faces.
+    Alright, last step, just for fun: let's sample some random faces from the NNMF model, same as we did
+    with SVD. Since every coefficient in $W$ has to be non-negative, we sample from a Gaussian fit to each
+    column of $W$ and clip any negatives back to zero.
 
 <pre><code class="language-python">def generate_random_face(mean, std, H):
     coeffs = np.clip(np.random.normal(mean, std), 0, None)
@@ -452,8 +453,9 @@ plt.tight_layout()</code></pre>
 
 <img src="./re3.png" />
 
-Compared to SVD, we can see <b>a lot</b> more visible facial features!
-        
+Compared to the SVD samples, these have <b>way</b> sharper facial features. The non-negativity constraint
+is doing exactly what we wanted: pushing the model toward parts instead of blends.
+
       </article>
       <!-- ═══════════════════════════════════════════════════════ -->
 
